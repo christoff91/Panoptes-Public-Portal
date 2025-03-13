@@ -1,0 +1,10 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    background: url('../../../../assets/bg-5.png');
+    color: white;
+
+    @media (max-width: 767px) {
+        background-position: center; // Show the right side on mobiles
+    }
+}
