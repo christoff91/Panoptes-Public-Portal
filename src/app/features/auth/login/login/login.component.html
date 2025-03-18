@@ -1,4 +1,4 @@
-<div class="grid place-items-center bg-slate-500">
+<div class="grid place-items-center">
   <header>
     <img
       src="assets/logos/logo.png"
@@ -6,9 +6,75 @@
       alt="Logo"
     />
   </header>
-  <!-- <mat-card>
-    <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
-    </mat-card-header>
-  </mat-card> -->
+  <div class="min-h-auto flex justify-center xl:w-[35vw]">
+    <div
+      class="w-full p-8 rounded-xl xl:bg-white xl:bg-opacity-50 xl:w-full xl:min-h-[60vh] xl:max-h-[80vh]"
+    >
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <mat-form-field class="w-full">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            placeholder="Ex. pat@example.com"
+          />
+          @if (loginForm.hasError('email') && !loginForm.hasError('required')) {
+          <mat-error>Please enter a valid email address</mat-error>
+          } @if (loginForm.hasError('required')) {
+          <mat-error>Email is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="password"
+            placeholder="Enter your password"
+          />
+          @if (loginForm.get('password')?.hasError('required')) {
+            <mat-error>Password is <strong>required</strong></mat-error>
+          }
+          @if (loginForm.get('password')?.hasError('minlength')) {
+            <mat-error>Password must be at least 6 characters</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="flex justify-end">
+          <a
+            href="#"
+            class="text-white lg:text-blue-700 hover:text-blue-900 text-sm"
+            >Forgot Password?</a
+          >
+        </div>
+
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          class="w-full rounded-full bg-white font-medium"
+        >
+          LOGIN
+        </button>
+        <mat-divider></mat-divider>
+
+        <button
+          mat-flat-button
+          type="submit"
+          class="custom-btn w-full rounded-full"
+        >
+          <mat-icon class="google-icon">google</mat-icon>
+          <span class="ml-3">OR LOGIN WITH GOOGLE</span>
+        </button>
+      </form>
+
+      <div class="flex justify-start mt-6 ml-1">
+        <span class="text-white">Don't have an account?</span>
+        &nbsp;
+        <a href="#" class="text-blue-500 hover:text-blue-900"> Sign Up Now</a>
+      </div>
+    </div>
+  </div>
 </div>
