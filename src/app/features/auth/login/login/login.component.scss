@@ -27,6 +27,19 @@
     display: inline-block;
   }
 
+  .primary-btn {
+    display: flex;
+    background-color: white !important;
+    color: black !important;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: rgb(19,71,145)!important;
+        color: white !important;
+    }
+  }
+
   .custom-btn {
     display: flex;
     background-color: #6b6c6e !important;

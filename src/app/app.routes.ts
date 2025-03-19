@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './layout/main-layout/main-layout/main-layout.component';
 import { LoginComponent } from './features/auth/login/login/login.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { NavigationComponent } from './layout/navigation/navigation/navigation.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,10 @@ export const routes: Routes = [
           import('./features/dashboard/municipal/municipal.module').then(
             (m) => m.MunicipalModule
           ),
+      },
+      {
+        path: 'navigation',
+        component: NavigationComponent,
       },
     ],
   },

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { MatDivider } from '@angular/material/divider';
 
 @Component({
   selector: 'app-navigation',
-  imports: [],
+  imports: [MatDivider],
   templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss'
+  styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent {
-
+  isMobile: boolean = false;
 }

@@ -17,7 +17,7 @@
             type="email"
             matInput
             formControlName="email"
-            placeholder="Ex. pat@example.com"
+            placeholder="Ex. johndoe@email.com"
           />
           @if (loginForm.hasError('email') && !loginForm.hasError('required')) {
           <mat-error>Please enter a valid email address</mat-error>
@@ -31,38 +31,42 @@
           <input
             type="password"
             matInput
+            [type]="hidePassword ? 'password' : 'text'"
             formControlName="password"
             placeholder="Enter your password"
           />
+          <mat-icon
+            class="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-500 cursor-pointer"
+            (click)="togglePasswordVisibility()"
+          >
+            {{ hidePassword ? "visibility_off" : "visibility" }}
+          </mat-icon>
           @if (loginForm.get('password')?.hasError('required')) {
-            <mat-error>Password is <strong>required</strong></mat-error>
-          }
-          @if (loginForm.get('password')?.hasError('minlength')) {
-            <mat-error>Password must be at least 6 characters</mat-error>
+          <mat-error>Password is <strong>required</strong></mat-error>
+          } @if (loginForm.get('password')?.hasError('minlength')) {
+          <mat-error>Password must be at least 6 characters</mat-error>
           }
         </mat-form-field>
 
         <div class="flex justify-end">
           <a
             href="#"
-            class="text-white lg:text-blue-700 hover:text-blue-900 text-sm"
+            class="text-white lg:text-blue-500 hover:text-blue-900 text-sm"
             >Forgot Password?</a
           >
         </div>
 
         <button
           mat-flat-button
-          color="primary"
-          type="submit"
-          class="w-full rounded-full bg-white font-medium"
+          class="primary-btn w-full rounded-full "
+          (submit)="routeToDashboard()"
         >
-          LOGIN
+          <span>LOGIN</span>
         </button>
         <mat-divider></mat-divider>
 
         <button
           mat-flat-button
-          type="submit"
           class="custom-btn w-full rounded-full"
         >
           <mat-icon class="google-icon">google</mat-icon>
@@ -78,3 +82,12 @@
     </div>
   </div>
 </div>
+
+<!--
+<mat-icon
+          class="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-500 cursor-pointer"
+          (click)="togglePasswordVisibility()"
+        >
+          {{ isPasswordVisible ? "visibility_off" : "visibility" }}
+        </mat-icon>
+-->

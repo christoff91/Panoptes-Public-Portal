@@ -1,11 +1,11 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
   Validators,
   ReactiveFormsModule,
   FormsModule,
-  FormControl,
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -32,19 +32,24 @@ import { MatDividerModule } from '@angular/material/divider';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  // loginForm = new FormControl('', [Validators.required, Validators.email]);
   hidePassword = true;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
+  routeToDashboard() {
+    console.log('Check one two');
+    this.router.navigate(['/dashboard']);
+  }
+
   onSubmit(): void {
     if (this.loginForm.valid) {
       console.log('Form submitted:', this.loginForm.value);
+      this.routeToDashboard();
     }
   }
 

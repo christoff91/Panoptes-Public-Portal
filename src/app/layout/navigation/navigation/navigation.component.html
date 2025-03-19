@@ -1,1 +1,27 @@
-<p>navigation works!</p>
+<!-- <div class="w-48 h-screen ml-5 mb-5 pt-5 bg-gray-700 ">
+    <h1 class="text-white">Content</h1>
+bg-gray-800
+</div> -->
+
+@if(!isMobile) {
+<div
+  class="fixed left-[15px] top-[15px] bottom-[15px] w-64 bg-gray-900 rounded-2xl"
+>
+  <!-- User Name and Profile pic -->
+  <div class="p-3 flex justify-between">
+    <span class="text-xl text-white content-center">John Doe</span>
+    <img
+      src="../../../../assets/icons/profile.png"
+      alt="Profile"
+      class="h-10 w-10"
+    />
+  </div>
+
+  <!-- Divider -->
+  <div class="w-[90%] mx-auto">
+    <mat-divider></mat-divider>
+  </div>
+
+
+</div>
+} @if(isMobile) { }
