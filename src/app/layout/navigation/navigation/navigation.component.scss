@@ -1,4 +1,12 @@
+.active-link {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #7b1fa2; /* or any accent color */
+}
 
+/* Make the mat-list-items a bit more compact if needed */
+.mat-list-item {
+  height: 48px;
+}
 
 .spacer {
     flex: 1 1 auto;

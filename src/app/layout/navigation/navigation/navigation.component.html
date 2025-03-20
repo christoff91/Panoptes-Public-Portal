@@ -16,15 +16,61 @@
   <div class="w-[90%] mx-auto">
     <mat-divider></mat-divider>
   </div>
-  <mat-nav-list></mat-nav-list>
+
+  <!-- Navigation Menu -->
+  <nav class="mt-4">
+    <mat-nav-list>
+      <a mat-list-item routerLinkActive="active-link">
+        <div class="flex items-center w-full">
+          <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined">dashboard</mat-icon>
+          <span class="text-white">Dashboard</span>
+        </div>
+      </a>
+
+      <a mat-list-item routerLinkActive="active-link">
+        <div class="flex items-center w-full">
+          <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined">contact_mail</mat-icon>
+          <span class="text-white">My Digital Profile</span>
+        </div>
+      </a>
+
+      <a mat-list-item routerLinkActive="active-link">
+        <div class="flex items-center w-full">
+          <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined">account_balance_wallet</mat-icon>
+          <span class="text-white">Accounts</span>
+        </div>
+      </a>
+
+      <a mat-list-item routerLinkActive="active-link">
+        <div class="flex items-center w-full">
+          <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined">credit_score</mat-icon>
+          <span class="text-white">Arrangements</span>
+        </div>
+      </a>
+
+      <a mat-list-item routerLinkActive="active-link">
+        <div class="flex items-center w-full">
+          <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined">home_work</mat-icon>
+          <span class="text-white">Indigent</span>
+        </div>
+      </a>
+    </mat-nav-list>
+  </nav>
+
+  <!-- Footer -->
+  <div class="absolute bottom-4 w-full px-4">
+    <a mat-list-item routerLink="/logout" class="flex items-center">
+      <div class="flex items-center w-full">
+        <mat-icon class="mr-3 text-white">exit_to_app</mat-icon>
+        <span class="text-white">LOGOUT</span>
+      </div>
+    </a>
+  </div>
 </div>
 } @if(isMobile) {
-<mat-toolbar class="!bg-slate-800  !text-white">
-  <button
-    mat-icon-button
-    aria-label="Menu Icon"
-  >
-    <mat-icon class="!text-white ">menu</mat-icon>
+<mat-toolbar class="!bg-slate-800 !text-white">
+  <button mat-icon-button aria-label="Menu Icon">
+    <mat-icon class="!text-white">menu</mat-icon>
   </button>
   <!-- <span class="spacer"></span> -->
   <span class="text white pl-24">Active Route</span>
