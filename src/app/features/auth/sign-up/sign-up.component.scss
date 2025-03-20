@@ -1,0 +1,46 @@
+.mat-input-element::placeholder {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+.mat-input-element {
+  color: white !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+}
+
+:host {
+  color: white;
+}
+
+.google-icon {
+  background-image: url("../../../../assets/icons/google.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.primary-btn {
+  display: flex;
+  background-color: white !important;
+  color: black !important;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: #134791 !important;
+    color: white !important;
+  }
+}
+
+.custom-btn {
+  display: flex;
+  background-color: #6b6c6e !important;
+  color: white !important;
+  justify-content: center;
+  align-items: center;
+}

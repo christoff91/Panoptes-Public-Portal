@@ -22,6 +22,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'sign-up',
+        loadChildren: () =>
+          import('./features/auth/sign-up/sign-up.module').then(
+            (m) => m.SignupModule
+          ),
+      },
+      {
         path: 'dashboard',
         loadChildren: () =>
           import('./features/dashboard/dashboard.module').then(
