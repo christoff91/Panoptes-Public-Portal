@@ -1,1 +1,106 @@
-<p>sign-up works!</p>
+<div class="grid place-items-center relative">
+  <div
+    class="absolute top-0 right-0 flex flex-col space-y-2 p-3 md:flex-row md:items-center md:space-x-4 md:space-y-0 md:p-5"
+  >
+    <img
+      src="assets/icons/language.png"
+      class="w-8 h-8 self-center md:w-10 md:h-10"
+      alt="Language Icon"
+    />
+    <select
+      class="bg-transparent border-b-2 border-gray-300 focus:border-blue-500 text-sm p-1"
+    >
+      <option value="en">English</option>
+      <option value="xh">Xhosa</option>
+      <option value="zu">Zulu</option>
+      <option value="st">South Sotho</option>
+    </select>
+  </div>
+
+  <header class="text-center mt-20 p-10">
+    <img src="assets/logos/logo.png" class="w-full xl:w-[30vw]" alt="Logo" />
+  </header>
+
+  <div class="flex justify-center xl:w-[35vw]">
+    <div
+      class="w-full p-8 rounded-xl xl:bg-white xl:bg-opacity-50 xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
+    >
+      <h3 class="text-center text-4xl mb-8">Create your Account</h3>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <mat-form-field class="w-full">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            placeholder="Ex. johndoe@email.com"
+          />
+          @if (loginForm.hasError('email') && !loginForm.hasError('required')) {
+          <mat-error>Please enter a valid email address</mat-error>
+          } @if (loginForm.hasError('required')) {
+          <mat-error>Email is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            matInput
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+            placeholder="Enter your password"
+          />
+          <mat-icon
+            class="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-500 cursor-pointer"
+            (click)="togglePasswordVisibility()"
+          >
+            {{ hidePassword ? "visibility_off" : "visibility" }}
+          </mat-icon>
+          @if (loginForm.get('password')?.hasError('required')) {
+          <mat-error>Password is <strong>required</strong></mat-error>
+          } @if (loginForm.get('password')?.hasError('minlength')) {
+          <mat-error>Password must be at least 6 characters</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Confirm Password</mat-label>
+          <input
+            type="password"
+            matInput
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+            placeholder="Enter your password again"
+          />
+          <mat-icon
+            class="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-500 cursor-pointer"
+            (click)="togglePasswordVisibility()"
+          >
+            {{ hidePassword ? "visibility_off" : "visibility" }}
+          </mat-icon>
+          @if (loginForm.get('password')?.hasError('required')) {
+          <mat-error>Confirm same<strong> password</strong></mat-error>
+          } @if (loginForm.get('password')?.hasError('minlength')) {
+          <mat-error>Password must be at least 6 characters</mat-error>
+          }
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          class="primary-btn w-full rounded-full"
+          (submit)="routeToDashboard()"
+        >
+          <span>CREATE ACCOUNT</span>
+        </button>
+        <mat-divider></mat-divider>
+
+        <button mat-flat-button class="custom-btn w-full rounded-full">
+          <mat-icon class="google-icon">google</mat-icon>
+          <span class="ml-3">SIGN UP WITH GOOGLE</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
