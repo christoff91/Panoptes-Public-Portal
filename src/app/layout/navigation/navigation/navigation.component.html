@@ -1,8 +1,3 @@
-<!-- <div class="w-48 h-screen ml-5 mb-5 pt-5 bg-gray-700 ">
-    <h1 class="text-white">Content</h1>
-bg-gray-800
-</div> -->
-
 @if(!isMobile) {
 <div
   class="fixed left-[15px] top-[15px] bottom-[15px] w-64 bg-gray-900 rounded-2xl"
@@ -21,7 +16,17 @@ bg-gray-800
   <div class="w-[90%] mx-auto">
     <mat-divider></mat-divider>
   </div>
-
-
+  <mat-nav-list></mat-nav-list>
 </div>
-} @if(isMobile) { }
+} @if(isMobile) {
+<mat-toolbar class="!bg-slate-800  !text-white">
+  <button
+    mat-icon-button
+    aria-label="Menu Icon"
+  >
+    <mat-icon class="!text-white ">menu</mat-icon>
+  </button>
+  <!-- <span class="spacer"></span> -->
+  <span class="text white pl-24">Active Route</span>
+</mat-toolbar>
+}
