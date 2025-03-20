@@ -1,9 +1,28 @@
 <div class="grid place-items-center">
-  <header>
+  <div
+    class="absolute top-0 right-0 flex flex-col space-y-2 p-3 md:flex-row md:items-center md:space-x-2 md:space-y-0 md:p-5"
+  >
+    <img
+      src="assets/icons/language.png"
+      class="w-8 h-8 self-center md:w-10 md:h-10"
+      alt="{{ 'Language Icon' | translate }}"
+    />
+    <select
+      class="bg-transparent border-b-2 border-gray-300 focus:border-blue-500 text-sm p-1"
+      (change)="changeLanguage($event)"
+    >
+      <option [selected]="language === 'en'" value="en">English</option>
+      <option [selected]="language === 'xh'" value="xh">Xhosa</option>
+      <option [selected]="language === 'zu'" value="zu">Zulu</option>
+      <option [selected]="language === 'st'" value="st">South Sotho</option>
+    </select>
+  </div>
+
+  <header class="text-center mt-5 p-10">
     <img
       src="assets/logos/logo.png"
-      class="p-5 w-auto h-auto lg:max-w-[40rem] lg:max-h-[20rem] md:max-w-[40rem] md:max-h-[20rem]"
-      alt="Logo"
+      class="w-full xl:w-[30vw]"
+      alt="{{ 'Logo' | translate }}"
     />
   </header>
   <div class="min-h-auto flex justify-center xl:w-[35vw]">
@@ -12,28 +31,33 @@
     >
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
         <mat-form-field class="w-full">
-          <mat-label>Email</mat-label>
+          <mat-label>{{ "Email" | translate }}</mat-label>
           <input
             type="email"
             matInput
             formControlName="email"
-            placeholder="Ex. johndoe@email.com"
+            placeholder="{{ 'Ex. johndoe@email.com' | translate }}"
           />
           @if (loginForm.hasError('email') && !loginForm.hasError('required')) {
-          <mat-error>Please enter a valid email address</mat-error>
+          <mat-error>{{
+            "Please enter a valid email address" | translate
+          }}</mat-error>
           } @if (loginForm.hasError('required')) {
-          <mat-error>Email is <strong>required</strong></mat-error>
+          <mat-error
+            >{{ "Email is" | translate }}
+            <strong>{{ "required" | translate }}</strong></mat-error
+          >
           }
         </mat-form-field>
 
         <mat-form-field class="w-full">
-          <mat-label>Password</mat-label>
+          <mat-label>{{ "Password" | translate }}</mat-label>
           <input
             type="password"
             matInput
             [type]="hidePassword ? 'password' : 'text'"
             formControlName="password"
-            placeholder="Enter your password"
+            placeholder="{{ 'Enter your password' | translate }}"
           />
           <mat-icon
             class="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-500 cursor-pointer"
@@ -42,9 +66,14 @@
             {{ hidePassword ? "visibility_off" : "visibility" }}
           </mat-icon>
           @if (loginForm.get('password')?.hasError('required')) {
-          <mat-error>Password is <strong>required</strong></mat-error>
+          <mat-error
+            >{{ "Password is" | translate }}
+            <strong>{{ "required" | translate }}</strong></mat-error
+          >
           } @if (loginForm.get('password')?.hasError('minlength')) {
-          <mat-error>Password must be at least 6 characters</mat-error>
+          <mat-error>{{
+            "Password must be at least 6 characters" | translate
+          }}</mat-error>
           }
         </mat-form-field>
 
@@ -52,7 +81,7 @@
           <a
             href="#"
             class="text-white lg:text-blue-500 hover:text-blue-900 text-sm"
-            >Forgot Password?</a
+            >{{ "Forgot Password?" | translate }}</a
           >
         </div>
 
@@ -61,32 +90,25 @@
           class="primary-btn w-full rounded-full"
           (submit)="routeToDashboard()"
         >
-          <span>LOGIN</span>
+          <span>{{ "LOGIN" | translate }}</span>
         </button>
         <mat-divider></mat-divider>
 
         <button mat-flat-button class="custom-btn w-full rounded-full">
           <mat-icon class="google-icon">google</mat-icon>
-          <span class="ml-3">OR LOGIN WITH GOOGLE</span>
+          <span class="ml-3">{{ "OR LOGIN WITH GOOGLE" | translate }}</span>
         </button>
       </form>
 
       <div class="flex justify-start mt-6 ml-1">
-        <span class="text-white">Don't have an account?</span>
+        <span class="text-white">{{
+          "Don't have an account?" | translate
+        }}</span>
         &nbsp;
         <a href="sign-up" class="text-blue-500 hover:text-blue-900">
-          Sign Up Now</a
+          {{ "Sign Up Now" | translate }}</a
         >
       </div>
     </div>
   </div>
 </div>
-
-<!--
-<mat-icon
-          class="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-500 cursor-pointer"
-          (click)="togglePasswordVisibility()"
-        >
-          {{ isPasswordVisible ? "visibility_off" : "visibility" }}
-        </mat-icon>
--->

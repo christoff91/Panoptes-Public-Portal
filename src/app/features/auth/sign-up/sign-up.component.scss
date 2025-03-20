@@ -44,3 +44,12 @@
   justify-content: center;
   align-items: center;
 }
+
+select {
+  background-color: transparent;
+}
+
+select option {
+  background-color: transparent;
+  color: black;
+}

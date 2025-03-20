@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sign-up',
@@ -26,6 +27,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    TranslateModule,
   ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
@@ -33,12 +35,24 @@ import { MatDividerModule } from '@angular/material/divider';
 export class SignUpComponent {
   loginForm: FormGroup;
   hidePassword = true;
+  language: string = '';
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private translate: TranslateService
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+  }
+
+  changeLanguage(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    const language = target.value;
+    this.translate.use(language);
+    sessionStorage.setItem('language', language);
   }
 
   routeToDashboard() {
