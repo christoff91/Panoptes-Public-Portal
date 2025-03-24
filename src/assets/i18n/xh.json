@@ -7,7 +7,7 @@
   "Sign in with Google": "Ngena nge-Google",
   "Don't have an account?": "Awunawo umsebenzisi?",
   "Sign up now": "Bhalisa ngoku",
-  "Create your Account": "Yenza i-Akhawunti yakho",
+  "Create your account": "Yenza i-Akhawunti yakho",
   "Email": "I-imeyili",
   "Password": "Igama lokugqithisa",
   "Confirm Password": "Qinisekisa Igama Lokugqithisa",
@@ -21,5 +21,17 @@
   "SIGN UP WITH GOOGLE": "BHALISA NGEGOOGLE",
   "LOGIN": "NGENA",
   "OR LOGIN WITH GOOGLE": "OKANYE NGENA NGEGOOGLE",
-  "Sign Up Now": "Bhalisa Ngoku"
+  "Sign Up Now": "Bhalisa Ngoku",
+  "Language Icon": "Umqondiso wolwimi",
+  "Logo": "Logo",
+  "Personal Info": "Inkcazelo yomntu",
+  "Full Name": "Igama elipheleleyo",
+  "Enter Full Name": "Faka igama elipheleleyo",
+  "ID Number": "Inombolo ye-ID",
+  "Enter your ID Number": "Faka inombolo yakho ye-ID",
+  "Cell Number": "Inombolo yeselula",
+  "Enter your cell number": "Faka inombolo yakho yeselula",
+  "Telephone Number": "Inombolo yomnxeba",
+  "Enter your telephone number": "Faka inombolo yakho yomnxeba",
+  "Next": "Okulandelayo"
 }

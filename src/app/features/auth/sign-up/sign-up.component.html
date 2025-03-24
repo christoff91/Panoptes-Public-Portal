@@ -31,7 +31,7 @@
       class="w-full p-8 rounded-xl xl:bg-white xl:bg-opacity-50 xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
     >
       <h3 class="text-center text-4xl mb-8">
-        {{ "Create your Account" | translate }}
+        {{ "Create your account" | translate }}
       </h3>
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
@@ -93,7 +93,6 @@
           />
           <mat-icon
             class="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-500 cursor-pointer"
-            (click)="togglePasswordVisibility()"
           >
             {{ hidePassword ? "visibility_off" : "visibility" }}
           </mat-icon>

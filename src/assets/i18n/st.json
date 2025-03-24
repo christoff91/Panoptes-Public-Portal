@@ -7,7 +7,7 @@
   "Sign in with Google": "Kena ka Google",
   "Don't have an account?": "Ha u na akhaonto?",
   "Sign up now": "Ingodisa hona joale",
-  "Create your Account": "Theha Akhaonto ya hao",
+  "Create your account": "Theha Akhaonto ya hao",
   "Email": "Imeile",
   "Password": "Phasewete",
   "Confirm Password": "Netefatsa Phasewete",
@@ -21,5 +21,17 @@
   "SIGN UP WITH GOOGLE": "INGODISA KA GOOGLE",
   "LOGIN": "KENA",
   "OR LOGIN WITH GOOGLE": "KAPA KENA KA GOOGLE",
-  "Sign Up Now": "Ingodisa Hona Joale"
+  "Sign Up Now": "Ingodisa Hona Joale",
+  "Language Icon": "Setšoantšo sa puo",
+  "Logo": "Logo",
+  "Personal Info": "Lintlha tsa motho",
+  "Full Name": "Leina le feletseng",
+  "Enter Full Name": "Kenya leina le feletseng",
+  "ID Number": "Nomoro ya ID",
+  "Enter your ID Number": "Kenya nomoro ya hao ya ID",
+  "Cell Number": "Nomoro ya selefouno",
+  "Enter your cell number": "Kenya nomoro ya hao ya selefouno",
+  "Telephone Number": "Nomoro ya mohala",
+  "Enter your telephone number": "Kenya nomoro ya hao ya mohala",
+  "Next": "E 'ngoe"
 }

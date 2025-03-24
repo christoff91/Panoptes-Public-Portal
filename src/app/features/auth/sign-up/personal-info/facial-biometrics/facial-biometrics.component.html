@@ -1,0 +1,37 @@
+<div class="grid place-items-center relative">
+  <header class="text-center mt-5 p-10">
+    <img
+      src="assets/logos/logo.png"
+      class="w-full xl:w-[30vw]"
+      alt="{{ 'Logo' | translate }}"
+    />
+  </header>
+
+  <div class="flex justify-center xl:w-[35vw]">
+    <div class="w-full p-8 rounded-xl bg-white text-black">
+      <form class="space-y-6">
+        <p>Reasoning and Instruction to Facial Biometrics check</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="flex justify-center xl:w-[35vw] mt-10">
+    <div class="w-full p-4 rounded-xl bg-white text-black">
+      <p class="text-2xl font-semibold">Before you Start:</p>
+
+      <div class="flex items-center gap-4 text-base mt-3">
+        <mat-icon>photo_camera</mat-icon>
+        <p>Allow camera access when prompted.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center w-[35vw] mt-10">
+    <div class="w-full text-center">
+      <button mat-flat-button class="primary-btn rounded-full w-full">
+        <mat-icon>photo_camera</mat-icon>
+        <span href="/facial-biometrics"> {{ "Start" | translate }}</span>
+      </button>
+    </div>
+  </div>
+</div>

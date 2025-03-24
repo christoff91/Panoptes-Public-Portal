@@ -1,0 +1,82 @@
+<div class="grid place-items-center relative">
+  <header class="text-center mt-5 p-10">
+    <img
+      src="assets/logos/logo.png"
+      class="w-full xl:w-[30vw]"
+      alt="{{ 'Logo' | translate }}"
+    />
+  </header>
+
+  <div class="flex justify-center xl:w-[35vw]">
+    <div
+      class="w-full p-8 rounded-xl xl:bg-white xl:bg-opacity-50 xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
+    >
+      <h3 class="text-center text-4xl mb-8">
+        {{ "Personal Info" | translate }}
+      </h3>
+
+      <form
+        [formGroup]="personalInfoForm"
+        (ngSubmit)="onSubmit()"
+        class="space-y-6"
+      >
+        <mat-form-field class="w-full">
+          <mat-label>{{ "Language" | translate }}</mat-label>
+          <mat-select
+            [(value)]="language"
+            (selectionChange)="changeLanguage($event.value)"
+          >
+            <mat-option value="en">{{ "English" | translate }}</mat-option>
+            <mat-option value="xh">{{ "Xhosa" | translate }}</mat-option>
+            <mat-option value="zu">{{ "Zulu" | translate }}</mat-option>
+            <mat-option value="st">{{ "South Sotho" | translate }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>{{ "Full Name" | translate }}</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="fullName"
+            placeholder="{{ 'Enter Full Name' | translate }}"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>{{ "ID Number" | translate }}</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="idNumber"
+            placeholder="{{ 'Enter your ID Number' | translate }}"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>{{ "Cell Number" | translate }}</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="cellNumber"
+            placeholder="{{ 'Enter your cell number' | translate }}"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>{{ "Telephone Number" | translate }}</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="telephoneNumber"
+            placeholder="{{ 'Enter your telephone number' | translate }}"
+          />
+        </mat-form-field>
+
+        <button mat-flat-button class="primary-btn w-full rounded-full">
+          <span href="/facial-biometrics">{{ "Next" | translate }}</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
