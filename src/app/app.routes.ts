@@ -29,6 +29,27 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'personal-info',
+        loadChildren: () =>
+          import(
+            './features/auth/sign-up/personal-info/personal-info/personal-info.module'
+          ).then((m) => m.PersonalInfoModule),
+      },
+      {
+        path: 'facial-biometrics',
+        loadChildren: () =>
+          import(
+            './features/auth/sign-up/personal-info/facial-biometrics/facial-biometrics.module'
+          ).then((m) => m.FacialBiometricsModule),
+      },
+      {
+        path: 'digital-profile',
+        loadChildren: () =>
+          import(
+            './features/digital-profile/digital-profile/digital-profile.module'
+          ).then((m) => m.DigitalProfileModule),
+      },
+      {
         path: 'dashboard',
         loadChildren: () =>
           import('./features/dashboard/dashboard.module').then(

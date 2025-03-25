@@ -7,7 +7,7 @@
   "Sign in with Google": "Sign in with Google",
   "Don't have an account?": "Don't have an account?",
   "Sign up now": "Sign up now",
-  "Create your Account": "Create your Account",
+  "Create your account": "Create your Account",
   "Email": "Email",
   "Password": "Password",
   "Confirm Password": "Confirm Password",
@@ -21,5 +21,17 @@
   "SIGN UP WITH GOOGLE": "SIGN UP WITH GOOGLE",
   "LOGIN": "LOGIN",
   "OR LOGIN WITH GOOGLE": "OR LOGIN WITH GOOGLE",
-  "Sign Up Now": "Sign Up Now"
+  "Sign Up Now": "Sign Up Now",
+  "Language Icon": "Language Icon",
+  "Logo": "Logo",
+  "Personal Info": "Personal Info",
+  "Full Name": "Full Name",
+  "Enter Full Name": "Enter Full Name",
+  "ID Number": "ID Number",
+  "Enter your ID Number": "Enter your ID Number",
+  "Cell Number": "Cell Number",
+  "Enter your cell number": "Enter your cell number",
+  "Telephone Number": "Telephone Number",
+  "Enter your telephone number": "Enter your telephone number",
+  "Next": "Next"
 }

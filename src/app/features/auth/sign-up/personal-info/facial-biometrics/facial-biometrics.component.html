@@ -1,0 +1,122 @@
+<div class="grid place-items-center relative">
+  <header class="text-center mt-5 p-10">
+    <img
+      src="assets/logos/logo.png"
+      class="w-full xl:w-[30vw]"
+      alt="{{ 'Logo' | translate }}"
+    />
+  </header>
+  @if (showInstructions && !showSuccess) {
+  <div class="flex justify-center xl:w-[35vw]">
+    <div class="w-full p-8 rounded-xl bg-white bg-opacity-30 text-white">
+      <form class="space-y-6">
+        <p>Reasoning and Instruction to Facial Biometrics check</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="flex justify-center xl:w-[35vw] mt-10">
+    <div class="w-full p-4 rounded-xl bg-white text-black">
+      <p class="text-2xl font-semibold">Before you Start:</p>
+
+      <div class="flex items-center gap-4 text-base mt-3">
+        <mat-icon>photo_camera</mat-icon>
+        <p>Allow camera access when prompted.</p>
+      </div>
+
+      <div class="flex items-center gap-4 text-base mt-3">
+        <mat-icon>search</mat-icon>
+        <p>Ensure your camera is clean.</p>
+      </div>
+
+      <div class="flex items-center gap-4 text-base mt-3">
+        <mat-icon>emoji_objects</mat-icon>
+        <p>
+          Make sure you have good lighting and avoid having any bright lights
+          behind you.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-4 text-base mt-3">
+        <mat-icon>visibility</mat-icon>
+        <p>Remove sunglasses and hats.</p>
+      </div>
+
+      <div class="flex items-center gap-4 text-base mt-3">
+        <mat-icon>phone_iphone</mat-icon>
+        <p>
+          Keep the phone in a vertical position at an arm’s length in front of
+          your face.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-4 text-base mt-3">
+        <mat-icon>person</mat-icon>
+        <p>Position your face inside the frame.</p>
+      </div>
+
+      <div class="flex items-center gap-4 text-base mt-3">
+        <mat-icon>settings</mat-icon>
+        <p>Follow the on-screen prompts.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center w-[35vw] mt-10">
+    <div class="w-full text-center">
+      <button
+        mat-flat-button
+        class="primary-btn rounded-full w-full"
+        (click)="startProcess()"
+      >
+        <mat-icon>photo_camera</mat-icon>
+        <span> {{ "Start" | translate }}</span>
+      </button>
+    </div>
+  </div>
+  } @if (!showInstructions && !showSuccess) {
+  <div
+    class="w-full p-8 rounded-xl bg-white text-black text-center xl:w-[30vw] mt-5 p-10"
+  >
+    <p class="text-2xl font-semibold">Facial Biometrics Check</p>
+    <p>Align your face with the frame and follow the instructions.</p>
+
+    <div
+      class="w-full h-[300px] bg-gray-300 rounded-lg flex items-center justify-center mt-6"
+    >
+      <p class="text-lg text-gray-700">[Camera View Here]</p>
+    </div>
+
+    <button
+      mat-flat-button
+      class="w-full w-full mt-6"
+      (click)="completeProcess()"
+    >
+      <mat-icon>photo_camera</mat-icon>
+      <span> Capture </span>
+    </button>
+  </div>
+  } @if (showSuccess) {
+  <div class="text-center">
+    <p class="text-4xl">Thank you for registering</p>
+
+    <div
+      class="w-full p-8 rounded-xl bg-white bg-opacity-50 text-white text-center xl:w-[30vw] mt-5 p-10"
+    >
+      <p class="text-2xl font-semibold">
+        To activate your account, verify your email by clicking the link sent to
+        your email address.
+      </p>
+    </div>
+
+    <button
+      mat-flat-button
+      class="primary-btn rounded-full w-full mt-6"
+      (click)="restartProcess()"
+    >
+      <mat-icon>refresh</mat-icon>
+      <span> Finished </span>
+    </button>
+  </div>
+  }
+</div>

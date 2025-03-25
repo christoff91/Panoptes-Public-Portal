@@ -1,0 +1,29 @@
+.primary-btn {
+  display: flex;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: #134791 !important;
+    color: #ffffff !important;
+  }
+}
+
+.custom-btn {
+  display: flex;
+  background-color: #6b6c6e !important;
+  color: #ffffff !important;
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  background-color: transparent;
+}
+
+select option {
+  background-color: transparent;
+  color: #000000;
+}

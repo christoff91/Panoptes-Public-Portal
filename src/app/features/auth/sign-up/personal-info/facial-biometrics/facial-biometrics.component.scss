@@ -1,0 +1,13 @@
+.primary-btn {
+  display: flex;
+  background-color: white !important;
+  color: black !important;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+
+  &:hover {
+    background-color: #134791 !important;
+    color: white !important;
+  }
+}
