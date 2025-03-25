@@ -31,10 +31,13 @@ export class FacialBiometricsComponent {
   hidePassword = true;
   language: string = '';
 
+  showInstructions: boolean = true;
+  showSuccess: boolean = false;
+
   constructor(private router: Router, private translate: TranslateService) {
-    this.language =
-      sessionStorage.getItem('language') || this.translate.currentLang || 'en';
-    this.translate.use(this.language);
+    // this.language =
+    //   sessionStorage.getItem('language') || this.translate.currentLang || 'en';
+    // this.translate.use(this.language);
   }
 
   changeLanguage(lang: string): void {
@@ -49,5 +52,17 @@ export class FacialBiometricsComponent {
 
   togglePasswordVisibility(): void {
     this.hidePassword = !this.hidePassword;
+  }
+
+  startProcess() {
+    this.showInstructions = false;
+  }
+
+  completeProcess() {
+    this.showSuccess = true;
+  }
+
+  restartProcess() {
+    this.router.navigate(['/login']);
   }
 }
