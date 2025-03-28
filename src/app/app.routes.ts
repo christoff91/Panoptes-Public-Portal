@@ -3,11 +3,13 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout/main-layou
 import { LoginComponent } from './features/auth/login/login/login.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { NavigationComponent } from './layout/navigation/navigation/navigation.component';
+import { AuthGuard } from './features/auth/services/auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent, // Wraps routed components
+    // canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -55,6 +57,7 @@ export const routes: Routes = [
           import('./features/dashboard/dashboard.module').then(
             (m) => m.DashboardModule
           ),
+        canActivate: [AuthGuard],
       },
       {
         path: 'municipal',
