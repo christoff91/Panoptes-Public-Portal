@@ -1,5 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+
 import {
   FormBuilder,
   FormGroup,
@@ -35,17 +37,32 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class LoginComponent {
   loginForm: FormGroup;
   hidePassword = true;
+  loginError = false;
   language: string = '';
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private authService: AuthService,
     private translate: TranslateService
   ) {
+    console.log('Test');
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      email: [''], //[Validators.required, Validators.email]
+      password: [''], //[Validators.required, Validators.minLength(6)]
     });
+  }
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const { username, password } = this.loginForm.value;
+
+      if (this.authService.login(username, password)) {
+        this.router.navigate(['/dashboard']); // Redirect to dashboard after login
+      } else {
+        this.loginError = true;
+      }
+    }
   }
 
   changeLanguage(event: Event): void {
@@ -53,18 +70,6 @@ export class LoginComponent {
     const language = target.value;
     this.translate.use(language);
     sessionStorage.setItem('language', language);
-  }
-
-  routeToDashboard() {
-    console.log('Check one two');
-    this.router.navigate(['/dashboard']);
-  }
-
-  onSubmit(): void {
-    if (this.loginForm.valid) {
-      console.log('Form submitted:', this.loginForm.value);
-      this.routeToDashboard();
-    }
   }
 
   togglePasswordVisibility(): void {
