@@ -1,0 +1,12 @@
+img.preview {
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
+  border: 1px solid #312c2c;
+  border-radius: 4px;
+}
+
+.pac-container {
+  z-index: 10000 !important;
+  font-family: inherit;
+}
