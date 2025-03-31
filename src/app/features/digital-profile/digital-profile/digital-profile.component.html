@@ -1,6 +1,6 @@
 <div class="grid place-items-center relative">
   <header class="text-center mt-5 p-10">
-    <img src="assets/logos/white_logo.png" class="w-32 md:w-full xl:w-[10vw]" />
+    <p class="text-5xl text-white">Digital Profile</p>
   </header>
 
   <div class="flex justify-center xl:w-[60vw] p-2">
@@ -11,8 +11,14 @@
       <div [formGroup]="personalForm">
         <div class="hidden xl:flex xl:mb-6">
           <div class="xl:w-1/2 flex justify-center">
-            <img src="assets/icons/account_circle.png" class="w-30" />
+            <div class="rounded-full border-4 border-blue-500 p-1">
+              <img
+                src="assets/images/kirildha.jpg"
+                class="w-24 h-24 rounded-full object-cover"
+              />
+            </div>
           </div>
+
           <div class="xl:w-1/2 flex items-center justify-center">
             <p class="text-black text-3xl">Contact Information</p>
           </div>
@@ -43,7 +49,17 @@
             </mat-form-field>
             <mat-form-field class="w-full">
               <mat-label>Date of Birth</mat-label>
-              <input type="date" matInput formControlName="dob" />
+              <input
+                matInput
+                [matDatepicker]="dobPicker"
+                formControlName="dob"
+                placeholder="Choose a date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="dobPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #dobPicker></mat-datepicker>
             </mat-form-field>
           </div>
 
@@ -87,6 +103,7 @@
           <div class="flex mb-6 flex-col items-center">
             <img src="assets/icons/account_circle.png" class="w-30" />
           </div>
+          <!-- <img src="assets/icons/account_circle.png" class="w-30" /> -->
 
           <div class="w-full">
             <mat-form-field class="w-full">
@@ -103,7 +120,17 @@
             </mat-form-field>
             <mat-form-field class="w-full">
               <mat-label>Date of Birth</mat-label>
-              <input type="date" matInput formControlName="dob" />
+              <input
+                matInput
+                [matDatepicker]="dobPicker"
+                formControlName="dob"
+                placeholder="Choose a date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="dobPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #dobPicker></mat-datepicker>
             </mat-form-field>
           </div>
 
@@ -400,531 +427,679 @@
       </div>
 
       <div class="flex justify-center w-full px-4">
-        <div
-          class="grid grid-cols-2 md:flex md:flex-row justify-between w-full max-w-4xl gap-4"
-        >
-          <!-- SASSA Document -->
-          <div class="w-full flex flex-col items-center relative mb-4">
-            <div
-              class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
-            >
-              @if (uploadedFiles['sassa'] && showDocCard['sassa']) {
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
+          <!-- First Row - 2 Documents -->
+          <div class="grid grid-cols-2 gap-4 md:col-span-2">
+            <!-- SASSA Document -->
+            <div class="w-full flex flex-col items-center relative">
               <div
-                class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
-              ></div>
-              } @if (uploadedFiles['sassa'] && showDocCard['sassa']) {
-              <div class="fixed inset-0 flex items-center justify-center z-30">
+                class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
+              >
+                @if (uploadedFiles['sassa'] && showDocCard['sassa']) {
                 <div
-                  class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                  class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
+                ></div>
+                } @if (uploadedFiles['sassa'] && showDocCard['sassa']) {
+                <div
+                  class="fixed inset-0 flex items-center justify-center z-30"
                 >
-                  <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-semibold">Document Management</h3>
-                    <button
-                      (click)="closeDocCard('sassa')"
-                      class="text-gray-500 hover:text-gray-700 p-1"
-                    >
-                      <mat-icon>close</mat-icon>
-                    </button>
-                  </div>
+                  <div
+                    class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                  >
+                    <div class="flex justify-between items-center mb-4">
+                      <h3 class="text-lg font-semibold">Document Management</h3>
+                      <button
+                        (click)="closeDocCard('sassa')"
+                        class="text-gray-500 hover:text-gray-700 p-1"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </div>
 
-                  @if (uploadedFiles['sassa'].previewUrl &&
+                    @if (uploadedFiles['sassa'].previewUrl &&
+                    isImage(uploadedFiles['sassa'].file)) {
+                    <img
+                      [src]="uploadedFiles['sassa'].previewUrl"
+                      class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
+                      alt="Document preview"
+                    />
+                    } @else {
+                    <div
+                      class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
+                    >
+                      <mat-icon class="text-gray-400" style="font-size: 80px"
+                        >description</mat-icon
+                      >
+                      <span class="mt-2 text-gray-600">Document Preview</span>
+                    </div>
+                    }
+
+                    <div class="mb-6">
+                      <div class="text-sm font-medium text-gray-700 mb-1">
+                        File Name:
+                      </div>
+                      <div class="p-2 bg-gray-500 rounded text-sm break-all">
+                        {{ uploadedFiles["sassa"].file.name }}
+                      </div>
+                    </div>
+
+                    <div class="flex w-full">
+                      <button
+                        mat-stroked-button
+                        class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
+                        (click)="
+                          triggerFileInput('sassaUpload');
+                          $event.stopPropagation()
+                        "
+                      >
+                        <span>REPLACE</span>
+                        <mat-icon class="text-base">file_upload</mat-icon>
+                      </button>
+                      <button
+                        mat-flat-button
+                        class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
+                        (click)="
+                          deleteDocument('sassa'); $event.stopPropagation()
+                        "
+                      >
+                        <span>DELETE</span>
+                        <mat-icon class="text-base">delete</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                }
+                <button
+                  (click)="
+                    uploadedFiles['sassa']
+                      ? toggleDocCard('sassa')
+                      : triggerFileInput('sassaUpload')
+                  "
+                  class="p-0 border-none bg-transparent cursor-pointer"
+                >
+                  @if (uploadedFiles['sassa']) { @if
+                  (uploadedFiles['sassa'].previewUrl &&
                   isImage(uploadedFiles['sassa'].file)) {
                   <img
                     [src]="uploadedFiles['sassa'].previewUrl"
-                    class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
-                    alt="Document preview"
+                    class="w-20 h-20 object-cover rounded"
+                    alt="SASSA document preview"
                   />
                   } @else {
-                  <div
-                    class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
+                  <mat-icon
+                    class="text-black"
+                    style="font-size: 80px; height: 80px; width: 80px"
                   >
-                    <mat-icon class="text-gray-400" style="font-size: 80px"
-                      >description</mat-icon
-                    >
-                    <span class="mt-2 text-gray-600">Document Preview</span>
-                  </div>
+                    description
+                  </mat-icon>
+                  } } @else {
+                  <mat-icon
+                    class="text-black hover:text-blue-500 transition-colors"
+                    style="font-size: 80px; height: 80px; width: 80px"
+                  >
+                    upload_file
+                  </mat-icon>
                   }
+                  <input
+                    type="file"
+                    id="sassaUpload"
+                    class="hidden"
+                    (change)="handleFileInput($event, 'sassa')"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                  />
+                </button>
 
-                  <div class="mb-6">
-                    <div class="text-sm font-medium text-gray-700 mb-1">
-                      File Name:
-                    </div>
-                    <div class="p-2 bg-gray-500 rounded text-sm break-all">
-                      {{ uploadedFiles["sassa"].file.name }}
-                    </div>
-                  </div>
+                <span class="text-black mt-2 text-center font-medium"
+                  >SASSA</span
+                >
 
-                  <div class="flex w-full">
-                    <button
-                      mat-stroked-button
-                      class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
-                      (click)="
-                        triggerFileInput('sassaUpload');
-                        $event.stopPropagation()
-                      "
+                @if (uploadedFiles['sassa']) {
+                <div
+                  class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
+                  (click)="toggleDocCard('sassa')"
+                >
+                  {{ uploadedFiles["sassa"].file.name }}
+                </div>
+                }
+              </div>
+            </div>
+
+            <!-- ID Document -->
+            <div class="w-full flex flex-col items-center relative">
+              <div
+                class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
+              >
+                @if (uploadedFiles['idDocument'] && showDocCard['idDocument']) {
+                <div
+                  class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
+                ></div>
+                } @if (uploadedFiles['idDocument'] && showDocCard['idDocument'])
+                {
+                <div
+                  class="fixed inset-0 flex items-center justify-center z-30"
+                >
+                  <div
+                    class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                  >
+                    <div class="flex justify-between items-center mb-4">
+                      <h3 class="text-lg font-semibold">Document Management</h3>
+                      <button
+                        (click)="closeDocCard('idDocument')"
+                        class="text-gray-500 hover:text-gray-700 p-1"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </div>
+
+                    @if (uploadedFiles['idDocument'].previewUrl &&
+                    isImage(uploadedFiles['idDocument'].file)) {
+                    <img
+                      [src]="uploadedFiles['idDocument'].previewUrl"
+                      class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
+                      alt="Document preview"
+                    />
+                    } @else {
+                    <div
+                      class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
                     >
-                      <span>REPLACE</span>
-                      <mat-icon class="text-base">file_upload</mat-icon>
-                    </button>
-                    <button
-                      mat-flat-button
-                      class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
-                      (click)="
-                        deleteDocument('sassa'); $event.stopPropagation()
-                      "
-                    >
-                      <span>DELETE</span>
-                      <mat-icon class="text-base">delete</mat-icon>
-                    </button>
+                      <mat-icon class="text-gray-400" style="font-size: 80px"
+                        >description</mat-icon
+                      >
+                      <span class="mt-2 text-gray-600">Document Preview</span>
+                    </div>
+                    }
+
+                    <div class="mb-6">
+                      <div class="text-sm font-medium text-gray-700 mb-1">
+                        File Name:
+                      </div>
+                      <div class="p-2 bg-gray-500 rounded text-sm break-all">
+                        {{ uploadedFiles["idDocument"].file.name }}
+                      </div>
+                    </div>
+
+                    <div class="flex w-full">
+                      <button
+                        mat-stroked-button
+                        class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
+                        (click)="
+                          triggerFileInput('idUpload'); $event.stopPropagation()
+                        "
+                      >
+                        <span>REPLACE</span>
+                        <mat-icon class="text-base">file_upload</mat-icon>
+                      </button>
+                      <button
+                        mat-flat-button
+                        class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
+                        (click)="
+                          deleteDocument('idDocument'); $event.stopPropagation()
+                        "
+                      >
+                        <span>DELETE</span>
+                        <mat-icon class="text-base">delete</mat-icon>
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              }
-              <button
-                (click)="
-                  uploadedFiles['sassa']
-                    ? toggleDocCard('sassa')
-                    : triggerFileInput('sassaUpload')
-                "
-                class="p-0 border-none bg-transparent cursor-pointer"
-              >
-                @if (uploadedFiles['sassa']) { @if
-                (uploadedFiles['sassa'].previewUrl &&
-                isImage(uploadedFiles['sassa'].file)) {
-                <img
-                  [src]="uploadedFiles['sassa'].previewUrl"
-                  class="w-20 h-20 object-cover rounded"
-                  alt="SASSA document preview"
-                />
-                } @else {
-                <mat-icon
-                  class="text-black"
-                  style="font-size: 80px; height: 80px; width: 80px"
-                >
-                  description
-                </mat-icon>
-                } } @else {
-                <mat-icon
-                  class="text-black hover:text-blue-500 transition-colors"
-                  style="font-size: 80px; height: 80px; width: 80px"
-                >
-                  upload_file
-                </mat-icon>
                 }
-                <input
-                  type="file"
-                  id="sassaUpload"
-                  class="hidden"
-                  (change)="handleFileInput($event, 'sassa')"
-                  accept=".pdf,.jpg,.jpeg,.png"
-                />
-              </button>
-
-              <span class="text-black mt-2 text-center font-medium">SASSA</span>
-
-              @if (uploadedFiles['sassa']) {
-              <div
-                class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
-                (click)="toggleDocCard('sassa')"
-              >
-                {{ uploadedFiles["sassa"].file.name }}
-              </div>
-              }
-            </div>
-          </div>
-
-          <!-- ID Document -->
-          <div class="w-full flex flex-col items-center relative mb-4">
-            <div
-              class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
-            >
-              @if (uploadedFiles['idDocument'] && showDocCard['idDocument']) {
-              <div
-                class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
-              ></div>
-              } @if (uploadedFiles['idDocument'] && showDocCard['idDocument']) {
-              <div class="fixed inset-0 flex items-center justify-center z-30">
-                <div
-                  class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                <button
+                  (click)="
+                    uploadedFiles['idDocument']
+                      ? toggleDocCard('idDocument')
+                      : triggerFileInput('idUpload')
+                  "
+                  class="p-0 border-none bg-transparent cursor-pointer"
                 >
-                  <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-semibold">Document Management</h3>
-                    <button
-                      (click)="closeDocCard('idDocument')"
-                      class="text-gray-500 hover:text-gray-700 p-1"
-                    >
-                      <mat-icon>close</mat-icon>
-                    </button>
-                  </div>
-
-                  @if (uploadedFiles['idDocument'].previewUrl &&
+                  @if (uploadedFiles['idDocument']) { @if
+                  (uploadedFiles['idDocument'].previewUrl &&
                   isImage(uploadedFiles['idDocument'].file)) {
                   <img
                     [src]="uploadedFiles['idDocument'].previewUrl"
-                    class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
-                    alt="Document preview"
+                    class="w-20 h-20 object-cover rounded"
+                    alt="ID document preview"
                   />
                   } @else {
-                  <div
-                    class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
+                  <mat-icon
+                    class="text-black"
+                    style="font-size: 80px; height: 80px; width: 80px"
                   >
-                    <mat-icon class="text-gray-400" style="font-size: 80px"
-                      >description</mat-icon
-                    >
-                    <span class="mt-2 text-gray-600">Document Preview</span>
-                  </div>
+                    description
+                  </mat-icon>
+                  } } @else {
+                  <mat-icon
+                    class="text-black hover:text-blue-500 transition-colors"
+                    style="font-size: 80px; height: 80px; width: 80px"
+                  >
+                    upload_file
+                  </mat-icon>
                   }
+                  <input
+                    type="file"
+                    id="idUpload"
+                    class="hidden"
+                    (change)="handleFileInput($event, 'idDocument')"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                  />
+                </button>
 
-                  <div class="mb-6">
-                    <div class="text-sm font-medium text-gray-700 mb-1">
-                      File Name:
-                    </div>
-                    <div class="p-2 bg-gray-500 rounded text-sm break-all">
-                      {{ uploadedFiles["idDocument"].file.name }}
-                    </div>
-                  </div>
+                <span class="text-black mt-2 text-center font-medium"
+                  >ID Document</span
+                >
 
-                  <div class="flex w-full">
-                    <button
-                      mat-stroked-button
-                      class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
-                      (click)="
-                        triggerFileInput('idUpload'); $event.stopPropagation()
-                      "
-                    >
-                      <span>REPLACE</span>
-                      <mat-icon class="text-base">file_upload</mat-icon>
-                    </button>
-                    <button
-                      mat-flat-button
-                      class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
-                      (click)="
-                        deleteDocument('idDocument'); $event.stopPropagation()
-                      "
-                    >
-                      <span>DELETE</span>
-                      <mat-icon class="text-base">delete</mat-icon>
-                    </button>
-                  </div>
+                @if (uploadedFiles['idDocument']) {
+                <div
+                  class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
+                  (click)="toggleDocCard('idDocument')"
+                >
+                  {{ uploadedFiles["idDocument"].file.name }}
                 </div>
-              </div>
-              }
-              <button
-                (click)="
-                  uploadedFiles['idDocument']
-                    ? toggleDocCard('idDocument')
-                    : triggerFileInput('idUpload')
-                "
-                class="p-0 border-none bg-transparent cursor-pointer"
-              >
-                @if (uploadedFiles['idDocument']) { @if
-                (uploadedFiles['idDocument'].previewUrl &&
-                isImage(uploadedFiles['idDocument'].file)) {
-                <img
-                  [src]="uploadedFiles['idDocument'].previewUrl"
-                  class="w-20 h-20 object-cover rounded"
-                  alt="ID document preview"
-                />
-                } @else {
-                <mat-icon
-                  class="text-black"
-                  style="font-size: 80px; height: 80px; width: 80px"
-                >
-                  description
-                </mat-icon>
-                } } @else {
-                <mat-icon
-                  class="text-black hover:text-blue-500 transition-colors"
-                  style="font-size: 80px; height: 80px; width: 80px"
-                >
-                  upload_file
-                </mat-icon>
                 }
-                <input
-                  type="file"
-                  id="idUpload"
-                  class="hidden"
-                  (change)="handleFileInput($event, 'idDocument')"
-                  accept=".pdf,.jpg,.jpeg,.png"
-                />
-              </button>
-
-              <span class="text-black mt-2 text-center font-medium"
-                >ID Document</span
-              >
-
-              @if (uploadedFiles['idDocument']) {
-              <div
-                class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
-                (click)="toggleDocCard('idDocument')"
-              >
-                {{ uploadedFiles["idDocument"].file.name }}
               </div>
-              }
             </div>
           </div>
 
-          <!-- Payslip -->
-          <div class="w-full flex flex-col items-center relative mb-4">
-            <div
-              class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
-            >
-              @if (uploadedFiles['payslip'] && showDocCard['payslip']) {
+          <!-- Second Row - 3 Documents -->
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:col-span-2">
+            <!-- Payslip -->
+            <div class="w-full flex flex-col items-center relative">
               <div
-                class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
-              ></div>
-              } @if (uploadedFiles['payslip'] && showDocCard['payslip']) {
-              <div class="fixed inset-0 flex items-center justify-center z-30">
+                class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
+              >
+                @if (uploadedFiles['payslip'] && showDocCard['payslip']) {
                 <div
-                  class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                  class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
+                ></div>
+                } @if (uploadedFiles['payslip'] && showDocCard['payslip']) {
+                <div
+                  class="fixed inset-0 flex items-center justify-center z-30"
                 >
-                  <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-semibold">Document Management</h3>
-                    <button
-                      (click)="closeDocCard('payslip')"
-                      class="text-gray-500 hover:text-gray-700 p-1"
-                    >
-                      <mat-icon>close</mat-icon>
-                    </button>
-                  </div>
+                  <div
+                    class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                  >
+                    <div class="flex justify-between items-center mb-4">
+                      <h3 class="text-lg font-semibold">Document Management</h3>
+                      <button
+                        (click)="closeDocCard('payslip')"
+                        class="text-gray-500 hover:text-gray-700 p-1"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </div>
 
-                  @if (uploadedFiles['payslip'].previewUrl &&
+                    @if (uploadedFiles['payslip'].previewUrl &&
+                    isImage(uploadedFiles['payslip'].file)) {
+                    <img
+                      [src]="uploadedFiles['payslip'].previewUrl"
+                      class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
+                      alt="Document preview"
+                    />
+                    } @else {
+                    <div
+                      class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
+                    >
+                      <mat-icon class="text-gray-400" style="font-size: 80px"
+                        >description</mat-icon
+                      >
+                      <span class="mt-2 text-gray-600">Document Preview</span>
+                    </div>
+                    }
+
+                    <div class="mb-6">
+                      <div class="text-sm font-medium text-gray-700 mb-1">
+                        File Name:
+                      </div>
+                      <div class="p-2 bg-gray-500 rounded text-sm break-all">
+                        {{ uploadedFiles["payslip"].file.name }}
+                      </div>
+                    </div>
+
+                    <div class="flex w-full">
+                      <button
+                        mat-stroked-button
+                        class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
+                        (click)="
+                          triggerFileInput('payslipUpload');
+                          $event.stopPropagation()
+                        "
+                      >
+                        <span>REPLACE</span>
+                        <mat-icon class="text-base">file_upload</mat-icon>
+                      </button>
+                      <button
+                        mat-flat-button
+                        class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
+                        (click)="
+                          deleteDocument('payslip'); $event.stopPropagation()
+                        "
+                      >
+                        <span>DELETE</span>
+                        <mat-icon class="text-base">delete</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                }
+                <button
+                  (click)="
+                    uploadedFiles['payslip']
+                      ? toggleDocCard('payslip')
+                      : triggerFileInput('payslipUpload')
+                  "
+                  class="p-0 border-none bg-transparent cursor-pointer"
+                >
+                  @if (uploadedFiles['payslip']) { @if
+                  (uploadedFiles['payslip'].previewUrl &&
                   isImage(uploadedFiles['payslip'].file)) {
                   <img
                     [src]="uploadedFiles['payslip'].previewUrl"
-                    class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
-                    alt="Document preview"
+                    class="w-20 h-20 object-cover rounded"
+                    alt="Payslip preview"
                   />
                   } @else {
-                  <div
-                    class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
+                  <mat-icon
+                    class="text-black"
+                    style="font-size: 80px; height: 80px; width: 80px"
                   >
-                    <mat-icon class="text-gray-400" style="font-size: 80px"
-                      >description</mat-icon
-                    >
-                    <span class="mt-2 text-gray-600">Document Preview</span>
-                  </div>
+                    description
+                  </mat-icon>
+                  } } @else {
+                  <mat-icon
+                    class="text-black hover:text-blue-500 transition-colors"
+                    style="font-size: 80px; height: 80px; width: 80px"
+                  >
+                    upload_file
+                  </mat-icon>
                   }
+                  <input
+                    type="file"
+                    id="payslipUpload"
+                    class="hidden"
+                    (change)="handleFileInput($event, 'payslip')"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                  />
+                </button>
 
-                  <div class="mb-6">
-                    <div class="text-sm font-medium text-gray-700 mb-1">
-                      File Name:
-                    </div>
-                    <div class="p-2 bg-gray-500 rounded text-sm break-all">
-                      {{ uploadedFiles["payslip"].file.name }}
-                    </div>
-                  </div>
+                <span class="text-black mt-2 text-center font-medium"
+                  >Payslip</span
+                >
 
-                  <div class="flex w-full">
-                    <button
-                      mat-stroked-button
-                      class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
-                      (click)="
-                        triggerFileInput('payslipUpload');
-                        $event.stopPropagation()
-                      "
+                @if (uploadedFiles['payslip']) {
+                <div
+                  class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
+                  (click)="toggleDocCard('payslip')"
+                >
+                  {{ uploadedFiles["payslip"].file.name }}
+                </div>
+                }
+              </div>
+            </div>
+
+            <!-- Municipal Account -->
+            <div class="w-full flex flex-col items-center relative">
+              <div
+                class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
+              >
+                @if (uploadedFiles['municipal'] && showDocCard['municipal']) {
+                <div
+                  class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
+                ></div>
+                } @if (uploadedFiles['municipal'] && showDocCard['municipal']) {
+                <div
+                  class="fixed inset-0 flex items-center justify-center z-30"
+                >
+                  <div
+                    class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                  >
+                    <div class="flex justify-between items-center mb-4">
+                      <h3 class="text-lg font-semibold">Document Management</h3>
+                      <button
+                        (click)="closeDocCard('municipal')"
+                        class="text-gray-500 hover:text-gray-700 p-1"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </div>
+
+                    @if (uploadedFiles['municipal'].previewUrl &&
+                    isImage(uploadedFiles['municipal'].file)) {
+                    <img
+                      [src]="uploadedFiles['municipal'].previewUrl"
+                      class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
+                      alt="Document preview"
+                    />
+                    } @else {
+                    <div
+                      class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
                     >
-                      <span>REPLACE</span>
-                      <mat-icon class="text-base">file_upload</mat-icon>
-                    </button>
-                    <button
-                      mat-flat-button
-                      class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
-                      (click)="
-                        deleteDocument('payslip'); $event.stopPropagation()
-                      "
-                    >
-                      <span>DELETE</span>
-                      <mat-icon class="text-base">delete</mat-icon>
-                    </button>
+                      <mat-icon class="text-gray-400" style="font-size: 80px"
+                        >description</mat-icon
+                      >
+                      <span class="mt-2 text-gray-600">Document Preview</span>
+                    </div>
+                    }
+
+                    <div class="mb-6">
+                      <div class="text-sm font-medium text-gray-700 mb-1">
+                        File Name:
+                      </div>
+                      <div class="p-2 bg-gray-500 rounded text-sm break-all">
+                        {{ uploadedFiles["municipal"].file.name }}
+                      </div>
+                    </div>
+
+                    <div class="flex w-full">
+                      <button
+                        mat-stroked-button
+                        class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
+                        (click)="
+                          triggerFileInput('municipalUpload');
+                          $event.stopPropagation()
+                        "
+                      >
+                        <span>REPLACE</span>
+                        <mat-icon class="text-base">file_upload</mat-icon>
+                      </button>
+                      <button
+                        mat-flat-button
+                        class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
+                        (click)="
+                          deleteDocument('municipal'); $event.stopPropagation()
+                        "
+                      >
+                        <span>DELETE</span>
+                        <mat-icon class="text-base">delete</mat-icon>
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              }
-              <button
-                (click)="
-                  uploadedFiles['payslip']
-                    ? toggleDocCard('payslip')
-                    : triggerFileInput('payslipUpload')
-                "
-                class="p-0 border-none bg-transparent cursor-pointer"
-              >
-                @if (uploadedFiles['payslip']) { @if
-                (uploadedFiles['payslip'].previewUrl &&
-                isImage(uploadedFiles['payslip'].file)) {
-                <img
-                  [src]="uploadedFiles['payslip'].previewUrl"
-                  class="w-20 h-20 object-cover rounded"
-                  alt="Payslip preview"
-                />
-                } @else {
-                <mat-icon
-                  class="text-black"
-                  style="font-size: 80px; height: 80px; width: 80px"
-                >
-                  description
-                </mat-icon>
-                } } @else {
-                <mat-icon
-                  class="text-black hover:text-blue-500 transition-colors"
-                  style="font-size: 80px; height: 80px; width: 80px"
-                >
-                  upload_file
-                </mat-icon>
                 }
-                <input
-                  type="file"
-                  id="payslipUpload"
-                  class="hidden"
-                  (change)="handleFileInput($event, 'payslip')"
-                  accept=".pdf,.jpg,.jpeg,.png"
-                />
-              </button>
-
-              <span class="text-black mt-2 text-center font-medium"
-                >Payslip</span
-              >
-
-              @if (uploadedFiles['payslip']) {
-              <div
-                class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
-                (click)="toggleDocCard('payslip')"
-              >
-                {{ uploadedFiles["payslip"].file.name }}
-              </div>
-              }
-            </div>
-          </div>
-
-          <!-- Municipal Account -->
-          <div class="w-full flex flex-col items-center relative mb-4">
-            <div
-              class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
-            >
-              @if (uploadedFiles['municipal'] && showDocCard['municipal']) {
-              <div
-                class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
-              ></div>
-              } @if (uploadedFiles['municipal'] && showDocCard['municipal']) {
-              <div class="fixed inset-0 flex items-center justify-center z-30">
-                <div
-                  class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                <button
+                  (click)="
+                    uploadedFiles['municipal']
+                      ? toggleDocCard('municipal')
+                      : triggerFileInput('municipalUpload')
+                  "
+                  class="p-0 border-none bg-transparent cursor-pointer"
                 >
-                  <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-semibold">Document Management</h3>
-                    <button
-                      (click)="closeDocCard('municipal')"
-                      class="text-gray-500 hover:text-gray-700 p-1"
-                    >
-                      <mat-icon>close</mat-icon>
-                    </button>
-                  </div>
-
-                  @if (uploadedFiles['municipal'].previewUrl &&
+                  @if (uploadedFiles['municipal']) { @if
+                  (uploadedFiles['municipal'].previewUrl &&
                   isImage(uploadedFiles['municipal'].file)) {
                   <img
                     [src]="uploadedFiles['municipal'].previewUrl"
-                    class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
-                    alt="Document preview"
+                    class="w-20 h-20 object-cover rounded"
+                    alt="Municipal account preview"
                   />
                   } @else {
-                  <div
-                    class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
+                  <mat-icon
+                    class="text-black"
+                    style="font-size: 80px; height: 80px; width: 80px"
                   >
-                    <mat-icon class="text-gray-400" style="font-size: 80px"
-                      >description</mat-icon
-                    >
-                    <span class="mt-2 text-gray-600">Document Preview</span>
-                  </div>
+                    description
+                  </mat-icon>
+                  } } @else {
+                  <mat-icon
+                    class="text-black hover:text-blue-500 transition-colors"
+                    style="font-size: 80px; height: 80px; width: 80px"
+                  >
+                    upload_file
+                  </mat-icon>
                   }
+                  <input
+                    type="file"
+                    id="municipalUpload"
+                    class="hidden"
+                    (change)="handleFileInput($event, 'municipal')"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                  />
+                </button>
 
-                  <div class="mb-6">
-                    <div class="text-sm font-medium text-gray-700 mb-1">
-                      File Name:
-                    </div>
-                    <div class="p-2 bg-gray-500 rounded text-sm break-all">
-                      {{ uploadedFiles["municipal"].file.name }}
-                    </div>
-                  </div>
+                <span class="text-black mt-2 text-center font-medium"
+                  >Municipal Account</span
+                >
 
-                  <div class="flex w-full">
-                    <button
-                      mat-stroked-button
-                      class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
-                      (click)="
-                        triggerFileInput('municipalUpload');
-                        $event.stopPropagation()
-                      "
+                @if (uploadedFiles['municipal']) {
+                <div
+                  class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
+                  (click)="toggleDocCard('municipal')"
+                >
+                  {{ uploadedFiles["municipal"].file.name }}
+                </div>
+                }
+              </div>
+            </div>
+
+            <div class="w-full flex flex-col items-center relative">
+              <div
+                class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
+              >
+                @if (uploadedFiles['selfie'] && showDocCard['selfie']) {
+                <div
+                  class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
+                ></div>
+                } @if (uploadedFiles['selfie'] && showDocCard['selfie']) {
+                <div
+                  class="fixed inset-0 flex items-center justify-center z-30"
+                >
+                  <div
+                    class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                  >
+                    <div class="flex justify-between items-center mb-4">
+                      <h3 class="text-lg font-semibold">Document Management</h3>
+                      <button
+                        (click)="closeDocCard('selfie')"
+                        class="text-gray-500 hover:text-gray-700 p-1"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </div>
+
+                    @if (uploadedFiles['selfie'].previewUrl &&
+                    isImage(uploadedFiles['selfie'].file)) {
+                    <img
+                      [src]="uploadedFiles['selfie'].previewUrl"
+                      class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
+                      alt="Document preview"
+                    />
+                    } @else {
+                    <div
+                      class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
                     >
-                      <span>REPLACE</span>
-                      <mat-icon class="text-base">file_upload</mat-icon>
-                    </button>
-                    <button
-                      mat-flat-button
-                      class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
-                      (click)="
-                        deleteDocument('municipal'); $event.stopPropagation()
-                      "
-                    >
-                      <span>DELETE</span>
-                      <mat-icon class="text-base">delete</mat-icon>
-                    </button>
+                      <mat-icon class="text-gray-400" style="font-size: 80px"
+                        >description</mat-icon
+                      >
+                      <span class="mt-2 text-gray-600">Document Preview</span>
+                    </div>
+                    }
+
+                    <div class="mb-6">
+                      <div class="text-sm font-medium text-gray-700 mb-1">
+                        File Name:
+                      </div>
+                      <div class="p-2 bg-gray-500 rounded text-sm break-all">
+                        {{ uploadedFiles["selfie"].file.name }}
+                      </div>
+                    </div>
+
+                    <div class="flex w-full">
+                      <button
+                        mat-stroked-button
+                        class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
+                        (click)="
+                          triggerFileInput('selfieUpload');
+                          $event.stopPropagation()
+                        "
+                      >
+                        <span>REPLACE</span>
+                        <mat-icon class="text-base">file_upload</mat-icon>
+                      </button>
+                      <button
+                        mat-flat-button
+                        class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
+                        (click)="
+                          deleteDocument('selfie'); $event.stopPropagation()
+                        "
+                      >
+                        <span>DELETE</span>
+                        <mat-icon class="text-base">delete</mat-icon>
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              }
-              <button
-                (click)="
-                  uploadedFiles['municipal']
-                    ? toggleDocCard('municipal')
-                    : triggerFileInput('municipalUpload')
-                "
-                class="p-0 border-none bg-transparent cursor-pointer"
-              >
-                @if (uploadedFiles['municipal']) { @if
-                (uploadedFiles['municipal'].previewUrl &&
-                isImage(uploadedFiles['municipal'].file)) {
-                <img
-                  [src]="uploadedFiles['municipal'].previewUrl"
-                  class="w-20 h-20 object-cover rounded"
-                  alt="Municipal account preview"
-                />
-                } @else {
-                <mat-icon
-                  class="text-black"
-                  style="font-size: 80px; height: 80px; width: 80px"
-                >
-                  description
-                </mat-icon>
-                } } @else {
-                <mat-icon
-                  class="text-black hover:text-blue-500 transition-colors"
-                  style="font-size: 80px; height: 80px; width: 80px"
-                >
-                  upload_file
-                </mat-icon>
                 }
-                <input
-                  type="file"
-                  id="municipalUpload"
-                  class="hidden"
-                  (change)="handleFileInput($event, 'municipal')"
-                  accept=".pdf,.jpg,.jpeg,.png"
-                />
-              </button>
+                <button
+                  (click)="
+                    uploadedFiles['selfie']
+                      ? toggleDocCard('selfie')
+                      : triggerFileInput('selfieUpload')
+                  "
+                  class="p-0 border-none bg-transparent cursor-pointer"
+                >
+                  @if (uploadedFiles['selfie']) { @if
+                  (uploadedFiles['selfie'].previewUrl &&
+                  isImage(uploadedFiles['selfie'].file)) {
+                  <img
+                    [src]="uploadedFiles['selfie'].previewUrl"
+                    class="w-20 h-20 object-cover rounded"
+                    alt="Selfie preview"
+                  />
+                  } @else {
+                  <mat-icon
+                    class="text-black"
+                    style="font-size: 80px; height: 80px; width: 80px"
+                  >
+                    description
+                  </mat-icon>
+                  } } @else {
+                  <mat-icon
+                    class="text-black hover:text-blue-500 transition-colors"
+                    style="font-size: 80px; height: 80px; width: 80px"
+                  >
+                    upload_file
+                  </mat-icon>
+                  }
+                  <input
+                    type="file"
+                    id="selfieUpload"
+                    class="hidden"
+                    (change)="handleFileInput($event, 'selfie')"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                  />
+                </button>
 
-              <span class="text-black mt-2 text-center font-medium"
-                >Municipal Account</span
-              >
+                <span class="text-black mt-2 text-center font-medium"
+                  >Selfie</span
+                >
 
-              @if (uploadedFiles['municipal']) {
-              <div
-                class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
-                (click)="toggleDocCard('municipal')"
-              >
-                {{ uploadedFiles["municipal"].file.name }}
+                @if (uploadedFiles['selfie']) {
+                <div
+                  class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
+                  (click)="toggleDocCard('selfie')"
+                >
+                  {{ uploadedFiles["selfie"].file.name }}
+                </div>
+                }
               </div>
-              }
             </div>
           </div>
         </div>

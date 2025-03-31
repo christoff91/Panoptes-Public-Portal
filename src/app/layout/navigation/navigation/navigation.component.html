@@ -2,17 +2,10 @@
 <div
   class="fixed left-[15px] top-[15px] bottom-[15px] w-64 bg-gray-900 rounded-2xl"
 >
-  <!-- User Name and Profile pic -->
   <div class="p-3 flex justify-between">
-    <span class="text-xl text-white content-center">John Doe</span>
-    <img
-      src="../../../../assets/icons/profile.png"
-      alt="Profile"
-      class="h-10 w-10"
-    />
+    <span class="text-xl text-white content-center mt-2">John Doe</span>
   </div>
 
-  <!-- Navigation Menu -->
   <nav class="mt-4">
     <mat-nav-list>
       <a mat-list-item routerLinkActive="active-link">
@@ -29,7 +22,9 @@
           <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
             >contact_mail</mat-icon
           >
-          <span class="text-white">My Digital Profile</span>
+          <span class="text-white" href="digital-profile"
+            >My Digital Profile</span
+          >
         </div>
       </a>
 
@@ -62,12 +57,10 @@
     </mat-nav-list>
   </nav>
 
-  <!-- Divider -->
   <div class="w-[90%] mx-auto">
     <mat-divider></mat-divider>
   </div>
 
-  <!-- Footer -->
   <div class="absolute bottom-4 w-full px-4">
     <a mat-list-item routerLink="/logout" class="flex items-center">
       <div class="flex items-center w-full">
@@ -83,7 +76,6 @@
   <button mat-icon-button aria-label="Menu Icon">
     <mat-icon class="!text-white">menu</mat-icon>
   </button>
-  <!-- <span class="spacer"></span> -->
   <span class="text white pl-24">Active Route</span>
 </mat-toolbar>
 }

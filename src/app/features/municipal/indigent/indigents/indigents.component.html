@@ -1,1 +1,1289 @@
-<p>indigents works!</p>
+<div class="grid place-items-center relative">
+  <header class="text-center mt-5 p-10">
+    <p class="text-5xl text-white">Indigents</p>
+  </header>
+
+  <div class="flex justify-center xl:w-[70vw] p-2">
+    <div class="xl:ml-20">
+      <div
+        class="w-full p-8 rounded-xl bg-white xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
+      >
+        @if (currentPage === 1) {
+        <div [formGroup]="personalForm">
+          <div class="hidden xl:w-1/2 xl:flex xl:mb-6">
+            <h3 class="text-xl text-black">ID Number: 0009085259084</h3>
+          </div>
+
+          <div class="hidden xl:flex xl:gap-8">
+            <div class="xl:w-1/2">
+              <div class="hidden xl:flex xl:gap-8">
+                <div class="xl:w-1/2">
+                  <mat-form-field class="w-full">
+                    <mat-label>Full Name</mat-label>
+                    <input type="text" matInput formControlName="name" />
+                  </mat-form-field>
+                  <mat-form-field class="w-full">
+                    <mat-label>Surname</mat-label>
+                    <input type="text" matInput formControlName="name" />
+                  </mat-form-field>
+
+                  <mat-form-field class="w-full">
+                    <mat-label>Date of Birth</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="dobPicker"
+                      formControlName="dob"
+                      placeholder="Choose a date"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="dobPicker"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #dobPicker></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field class="w-full">
+                    <mat-label>ID Issue Date</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="idPicker"
+                      formControlName="iddate"
+                      placeholder="Choose a date"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="idPicker"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #idPicker></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field class="w-full">
+                    <mat-label>Email Address</mat-label>
+                    <input type="text" matInput formControlName="email" />
+                  </mat-form-field>
+                </div>
+                <div class="xl:w-1/2">
+                  <form [formGroup]="addressForm">
+                    <mat-form-field class="w-full">
+                      <mat-label>Street Address</mat-label>
+                      <input
+                        type="text"
+                        #streetAddressInput
+                        matInput
+                        formControlName="streetAddress"
+                      />
+                    </mat-form-field>
+
+                    <mat-form-field class="w-full">
+                      <mat-label>Address 1</mat-label>
+                      <input type="text" matInput formControlName="address1" />
+                    </mat-form-field>
+
+                    <mat-form-field class="w-full">
+                      <mat-label>Address 2</mat-label>
+                      <input type="text" matInput formControlName="address2" />
+                    </mat-form-field>
+
+                    <mat-form-field class="w-full">
+                      <mat-label>Address 3</mat-label>
+                      <input type="text" matInput formControlName="address3" />
+                    </mat-form-field>
+
+                    <mat-form-field class="w-full">
+                      <mat-label>Postal Address</mat-label>
+                      <input
+                        type="text"
+                        matInput
+                        formControlName="postalAddress"
+                      />
+                    </mat-form-field>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="hidden xl:block border-r border-gray-200 h-auto my-2"
+            ></div>
+
+            <div class="xl:w-1/2">
+              <div class="hidden xl:flex xl:gap-8">
+                <div class="xl:w-1/2" [formGroup]="municipalForm">
+                  <mat-form-field class="w-full">
+                    <mat-label>Municipal Account Number</mat-label>
+                    <input type="text" matInput formControlName="munAccNo" />
+                  </mat-form-field>
+                  <mat-form-field class="w-full">
+                    <mat-label>Village</mat-label>
+                    <input type="text" matInput formControlName="village" />
+                  </mat-form-field>
+                  <mat-form-field class="w-full">
+                    <mat-label>Ward</mat-label>
+                    <input type="text" matInput formControlName="ward" />
+                  </mat-form-field>
+                </div>
+                <div class="xl:w-1/2" [formGroup]="municipalForm">
+                  <mat-form-field class="w-full">
+                    <mat-label>Salary</mat-label>
+                    <input type="text" matInput formControlName="salary" />
+                  </mat-form-field>
+                  <mat-form-field class="w-full">
+                    <mat-label>Employed</mat-label>
+                    <input type="text" matInput formControlName="employed" />
+                  </mat-form-field>
+                  <mat-form-field class="w-full">
+                    <mat-label>Employer / EPWP Skill</mat-label>
+                    <input type="text" matInput formControlName="epwpEmploy" />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div [formGroup]="municipalForm">
+                <mat-form-field class="w-full">
+                  <mat-label>Remarks</mat-label>
+                  <textarea
+                    type="text"
+                    matInput
+                    formControlName="remarks"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+
+              <button
+                mat-flat-button
+                class="primary-btn w-full rounded-full"
+                (click)="nextPage()"
+              >
+                <span>NEXT</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="xl:hidden" *ngIf="mobilePage === 1">
+            <div class="xl:w-1/2 xl:flex mb-6">
+              <h3 class="text-xl text-black">ID Number: 0009085259084</h3>
+            </div>
+            <!-- <img src="assets/icons/account_circle.png" class="w-30" /> -->
+
+            <div class="w-full">
+              <mat-form-field class="w-full">
+                <mat-label>Full Name</mat-label>
+                <input type="text" matInput formControlName="name" />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Surname</mat-label>
+                <input type="text" matInput formControlName="surname" />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Date of Birth</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="dobPicker"
+                  formControlName="dob"
+                  placeholder="Choose a date"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="dobPicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #dobPicker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>ID Issue Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="idPicker"
+                  formControlName="iddate"
+                  placeholder="Choose a date"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="idPicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #idPicker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Email Address</mat-label>
+                <input type="text" matInput formControlName="email" />
+              </mat-form-field>
+            </div>
+
+            <button
+              mat-flat-button
+              class="primary-btn w-full rounded-full mt-4"
+              (click)="nextMobilePage()"
+            >
+              <span>NEXT</span>
+            </button>
+          </div>
+
+          <!-- Page 2: Contact Information -->
+          <div *ngIf="mobilePage === 2">
+            <div class="flex mb-6 flex-col items-center">
+              <p class="text-black text-2xl mt-4">Address Information</p>
+            </div>
+            <div class="w-full">
+              <div [formGroup]="addressForm">
+                <mat-form-field class="w-full">
+                  <mat-label>Street Address</mat-label>
+                  <input type="text" matInput formControlName="streetAddress" />
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                  <mat-label>Address 1</mat-label>
+                  <input type="text" matInput formControlName="address1" />
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                  <mat-label>Address 2</mat-label>
+                  <input type="text" matInput formControlName="address2" />
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                  <mat-label>Address 3</mat-label>
+                  <input type="text" matInput formControlName="address3" />
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                  <mat-label>Postal Address</mat-label>
+                  <input type="text" matInput formControlName="postalAddress" />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="flex gap-4 mt-4">
+              <button
+                mat-stroked-button
+                class="w-1/2 rounded-full"
+                (click)="prevMobilePage()"
+              >
+                <span>BACK</span>
+              </button>
+              <button
+                mat-flat-button
+                class="primary-btn w-1/2 rounded-full"
+                (click)="nextMobilePage()"
+              >
+                <span>NEXT</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Page 3: Municipal Information -->
+          <div *ngIf="mobilePage === 3">
+            <div class="flex mb-6 flex-col items-center">
+              <p class="text-black text-2xl mt-4">Municipal Information</p>
+            </div>
+
+            <div class="w-full" [formGroup]="municipalForm">
+              <mat-form-field class="w-full">
+                <mat-label>Municipal Account Number</mat-label>
+                <input type="text" matInput formControlName="munAccNo" />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Village</mat-label>
+                <input type="text" matInput formControlName="village" />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Ward</mat-label>
+                <input type="text" matInput formControlName="ward" />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Salary</mat-label>
+                <input type="text" matInput formControlName="salary" />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Employed</mat-label>
+                <input type="text" matInput formControlName="employed" />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Employer / EPWP Skill</mat-label>
+                <input type="text" matInput formControlName="epwpEmploy" />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Remarks</mat-label>
+                <textarea
+                  type="text"
+                  matInput
+                  formControlName="remarks"
+                ></textarea>
+              </mat-form-field>
+            </div>
+
+            <div class="flex gap-4 mt-4">
+              <button
+                mat-stroked-button
+                class="w-1/2 rounded-full"
+                (click)="prevMobilePage()"
+              >
+                <span>BACK</span>
+              </button>
+              <button
+                mat-flat-button
+                class="primary-btn w-1/2 rounded-full"
+                (click)="nextPage()"
+              >
+                <span>NEXT</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        } @if (currentPage === 2) {
+        <form [formGroup]="householdForm" class="w-100">
+          <!-- Desktop View -->
+          <div class="hidden xl:flex xl:mb-6 justify-center">
+            <div class="flex items-center">
+              <p class="text-black text-3xl">Household Members</p>
+            </div>
+          </div>
+
+          <div class="hidden xl:flex xl:gap-8">
+            <!-- Left column - Household members list -->
+            <div class="xl:w-1/2 flex flex-col">
+              <div class="xl:flex xl:mb-6 items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-medium"
+                  >
+                    {{ getInitials("Kiril Bester") }}
+                  </div>
+                  <h3 class="text-xl text-black">Kiril Bester</h3>
+                </div>
+                <button
+                  mat-icon-button
+                  color="warn"
+                  (click)="deleteMember()"
+                  class="!w-8 !h-8"
+                  aria-label="Delete member"
+                >
+                  <mat-icon
+                    class="text-gray-400 hover:text-red-500 cursor-pointer"
+                    >delete</mat-icon
+                  >
+                </button>
+              </div>
+              <div class="xl:w-1/2">
+                <button
+                  mat-flat-button
+                  class="primary-btn w-half rounded-full"
+                  (click)="addHouseholdMember()"
+                >
+                  <span>Add</span>
+                  <mat-icon class="text-white cursor-pointer">add</mat-icon>
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="hidden xl:block border-r border-gray-200 h-auto my-2"
+            ></div>
+
+            <!-- Right column - Add new member form -->
+            <div class="w-full flex flex-col">
+              <div class="w-full max-w-2xl">
+                <mat-form-field class="w-full">
+                  <mat-label>ID Number</mat-label>
+                  <input type="text" matInput formControlName="idno" />
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                  <mat-label>Full Name</mat-label>
+                  <input type="text" matInput formControlName="names" />
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                  <mat-label>Surname</mat-label>
+                  <input type="text" matInput formControlName="surname" />
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                  <mat-label>Date of Birth</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="dob"
+                    formControlName="dob"
+                    placeholder="Choose a date"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="dob"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #dob></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                  <mat-label>Employed</mat-label>
+                  <input type="text" matInput formControlName="employed" />
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                  <mat-label>Contact Number</mat-label>
+                  <input type="text" matInput formControlName="contactNo" />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop navigation buttons -->
+          <div class="hidden xl:flex xl:gap-8 xl:mt-4">
+            <div class="xl:w-1/2">
+              <button
+                mat-stroked-button
+                class="w-full rounded-full"
+                (click)="previousPage()"
+              >
+                <span>BACK</span>
+              </button>
+            </div>
+            <div class="xl:w-1/2">
+              <button
+                mat-flat-button
+                class="primary-btn w-full rounded-full"
+                (click)="nextPage()"
+              >
+                <span>NEXT</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile View -->
+          <div class="xl:hidden">
+            <!-- Mobile Page 1 - Household Members List -->
+            <div *ngIf="mobilePage === 1">
+              <div class="flex mb-6 flex-col items-center">
+                <p class="text-black text-2xl mt-4">Household Members</p>
+              </div>
+
+              <!-- Member list -->
+              <div class="flex mb-6 items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-medium"
+                  >
+                    {{ getInitials("Kiril Bester") }}
+                  </div>
+                  <h3 class="text-xl text-black">Kiril Bester</h3>
+                </div>
+                <button
+                  mat-icon-button
+                  color="warn"
+                  (click)="deleteMember()"
+                  class="!w-8 !h-8"
+                  aria-label="Delete member"
+                >
+                  <mat-icon
+                    class="text-gray-400 hover:text-red-500 cursor-pointer"
+                    >delete</mat-icon
+                  >
+                </button>
+              </div>
+
+              <div class="flex gap-4 mt-4">
+                <button
+                  mat-stroked-button
+                  class="w-1/2 rounded-full"
+                  (click)="prevMobilePage()"
+                >
+                  <span>BACK</span>
+                </button>
+                <button
+                  mat-flat-button
+                  class="primary-btn w-1/2 rounded-full"
+                  (click)="nextMobilePage()"
+                >
+                  <span>ADD NEW MEMBER</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Mobile Page 2 - Add New Member Form -->
+            <div *ngIf="mobilePage === 2">
+              <div class="flex mb-6 flex-col items-center">
+                <p class="text-black text-2xl mt-4">Add Household Member</p>
+              </div>
+
+              <div class="w-full">
+                <mat-form-field class="w-full">
+                  <mat-label>ID Number</mat-label>
+                  <input type="text" matInput formControlName="idno" />
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                  <mat-label>Full Name</mat-label>
+                  <input type="text" matInput formControlName="names" />
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                  <mat-label>Surname</mat-label>
+                  <input type="text" matInput formControlName="surname" />
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                  <mat-label>Date of Birth</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="dob"
+                    formControlName="dob"
+                    placeholder="Choose a date"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="dob"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #dob></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                  <mat-label>Employed</mat-label>
+                  <input type="text" matInput formControlName="employed" />
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                  <mat-label>Contact Number</mat-label>
+                  <input type="text" matInput formControlName="contactNo" />
+                </mat-form-field>
+              </div>
+
+              <button
+                mat-flat-button
+                class="primary-btn rounded-full"
+                (click)="addHouseholdMember()"
+              >
+                <span>ADD</span>
+              </button>
+
+              <div class="flex gap-4 mt-4">
+                <button
+                  mat-stroked-button
+                  class="w-1/2 rounded-full"
+                  (click)="prevMobilePage()"
+                >
+                  <span>BACK</span>
+                </button>
+                <button
+                  mat-flat-button
+                  class="primary-btn w-1/2 rounded-full"
+                  (click)="nextPage()"
+                >
+                  <span>NEXT</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        } @if (currentPage === 3) {
+        <div class="flex items-center justify-center mb-10">
+          <p class="text-black text-3xl">Upload Documents</p>
+        </div>
+
+        <div class="flex justify-center w-full px-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
+            <!-- First Row - 2 Documents -->
+            <div class="grid grid-cols-2 gap-4 md:col-span-2">
+              <!-- SASSA Document -->
+              <div class="w-full flex flex-col items-center relative">
+                <div
+                  class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
+                >
+                  @if (uploadedFiles['sassa'] && showDocCard['sassa']) {
+                  <div
+                    class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
+                  ></div>
+                  } @if (uploadedFiles['sassa'] && showDocCard['sassa']) {
+                  <div
+                    class="fixed inset-0 flex items-center justify-center z-30"
+                  >
+                    <div
+                      class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                    >
+                      <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">
+                          Document Management
+                        </h3>
+                        <button
+                          (click)="closeDocCard('sassa')"
+                          class="text-gray-500 hover:text-gray-700 p-1"
+                        >
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+
+                      @if (uploadedFiles['sassa'].previewUrl &&
+                      isImage(uploadedFiles['sassa'].file)) {
+                      <img
+                        [src]="uploadedFiles['sassa'].previewUrl"
+                        class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
+                        alt="Document preview"
+                      />
+                      } @else {
+                      <div
+                        class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
+                      >
+                        <mat-icon class="text-gray-400" style="font-size: 80px"
+                          >description</mat-icon
+                        >
+                        <span class="mt-2 text-gray-600">Document Preview</span>
+                      </div>
+                      }
+
+                      <div class="mb-6">
+                        <div class="text-sm font-medium text-gray-700 mb-1">
+                          File Name:
+                        </div>
+                        <div class="p-2 bg-gray-500 rounded text-sm break-all">
+                          {{ uploadedFiles["sassa"].file.name }}
+                        </div>
+                      </div>
+
+                      <div class="flex w-full">
+                        <button
+                          mat-stroked-button
+                          class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
+                          (click)="
+                            triggerFileInput('sassaUpload');
+                            $event.stopPropagation()
+                          "
+                        >
+                          <span>REPLACE</span>
+                          <mat-icon class="text-base">file_upload</mat-icon>
+                        </button>
+                        <button
+                          mat-flat-button
+                          class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
+                          (click)="
+                            deleteDocument('sassa'); $event.stopPropagation()
+                          "
+                        >
+                          <span>DELETE</span>
+                          <mat-icon class="text-base">delete</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  }
+                  <button
+                    (click)="
+                      uploadedFiles['sassa']
+                        ? toggleDocCard('sassa')
+                        : triggerFileInput('sassaUpload')
+                    "
+                    class="p-0 border-none bg-transparent cursor-pointer"
+                  >
+                    @if (uploadedFiles['sassa']) { @if
+                    (uploadedFiles['sassa'].previewUrl &&
+                    isImage(uploadedFiles['sassa'].file)) {
+                    <img
+                      [src]="uploadedFiles['sassa'].previewUrl"
+                      class="w-20 h-20 object-cover rounded"
+                      alt="SASSA document preview"
+                    />
+                    } @else {
+                    <mat-icon
+                      class="text-black"
+                      style="font-size: 80px; height: 80px; width: 80px"
+                    >
+                      description
+                    </mat-icon>
+                    } } @else {
+                    <mat-icon
+                      class="text-black hover:text-blue-500 transition-colors"
+                      style="font-size: 80px; height: 80px; width: 80px"
+                    >
+                      upload_file
+                    </mat-icon>
+                    }
+                    <input
+                      type="file"
+                      id="sassaUpload"
+                      class="hidden"
+                      (change)="handleFileInput($event, 'sassa')"
+                      accept=".pdf,.jpg,.jpeg,.png"
+                    />
+                  </button>
+
+                  <span class="text-black mt-2 text-center font-medium"
+                    >SASSA</span
+                  >
+
+                  @if (uploadedFiles['sassa']) {
+                  <div
+                    class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
+                    (click)="toggleDocCard('sassa')"
+                  >
+                    {{ uploadedFiles["sassa"].file.name }}
+                  </div>
+                  }
+                </div>
+              </div>
+
+              <!-- ID Document -->
+              <div class="w-full flex flex-col items-center relative">
+                <div
+                  class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
+                >
+                  @if (uploadedFiles['idDocument'] && showDocCard['idDocument'])
+                  {
+                  <div
+                    class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
+                  ></div>
+                  } @if (uploadedFiles['idDocument'] &&
+                  showDocCard['idDocument']) {
+                  <div
+                    class="fixed inset-0 flex items-center justify-center z-30"
+                  >
+                    <div
+                      class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                    >
+                      <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">
+                          Document Management
+                        </h3>
+                        <button
+                          (click)="closeDocCard('idDocument')"
+                          class="text-gray-500 hover:text-gray-700 p-1"
+                        >
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+
+                      @if (uploadedFiles['idDocument'].previewUrl &&
+                      isImage(uploadedFiles['idDocument'].file)) {
+                      <img
+                        [src]="uploadedFiles['idDocument'].previewUrl"
+                        class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
+                        alt="Document preview"
+                      />
+                      } @else {
+                      <div
+                        class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
+                      >
+                        <mat-icon class="text-gray-400" style="font-size: 80px"
+                          >description</mat-icon
+                        >
+                        <span class="mt-2 text-gray-600">Document Preview</span>
+                      </div>
+                      }
+
+                      <div class="mb-6">
+                        <div class="text-sm font-medium text-gray-700 mb-1">
+                          File Name:
+                        </div>
+                        <div class="p-2 bg-gray-500 rounded text-sm break-all">
+                          {{ uploadedFiles["idDocument"].file.name }}
+                        </div>
+                      </div>
+
+                      <div class="flex w-full">
+                        <button
+                          mat-stroked-button
+                          class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
+                          (click)="
+                            triggerFileInput('idUpload');
+                            $event.stopPropagation()
+                          "
+                        >
+                          <span>REPLACE</span>
+                          <mat-icon class="text-base">file_upload</mat-icon>
+                        </button>
+                        <button
+                          mat-flat-button
+                          class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
+                          (click)="
+                            deleteDocument('idDocument');
+                            $event.stopPropagation()
+                          "
+                        >
+                          <span>DELETE</span>
+                          <mat-icon class="text-base">delete</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  }
+                  <button
+                    (click)="
+                      uploadedFiles['idDocument']
+                        ? toggleDocCard('idDocument')
+                        : triggerFileInput('idUpload')
+                    "
+                    class="p-0 border-none bg-transparent cursor-pointer"
+                  >
+                    @if (uploadedFiles['idDocument']) { @if
+                    (uploadedFiles['idDocument'].previewUrl &&
+                    isImage(uploadedFiles['idDocument'].file)) {
+                    <img
+                      [src]="uploadedFiles['idDocument'].previewUrl"
+                      class="w-20 h-20 object-cover rounded"
+                      alt="ID document preview"
+                    />
+                    } @else {
+                    <mat-icon
+                      class="text-black"
+                      style="font-size: 80px; height: 80px; width: 80px"
+                    >
+                      description
+                    </mat-icon>
+                    } } @else {
+                    <mat-icon
+                      class="text-black hover:text-blue-500 transition-colors"
+                      style="font-size: 80px; height: 80px; width: 80px"
+                    >
+                      upload_file
+                    </mat-icon>
+                    }
+                    <input
+                      type="file"
+                      id="idUpload"
+                      class="hidden"
+                      (change)="handleFileInput($event, 'idDocument')"
+                      accept=".pdf,.jpg,.jpeg,.png"
+                    />
+                  </button>
+
+                  <span class="text-black mt-2 text-center font-medium"
+                    >ID Document</span
+                  >
+
+                  @if (uploadedFiles['idDocument']) {
+                  <div
+                    class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
+                    (click)="toggleDocCard('idDocument')"
+                  >
+                    {{ uploadedFiles["idDocument"].file.name }}
+                  </div>
+                  }
+                </div>
+              </div>
+            </div>
+
+            <!-- Second Row - 3 Documents -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:col-span-2">
+              <!-- Payslip -->
+              <div class="w-full flex flex-col items-center relative">
+                <div
+                  class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
+                >
+                  @if (uploadedFiles['payslip'] && showDocCard['payslip']) {
+                  <div
+                    class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
+                  ></div>
+                  } @if (uploadedFiles['payslip'] && showDocCard['payslip']) {
+                  <div
+                    class="fixed inset-0 flex items-center justify-center z-30"
+                  >
+                    <div
+                      class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                    >
+                      <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">
+                          Document Management
+                        </h3>
+                        <button
+                          (click)="closeDocCard('payslip')"
+                          class="text-gray-500 hover:text-gray-700 p-1"
+                        >
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+
+                      @if (uploadedFiles['payslip'].previewUrl &&
+                      isImage(uploadedFiles['payslip'].file)) {
+                      <img
+                        [src]="uploadedFiles['payslip'].previewUrl"
+                        class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
+                        alt="Document preview"
+                      />
+                      } @else {
+                      <div
+                        class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
+                      >
+                        <mat-icon class="text-gray-400" style="font-size: 80px"
+                          >description</mat-icon
+                        >
+                        <span class="mt-2 text-gray-600">Document Preview</span>
+                      </div>
+                      }
+
+                      <div class="mb-6">
+                        <div class="text-sm font-medium text-gray-700 mb-1">
+                          File Name:
+                        </div>
+                        <div class="p-2 bg-gray-500 rounded text-sm break-all">
+                          {{ uploadedFiles["payslip"].file.name }}
+                        </div>
+                      </div>
+
+                      <div class="flex w-full">
+                        <button
+                          mat-stroked-button
+                          class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
+                          (click)="
+                            triggerFileInput('payslipUpload');
+                            $event.stopPropagation()
+                          "
+                        >
+                          <span>REPLACE</span>
+                          <mat-icon class="text-base">file_upload</mat-icon>
+                        </button>
+                        <button
+                          mat-flat-button
+                          class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
+                          (click)="
+                            deleteDocument('payslip'); $event.stopPropagation()
+                          "
+                        >
+                          <span>DELETE</span>
+                          <mat-icon class="text-base">delete</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  }
+                  <button
+                    (click)="
+                      uploadedFiles['payslip']
+                        ? toggleDocCard('payslip')
+                        : triggerFileInput('payslipUpload')
+                    "
+                    class="p-0 border-none bg-transparent cursor-pointer"
+                  >
+                    @if (uploadedFiles['payslip']) { @if
+                    (uploadedFiles['payslip'].previewUrl &&
+                    isImage(uploadedFiles['payslip'].file)) {
+                    <img
+                      [src]="uploadedFiles['payslip'].previewUrl"
+                      class="w-20 h-20 object-cover rounded"
+                      alt="Payslip preview"
+                    />
+                    } @else {
+                    <mat-icon
+                      class="text-black"
+                      style="font-size: 80px; height: 80px; width: 80px"
+                    >
+                      description
+                    </mat-icon>
+                    } } @else {
+                    <mat-icon
+                      class="text-black hover:text-blue-500 transition-colors"
+                      style="font-size: 80px; height: 80px; width: 80px"
+                    >
+                      upload_file
+                    </mat-icon>
+                    }
+                    <input
+                      type="file"
+                      id="payslipUpload"
+                      class="hidden"
+                      (change)="handleFileInput($event, 'payslip')"
+                      accept=".pdf,.jpg,.jpeg,.png"
+                    />
+                  </button>
+
+                  <span class="text-black mt-2 text-center font-medium"
+                    >Payslip</span
+                  >
+
+                  @if (uploadedFiles['payslip']) {
+                  <div
+                    class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
+                    (click)="toggleDocCard('payslip')"
+                  >
+                    {{ uploadedFiles["payslip"].file.name }}
+                  </div>
+                  }
+                </div>
+              </div>
+
+              <!-- Municipal Account -->
+              <div class="w-full flex flex-col items-center relative">
+                <div
+                  class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
+                >
+                  @if (uploadedFiles['municipal'] && showDocCard['municipal']) {
+                  <div
+                    class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
+                  ></div>
+                  } @if (uploadedFiles['municipal'] && showDocCard['municipal'])
+                  {
+                  <div
+                    class="fixed inset-0 flex items-center justify-center z-30"
+                  >
+                    <div
+                      class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                    >
+                      <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">
+                          Document Management
+                        </h3>
+                        <button
+                          (click)="closeDocCard('municipal')"
+                          class="text-gray-500 hover:text-gray-700 p-1"
+                        >
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+
+                      @if (uploadedFiles['municipal'].previewUrl &&
+                      isImage(uploadedFiles['municipal'].file)) {
+                      <img
+                        [src]="uploadedFiles['municipal'].previewUrl"
+                        class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
+                        alt="Document preview"
+                      />
+                      } @else {
+                      <div
+                        class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
+                      >
+                        <mat-icon class="text-gray-400" style="font-size: 80px"
+                          >description</mat-icon
+                        >
+                        <span class="mt-2 text-gray-600">Document Preview</span>
+                      </div>
+                      }
+
+                      <div class="mb-6">
+                        <div class="text-sm font-medium text-gray-700 mb-1">
+                          File Name:
+                        </div>
+                        <div class="p-2 bg-gray-500 rounded text-sm break-all">
+                          {{ uploadedFiles["municipal"].file.name }}
+                        </div>
+                      </div>
+
+                      <div class="flex w-full">
+                        <button
+                          mat-stroked-button
+                          class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
+                          (click)="
+                            triggerFileInput('municipalUpload');
+                            $event.stopPropagation()
+                          "
+                        >
+                          <span>REPLACE</span>
+                          <mat-icon class="text-base">file_upload</mat-icon>
+                        </button>
+                        <button
+                          mat-flat-button
+                          class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
+                          (click)="
+                            deleteDocument('municipal');
+                            $event.stopPropagation()
+                          "
+                        >
+                          <span>DELETE</span>
+                          <mat-icon class="text-base">delete</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  }
+                  <button
+                    (click)="
+                      uploadedFiles['municipal']
+                        ? toggleDocCard('municipal')
+                        : triggerFileInput('municipalUpload')
+                    "
+                    class="p-0 border-none bg-transparent cursor-pointer"
+                  >
+                    @if (uploadedFiles['municipal']) { @if
+                    (uploadedFiles['municipal'].previewUrl &&
+                    isImage(uploadedFiles['municipal'].file)) {
+                    <img
+                      [src]="uploadedFiles['municipal'].previewUrl"
+                      class="w-20 h-20 object-cover rounded"
+                      alt="Municipal account preview"
+                    />
+                    } @else {
+                    <mat-icon
+                      class="text-black"
+                      style="font-size: 80px; height: 80px; width: 80px"
+                    >
+                      description
+                    </mat-icon>
+                    } } @else {
+                    <mat-icon
+                      class="text-black hover:text-blue-500 transition-colors"
+                      style="font-size: 80px; height: 80px; width: 80px"
+                    >
+                      upload_file
+                    </mat-icon>
+                    }
+                    <input
+                      type="file"
+                      id="municipalUpload"
+                      class="hidden"
+                      (change)="handleFileInput($event, 'municipal')"
+                      accept=".pdf,.jpg,.jpeg,.png"
+                    />
+                  </button>
+
+                  <span class="text-black mt-2 text-center font-medium"
+                    >Municipal Account</span
+                  >
+
+                  @if (uploadedFiles['municipal']) {
+                  <div
+                    class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
+                    (click)="toggleDocCard('municipal')"
+                  >
+                    {{ uploadedFiles["municipal"].file.name }}
+                  </div>
+                  }
+                </div>
+              </div>
+
+              <div class="w-full flex flex-col items-center relative">
+                <div
+                  class="p-4 border border-gray-300 rounded-lg w-full flex flex-col items-center"
+                >
+                  @if (uploadedFiles['selfie'] && showDocCard['selfie']) {
+                  <div
+                    class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20"
+                  ></div>
+                  } @if (uploadedFiles['selfie'] && showDocCard['selfie']) {
+                  <div
+                    class="fixed inset-0 flex items-center justify-center z-30"
+                  >
+                    <div
+                      class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
+                    >
+                      <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">
+                          Document Management
+                        </h3>
+                        <button
+                          (click)="closeDocCard('selfie')"
+                          class="text-gray-500 hover:text-gray-700 p-1"
+                        >
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+
+                      @if (uploadedFiles['selfie'].previewUrl &&
+                      isImage(uploadedFiles['selfie'].file)) {
+                      <img
+                        [src]="uploadedFiles['selfie'].previewUrl"
+                        class="w-full h-64 object-contain mb-4 bg-gray-50 rounded border border-gray-200"
+                        alt="Document preview"
+                      />
+                      } @else {
+                      <div
+                        class="flex flex-col items-center justify-center h-64 mb-4 bg-gray-100 rounded border border-gray-200"
+                      >
+                        <mat-icon class="text-gray-400" style="font-size: 80px"
+                          >description</mat-icon
+                        >
+                        <span class="mt-2 text-gray-600">Document Preview</span>
+                      </div>
+                      }
+
+                      <div class="mb-6">
+                        <div class="text-sm font-medium text-gray-700 mb-1">
+                          File Name:
+                        </div>
+                        <div class="p-2 bg-gray-500 rounded text-sm break-all">
+                          {{ uploadedFiles["selfie"].file.name }}
+                        </div>
+                      </div>
+
+                      <div class="flex w-full">
+                        <button
+                          mat-stroked-button
+                          class="flex-1 rounded-full mr-2 flex items-center justify-center gap-1"
+                          (click)="
+                            triggerFileInput('selfieUpload');
+                            $event.stopPropagation()
+                          "
+                        >
+                          <span>REPLACE</span>
+                          <mat-icon class="text-base">file_upload</mat-icon>
+                        </button>
+                        <button
+                          mat-flat-button
+                          class="flex-1 primary-btn rounded-full ml-2 flex items-center justify-center gap-1"
+                          (click)="
+                            deleteDocument('selfie'); $event.stopPropagation()
+                          "
+                        >
+                          <span>DELETE</span>
+                          <mat-icon class="text-base">delete</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  }
+                  <button
+                    (click)="
+                      uploadedFiles['selfie']
+                        ? toggleDocCard('selfie')
+                        : triggerFileInput('selfieUpload')
+                    "
+                    class="p-0 border-none bg-transparent cursor-pointer"
+                  >
+                    @if (uploadedFiles['selfie']) { @if
+                    (uploadedFiles['selfie'].previewUrl &&
+                    isImage(uploadedFiles['selfie'].file)) {
+                    <img
+                      [src]="uploadedFiles['selfie'].previewUrl"
+                      class="w-20 h-20 object-cover rounded"
+                      alt="Selfie preview"
+                    />
+                    } @else {
+                    <mat-icon
+                      class="text-black"
+                      style="font-size: 80px; height: 80px; width: 80px"
+                    >
+                      description
+                    </mat-icon>
+                    } } @else {
+                    <mat-icon
+                      class="text-black hover:text-blue-500 transition-colors"
+                      style="font-size: 80px; height: 80px; width: 80px"
+                    >
+                      upload_file
+                    </mat-icon>
+                    }
+                    <input
+                      type="file"
+                      id="selfieUpload"
+                      class="hidden"
+                      (change)="handleFileInput($event, 'selfie')"
+                      accept=".pdf,.jpg,.jpeg,.png"
+                    />
+                  </button>
+
+                  <span class="text-black mt-2 text-center font-medium"
+                    >Selfie</span
+                  >
+
+                  @if (uploadedFiles['selfie']) {
+                  <div
+                    class="mt-2 p-2 bg-gray-500 text-white rounded text-sm text-center w-full truncate cursor-pointer"
+                    (click)="toggleDocCard('selfie')"
+                  >
+                    {{ uploadedFiles["selfie"].file.name }}
+                  </div>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center w-full px-4 mt-8">
+          <div class="flex justify-between w-full max-w-4xl gap-4">
+            <button
+              mat-stroked-button
+              class="flex-1 rounded-full py-2"
+              (click)="previousPage()"
+            >
+              <span>BACK</span>
+            </button>
+            <button
+              mat-flat-button
+              class="flex-1 primary-btn rounded-full py-2"
+              (click)="submitForm()"
+            >
+              <span>COMPLETE</span>
+            </button>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

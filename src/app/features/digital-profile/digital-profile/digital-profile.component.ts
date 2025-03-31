@@ -18,6 +18,8 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 // import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 declare var google: any;
@@ -34,6 +36,8 @@ declare var google: any;
     MatIconModule,
     MatDividerModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     // TranslateModule,
     FormsModule,
   ],

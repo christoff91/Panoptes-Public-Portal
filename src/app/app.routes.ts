@@ -67,6 +67,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'indigents',
+        loadChildren: () =>
+          import(
+            './features/municipal/indigent/indigents/indigents.module'
+          ).then((m) => m.IndigentsModule),
+      },
+      {
         path: 'navigation',
         component: NavigationComponent,
       },
