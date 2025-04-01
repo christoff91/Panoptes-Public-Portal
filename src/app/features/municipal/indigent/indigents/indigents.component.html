@@ -360,9 +360,9 @@
                 <button
                   mat-flat-button
                   class="primary-btn w-half rounded-full"
-                  (click)="addHouseholdMember()"
+                  (click)="startAddingMember()"
                 >
-                  <span>Add</span>
+                  <span>ADD</span>
                   <mat-icon class="text-white cursor-pointer">add</mat-icon>
                 </button>
               </div>
@@ -415,6 +415,15 @@
                   <input type="text" matInput formControlName="contactNo" />
                 </mat-form-field>
               </div>
+              <div class="xl:w-1/2">
+                <button
+                  mat-flat-button
+                  class="primary-btn w-half rounded-full"
+                  (click)="addHouseholdMember()"
+                >
+                  <span>SUBMIT</span>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -442,13 +451,11 @@
 
           <!-- Mobile View -->
           <div class="xl:hidden">
-            <!-- Mobile Page 1 - Household Members List -->
             <div *ngIf="mobilePage === 1">
               <div class="flex mb-6 flex-col items-center">
                 <p class="text-black text-2xl mt-4">Household Members</p>
               </div>
 
-              <!-- Member list -->
               <div class="flex mb-6 items-center justify-between gap-4">
                 <div class="flex items-center gap-3">
                   <div
@@ -485,12 +492,11 @@
                   class="primary-btn w-1/2 rounded-full"
                   (click)="nextMobilePage()"
                 >
-                  <span>ADD NEW MEMBER</span>
+                  <span>ADD MEMBER</span>
                 </button>
               </div>
             </div>
 
-            <!-- Mobile Page 2 - Add New Member Form -->
             <div *ngIf="mobilePage === 2">
               <div class="flex mb-6 flex-col items-center">
                 <p class="text-black text-2xl mt-4">Add Household Member</p>
@@ -572,7 +578,6 @@
 
         <div class="flex justify-center w-full px-4">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
-            <!-- First Row - 2 Documents -->
             <div class="grid grid-cols-2 gap-4 md:col-span-2">
               <!-- SASSA Document -->
               <div class="w-full flex flex-col items-center relative">

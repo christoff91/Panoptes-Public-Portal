@@ -45,6 +45,8 @@ declare var google: any;
 })
 export class IndigentsComponent {
   currentPage = 1;
+  isAddingMember: boolean = false;
+  activeMemberId: string | null = null;
   @ViewChild('streetAddressInput')
   set streetAddressInput(element: ElementRef) {
     if (element) {
@@ -216,6 +218,35 @@ export class IndigentsComponent {
     });
   }
 
+  startAddingMember() {
+    this.isAddingMember = true;
+    this.householdForm.reset();
+    this.activeMemberId = null; // Set to null for new members
+  }
+
+  addHouseholdMember() {
+    if (this.householdForm.valid) {
+      const formData = this.householdForm.value;
+      console.log('Household member added/updated:', formData);
+
+      // Here you would typically add to an array of household members
+      // For now we'll just log it
+
+      this.isAddingMember = false;
+      this.householdForm.reset();
+      this.activeMemberId = null;
+    } else {
+      console.log('Form is invalid');
+    }
+  }
+
+  deleteMember(memberId?: string) {
+    // Implement your delete logic here
+    console.log('Member deleted:', memberId || this.activeMemberId);
+    this.isAddingMember = false;
+    this.activeMemberId = null;
+  }
+
   mobilePage = 1;
   nextPage() {
     if (this.currentPage === 1) {
@@ -324,6 +355,4 @@ export class IndigentsComponent {
 
     return initials;
   }
-  addHouseholdMember() {}
-  deleteMember() {}
 }

@@ -3,7 +3,7 @@
     <p class="text-5xl text-white">Digital Profile</p>
   </header>
 
-  <div class="flex justify-center xl:w-[60vw] p-2">
+  <div class="flex justify-center xl:w-[84vw] xl:ml-[30vh] p-2">
     <div
       class="w-full p-8 rounded-xl bg-white xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
     >
@@ -100,10 +100,14 @@
         </div>
 
         <div class="xl:hidden" *ngIf="mobilePage === 1">
-          <div class="flex mb-6 flex-col items-center">
-            <img src="assets/icons/account_circle.png" class="w-30" />
+          <div class="xl:w-1/2 flex justify-center mb-2">
+            <div class="rounded-full border-4 border-blue-500 p-1">
+              <img
+                src="assets/images/kirildha.jpg"
+                class="w-24 h-24 rounded-full object-cover"
+              />
+            </div>
           </div>
-          <!-- <img src="assets/icons/account_circle.png" class="w-30" /> -->
 
           <div class="w-full">
             <mat-form-field class="w-full">
@@ -116,7 +120,12 @@
             </mat-form-field>
             <mat-form-field class="w-full">
               <mat-label>ID Number</mat-label>
-              <input type="idno" matInput formControlName="idno" />
+              <input
+                type="idno"
+                matInput
+                formControlName="idno"
+                maxlength="13"
+              />
             </mat-form-field>
             <mat-form-field class="w-full">
               <mat-label>Date of Birth</mat-label>
