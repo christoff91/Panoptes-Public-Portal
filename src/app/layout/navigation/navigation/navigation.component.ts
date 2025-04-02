@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ResponsiveService } from '../../../core/services/responsive.service';
 import { AuthService } from '../../../features/auth/services/auth.service';
 
@@ -22,17 +22,13 @@ import { MatListModule } from '@angular/material/list';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
   isMobile: boolean = false;
 
   constructor(
     private responsiveService: ResponsiveService,
     private authService: AuthService
-  ) {}
-
-  ngOnInit() {
-    this.responsiveService.isMobile$.subscribe((isMobile) => {
-      this.isMobile = isMobile;
-    });
+  ) {
+    console.log('Something is happening in the Navigation.ts');
   }
 }

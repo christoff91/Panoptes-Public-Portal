@@ -1,10 +1,24 @@
-:host {
+.mat-sidenav-container {
     display: block;
     min-height: 100vh;
     background: url('../../../../assets/bg-5.png');
     color: white;
+}
+
+.mat-sidenav-content {
+
 
     @media (max-width: 767px) {
         background-position: center; // Show the right side on mobiles
+    }
+}
+
+.mat-sidenav {
+    margin: 10px;
+    width: 30vh;
+    background-color: #0d3266;
+    border-radius: 15px;
+    :hover {
+        background-color: grey;
     }
 }
