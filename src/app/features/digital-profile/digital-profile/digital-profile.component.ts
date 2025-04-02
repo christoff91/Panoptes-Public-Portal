@@ -20,7 +20,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-// import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 declare var google: any;
 
@@ -38,7 +38,7 @@ declare var google: any;
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    // TranslateModule,
+    TranslateModule,
     FormsModule,
   ],
   templateUrl: './digital-profile.component.html',
@@ -98,22 +98,14 @@ export class DigitalProfileComponent {
 
   showMunicipalSection: boolean = false;
 
-  constructor(private ngZone: NgZone) {}
+  constructor(private ngZone: NgZone, private translate: TranslateService) {}
 
-  // changeLanguage(event: Event): void {
-  //   const target = event.target as HTMLSelectElement;
-  //   const language = target.value;
-  //   this.translate.use(language);
-  //   sessionStorage.setItem('language', language);
-  // }
-
-  // ngAfterViewInit() {
-  //   if (this.streetAddressInput?.nativeElement) {
-  //     this.initAutocomplete();
-  //   } else {
-  //     console.error('Street address input element not found');
-  //   }
-  // }
+  changeLanguage(event: any): void {
+    const language = event.value;
+    this.language = language;
+    this.translate.use(language);
+    sessionStorage.setItem('language', language);
+  }
 
   initAutocomplete(element: HTMLElement) {
     try {

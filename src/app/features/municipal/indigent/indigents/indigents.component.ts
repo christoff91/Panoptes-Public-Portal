@@ -16,6 +16,7 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -46,7 +47,7 @@ declare var google: any;
 export class IndigentsComponent {
   currentPage = 1;
   isAddingMember: boolean = false;
-  activeMemberId: string | null = null;
+  isHouseholdFormEnabled: boolean = false;
   @ViewChild('streetAddressInput')
   set streetAddressInput(element: ElementRef) {
     if (element) {
@@ -97,12 +98,20 @@ export class IndigentsComponent {
   });
 
   householdForm = new FormGroup({
-    idno: new FormControl(''),
-    names: new FormControl(''),
-    surname: new FormControl(''),
-    dob: new FormControl(''),
-    employed: new FormControl(''),
-    contactNo: new FormControl(''),
+    idno: new FormControl({ value: '', disabled: true }, [Validators.required]),
+    names: new FormControl({ value: '', disabled: true }, [
+      Validators.required,
+    ]),
+    surname: new FormControl({ value: '', disabled: true }, [
+      Validators.required,
+    ]),
+    dob: new FormControl({ value: '', disabled: true }, [Validators.required]),
+    employed: new FormControl({ value: '', disabled: true }, [
+      Validators.required,
+    ]),
+    contactNo: new FormControl({ value: '', disabled: true }, [
+      Validators.required,
+    ]),
   });
 
   uploadedFiles: { [key: string]: { file: File; previewUrl: string } | null } =
@@ -218,35 +227,6 @@ export class IndigentsComponent {
     });
   }
 
-  startAddingMember() {
-    this.isAddingMember = true;
-    this.householdForm.reset();
-    this.activeMemberId = null; // Set to null for new members
-  }
-
-  addHouseholdMember() {
-    if (this.householdForm.valid) {
-      const formData = this.householdForm.value;
-      console.log('Household member added/updated:', formData);
-
-      // Here you would typically add to an array of household members
-      // For now we'll just log it
-
-      this.isAddingMember = false;
-      this.householdForm.reset();
-      this.activeMemberId = null;
-    } else {
-      console.log('Form is invalid');
-    }
-  }
-
-  deleteMember(memberId?: string) {
-    // Implement your delete logic here
-    console.log('Member deleted:', memberId || this.activeMemberId);
-    this.isAddingMember = false;
-    this.activeMemberId = null;
-  }
-
   mobilePage = 1;
   nextPage() {
     if (this.currentPage === 1) {
@@ -354,5 +334,44 @@ export class IndigentsComponent {
     }
 
     return initials;
+  }
+
+  isFormActive: boolean = false;
+  enableHouseholdForm() {
+    this.isEditMode = false; // Reset edit mode when adding new
+    this.householdForm.enable();
+    this.isFormActive = true;
+    this.householdForm.reset();
+    this.householdForm.updateValueAndValidity();
+  }
+
+  addHouseholdMember() {
+    if (this.householdForm.valid) {
+      if (this.isEditMode) {
+        // Update existing member logic
+        console.log('Member updated:', this.householdForm.value);
+      } else {
+        // Add new member logic
+        console.log('Member added:', this.householdForm.value);
+      }
+      this.householdForm.reset();
+      this.householdForm.disable();
+      this.isFormActive = false;
+      this.isEditMode = false;
+    }
+  }
+  deleteMember() {}
+
+  isEditMode: boolean = false;
+  toggleEditMode() {
+    this.isEditMode = !this.isEditMode;
+    if (this.isEditMode) {
+      this.householdForm.enable();
+      this.isFormActive = true;
+    } else {
+      this.householdForm.disable();
+      this.isFormActive = false;
+    }
+    this.householdForm.updateValueAndValidity();
   }
 }

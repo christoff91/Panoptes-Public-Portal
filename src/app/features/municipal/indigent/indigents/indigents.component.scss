@@ -1,0 +1,23 @@
+.active-form-section {
+  border: 2px solid #3f51b5;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px #3f51b533;
+}
+
+.active-form-section .mat-form-field {
+  opacity: 1;
+}
+
+.inactive-form-section .mat-form-field {
+  opacity: 0.7;
+}
+
+.mat-form-field.ng-invalid .mat-form-field-label {
+  color: #f44336;
+}
+
+.mat-form-field.ng-valid .mat-form-field-label {
+  color: #4caf50;
+}
