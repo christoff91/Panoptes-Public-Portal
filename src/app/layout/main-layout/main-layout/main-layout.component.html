@@ -1,6 +1,22 @@
-<div class="min-h-screen bg-cover bg-center bg-no-repeat">
-    @if(isLoggedIn$){
-      <app-navigation></app-navigation>
-    }
+<!-- <div class="min-h-screen bg-cover bg-center bg-no-repeat">
+    <app-navigation></app-navigation>
     <router-outlet></router-outlet>
-</div>
+</div> -->
+<!-- <div class="min-h-screen bg-cover bg-center bg-no-repeat"> -->
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" [opened]="!isMobile()" >
+      <app-navigation></app-navigation>
+    </mat-sidenav>
+    <!-- Main Content -->
+    <mat-sidenav-content>
+      @if(isMobile()) {
+      <mat-toolbar>
+        <button mat-icon-button (click)="toggleSidenav()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </mat-toolbar>
+      }
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+<!-- </div> -->
