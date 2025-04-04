@@ -1,65 +1,20 @@
-// .active-link {
-//   background-color: rgba(255, 255, 255, 0.1);
-//   border-left: 3px solid #7b1fa2; /* or any accent color */
-// }
-
-/* Make the mat-list-items a bit more compact if needed */
-.mat-list-item {
-  height: 48px;
+mat-nav-list a:hover {
+  background-color: #1a202c; /* Change to your desired hover color */
 }
 
-.spacer {
-  flex: 1 1 auto;
+mat-nav-list a:active {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Highlight the active menu item */
+  border-left: 4px solid #2196f3; /* Blue highlight */
 }
 
 .icon {
   color: white;
 }
-
-// app.component.scss
-.drawer-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-mat-drawer {
-  width: 250px;
-}
-
 .content-container {
   padding: 20px;
-}
-
-
-.example-container {
-  width: auto;
-  height: 200px;
-  margin: 10px;
-  border: 1px solid #555;
-  /* The background property is added to clearly distinguish the borders between drawer and main
-     content */
-  background: #eee;
-}
-
-.mat-nav-list {
-  .mat-list-item {
-    &:hover {
-      background-color: #e0f7fa;
-      color: #006064;
-
-      // For ripple effect color
-      .mat-ripple-element {
-        background-color: rgba(0, 96, 100, 0.1);
-      }
-    }
-
-    // Active item styling
-    &.active {
-      background-color: #b2ebf2;
-      color: #00838f;
-    }
-  }
 }

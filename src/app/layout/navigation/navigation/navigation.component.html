@@ -1,148 +1,96 @@
-<div class="p-3 flex justify-between">
-  <span class="text-xl text-white content-center mt-2">John Doe</span>
-</div>
-
-<div class="w-[90%] mx-auto">
-  <mat-divider></mat-divider>
-</div>
-
-<mat-nav-list class="mt-4">
-  <a mat-list-item routerLinkActive="active-link">
-    <div class="flex items-center w-full">
-      <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
-        >dashboard</mat-icon
-      >
-      <span class="text-white">Dashboard</span>
-    </div>
-  </a>
-  <a mat-list-item routerLinkActive="active-link">
-    <div class="flex items-center w-full">
-      <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
-        >contact_mail</mat-icon
-      >
-      <span class="text-white" href="digital-profile">My Digital Profile</span>
-    </div>
-  </a>
-
-  <a mat-list-item routerLinkActive="active-link">
-    <div class="flex items-center w-full">
-      <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
-        >account_balance_wallet</mat-icon
-      >
-      <span class="text-white">Accounts</span>
-    </div>
-  </a>
-
-  <a mat-list-item routerLinkActive="active-link">
-    <div class="flex items-center w-full">
-      <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
-        >credit_score</mat-icon
-      >
-      <span class="text-white">Arrangements</span>
-    </div>
-  </a>
-
-  <a mat-list-item routerLinkActive="active-link">
-    <div class="flex items-center w-full">
-      <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
-        >home_work</mat-icon
-      >
-      <span class="text-white">Indigent</span>
-    </div>
-  </a>
-</mat-nav-list>
-
-<div class="w-[90%] mx-auto">
-  <mat-divider></mat-divider>
-</div>
-
-<div class="absolute bottom-4 w-full px-4">
-  <a mat-list-item routerLink="/logout" class="bg-black flex items-center">
-    <div class="flex items-center w-full">
-      <mat-icon class="mr-3 text-white">exit_to_app</mat-icon>
-      <span class="text-white">LOGOUT</span>
-    </div>
-  </a>
-</div>
-
-<!-- @if(!isMobile) {
-<div
-  class="fixed left-[15px] top-[15px] bottom-[15px] w-64 bg-gray-900 rounded-2xl"
->
+<nav>
   <div class="p-3 flex justify-between">
     <span class="text-xl text-white content-center mt-2">John Doe</span>
+    @if (isMobile()) {
+    <div class="flex items-center">
+      <mat-icon
+        class="mr-3 text-white"
+        (click)="onCloseClicked()"
+        fontSet="material-icons-outlined"
+        >close</mat-icon
+      >
+    </div>
+    }
   </div>
 
-  <nav class="mt-4">
-    <mat-nav-list>
-      <a mat-list-item routerLinkActive="active-link">
-        <div class="flex items-center w-full">
-          <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
-            >dashboard</mat-icon
-          >
-          <span class="text-white">Dashboard</span>
-        </div>
-      </a>
+  <div class="w-[90%] mx-auto">
+    <mat-divider></mat-divider>
+  </div>
 
-      <a mat-list-item routerLinkActive="active-link">
+  <mat-nav-list class="mt-4">
+    @for (item of menuItems; track item.path) {
+      <a
+        mat-list-item
+        [routerLink]="item.path"
+        [class.active]="isActive(item.path)"
+        (click)="navigate(item.path)"
+      >
         <div class="flex items-center w-full">
-          <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
-            >contact_mail</mat-icon
-          >
-          <span class="text-white" href="digital-profile"
-            >My Digital Profile</span
-          >
+          <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined">
+            {{ item.icon }}
+          </mat-icon>
+          <span class="text-white">{{ item.label }}</span>
         </div>
       </a>
-
-      <a mat-list-item routerLinkActive="active-link">
-        <div class="flex items-center w-full">
-          <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
-            >account_balance_wallet</mat-icon
-          >
-          <span class="text-white">Accounts</span>
-        </div>
-      </a>
-
-      <a mat-list-item routerLinkActive="active-link">
-        <div class="flex items-center w-full">
-          <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
-            >credit_score</mat-icon
-          >
-          <span class="text-white">Arrangements</span>
-        </div>
-      </a>
-
-      <a mat-list-item routerLinkActive="active-link">
-        <div class="flex items-center w-full">
-          <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
-            >home_work</mat-icon
-          >
-          <span class="text-white">Indigent</span>
-        </div>
-      </a>
-    </mat-nav-list>
-  </nav>
+    }
+  </mat-nav-list>
 
   <div class="w-[90%] mx-auto">
     <mat-divider></mat-divider>
   </div>
 
   <div class="absolute bottom-4 w-full px-4">
-    <a mat-list-item routerLink="/logout" class="flex items-center">
+    <a mat-list-item routerLink="/logout" class="bg-black flex items-center">
       <div class="flex items-center w-full">
         <mat-icon class="mr-3 text-white">exit_to_app</mat-icon>
         <span class="text-white">LOGOUT</span>
       </div>
     </a>
   </div>
-</div>
+</nav>
 
-} @if(isMobile) {
-<mat-toolbar class="!bg-slate-800 !text-white">
-  <button mat-icon-button aria-label="Menu Icon">
-    <mat-icon class="!text-white">menu</mat-icon>
-  </button>
-  <span class="text white pl-24">Active Route</span>
-</mat-toolbar>
-} -->
+
+
+<!-- <a mat-list-item routerLink="/dashboard">
+      <div class="flex items-center w-full">
+        <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
+          >dashboard</mat-icon
+        >
+        <span class="text-white">Dashboard</span>
+      </div>
+    </a>
+    <a mat-list-item routerLink="/digital-profile">
+      <div class="flex items-center w-full">
+        <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
+          >contact_mail</mat-icon
+        >
+        <span class="text-white">My Digital Profile</span>
+      </div>
+    </a>
+
+    <a mat-list-item routerLink="/accounts">
+      <div class="flex items-center w-full">
+        <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
+          >account_balance_wallet</mat-icon
+        >
+        <span class="text-white">Accounts</span>
+      </div>
+    </a>
+
+    <a mat-list-item routerLink="/arrangements">
+      <div class="flex items-center w-full">
+        <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
+          >credit_score</mat-icon
+        >
+        <span class="text-white">Arrangements</span>
+      </div>
+    </a>
+
+    <a mat-list-item routerLink="/indigents">
+      <div class="flex items-center w-full">
+        <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined"
+          >home_work</mat-icon
+        >
+        <span class="text-white">Indigent</span>
+      </div>
+    </a> -->

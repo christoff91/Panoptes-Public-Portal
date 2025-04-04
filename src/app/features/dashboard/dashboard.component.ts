@@ -24,7 +24,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule,
+    MatDividerModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
