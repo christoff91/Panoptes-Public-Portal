@@ -342,24 +342,36 @@
                 </div>
                 <h3 class="text-xl text-black">Kiril Bester</h3>
               </div>
-              <button
-                mat-icon-button
-                color="warn"
-                (click)="deleteMember()"
-                class="!w-8 !h-8"
-                aria-label="Delete member"
-              >
-                <mat-icon
-                  class="text-gray-400 hover:text-red-500 cursor-pointer"
-                  >delete</mat-icon
+              <div class="flex gap-2">
+                <button
+                  mat-icon-button
+                  (click)="toggleEditMode()"
+                  class="!w-8 !h-8"
+                  aria-label="Edit member"
+                  [class.text-blue-500]="!isEditMode"
+                  [class.text-green-500]="isEditMode"
                 >
-              </button>
+                  <mat-icon>{{ isEditMode ? "close" : "edit" }}</mat-icon>
+                </button>
+
+                <button
+                  mat-icon-button
+                  color="warn"
+                  (click)="deleteMember()"
+                  class="!w-8 !h-8"
+                  aria-label="Delete member"
+                >
+                  <mat-icon class="text-red-500 cursor-pointer"
+                    >delete</mat-icon
+                  >
+                </button>
+              </div>
             </div>
             <div class="xl:w-1/2">
               <button
                 mat-flat-button
                 class="primary-btn w-half rounded-full"
-                (click)="startAddingMember()"
+                (click)="enableHouseholdForm()"
               >
                 <span>ADD</span>
                 <mat-icon class="text-white cursor-pointer">add</mat-icon>
@@ -372,22 +384,41 @@
           ></div>
 
           <!-- Right column - Add new member form -->
-          <div class="xl:w-1/2 flex flex-col">
+          <div
+            class="xl:w-1/2 flex flex-col"
+            [class.active-form-section]="isFormActive"
+            [class.inactive-form-section]="!isFormActive"
+          >
             <div class="w-full flex flex-col">
               <div class="w-full">
                 <mat-form-field class="w-full">
                   <mat-label>ID Number</mat-label>
-                  <input type="text" matInput formControlName="idno" />
+                  <input
+                    type="text"
+                    matInput
+                    formControlName="idno"
+                    [disabled]="!isHouseholdFormEnabled"
+                  />
                 </mat-form-field>
 
                 <mat-form-field class="w-full">
                   <mat-label>Full Name</mat-label>
-                  <input type="text" matInput formControlName="names" />
+                  <input
+                    type="text"
+                    matInput
+                    formControlName="names"
+                    [disabled]="!isHouseholdFormEnabled"
+                  />
                 </mat-form-field>
 
                 <mat-form-field class="w-full">
                   <mat-label>Surname</mat-label>
-                  <input type="text" matInput formControlName="surname" />
+                  <input
+                    type="text"
+                    matInput
+                    formControlName="surname"
+                    [disabled]="!isHouseholdFormEnabled"
+                  />
                 </mat-form-field>
 
                 <mat-form-field class="w-full">
@@ -397,6 +428,7 @@
                     [matDatepicker]="dob"
                     formControlName="dob"
                     placeholder="Choose a date"
+                    [disabled]="!isHouseholdFormEnabled"
                   />
                   <mat-datepicker-toggle
                     matSuffix
@@ -407,12 +439,23 @@
 
                 <mat-form-field class="w-full">
                   <mat-label>Employed</mat-label>
-                  <input type="text" matInput formControlName="employed" />
+                  <mat-select
+                    formControlName="employed"
+                    [disabled]="!isHouseholdFormEnabled"
+                  >
+                    <mat-option value="Yes">Yes</mat-option>
+                    <mat-option value="No">No</mat-option>
+                  </mat-select>
                 </mat-form-field>
 
                 <mat-form-field class="w-full">
                   <mat-label>Contact Number</mat-label>
-                  <input type="text" matInput formControlName="contactNo" />
+                  <input
+                    type="text"
+                    matInput
+                    formControlName="contactNo"
+                    [disabled]="!isHouseholdFormEnabled"
+                  />
                 </mat-form-field>
               </div>
               <div class="xl:w-1/2">
@@ -420,15 +463,15 @@
                   mat-flat-button
                   class="primary-btn w-half rounded-full"
                   (click)="addHouseholdMember()"
+                  [disabled]="!householdForm.valid"
                 >
-                  <span>SUBMIT</span>
+                  <span>{{ isEditMode ? "UPDATE" : "SUBMIT" }}</span>
                 </button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Desktop navigation buttons -->
         <div class="hidden xl:flex xl:gap-8 xl:mt-4">
           <div class="xl:w-1/2">
             <button
@@ -578,7 +621,7 @@
       </div>
 
       <div class="flex justify-center w-full px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-5xl">
           <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:col-span-2">
             <!-- SASSA Document -->
             <div class="w-full flex flex-col items-center relative">
@@ -1254,7 +1297,7 @@
       </div>
 
       <div class="flex justify-center w-full px-4 mt-8">
-        <div class="flex justify-between w-full max-w-4xl gap-4">
+        <div class="flex justify-between w-full max-w-5xl gap-4">
           <button
             mat-stroked-button
             class="flex-1 rounded-full py-2"

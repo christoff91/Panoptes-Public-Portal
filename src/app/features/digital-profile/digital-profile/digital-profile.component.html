@@ -1,6 +1,6 @@
 <div class="grid place-items-center relative">
   <header class="text-center mt-5 p-10">
-    <p class="text-5xl text-white">Digital Profile</p>
+    <p class="text-5xl text-white">{{ "Digital Profile" | translate }}</p>
   </header>
 
   <div class="flex justify-center xl:w-[84vw] xl:ml-[30vh] p-2">
@@ -20,15 +20,20 @@
           </div>
 
           <div class="xl:w-1/2 flex items-center justify-center">
-            <p class="text-black text-3xl">Contact Information</p>
+            <p class="text-black text-3xl">
+              {{ "Contact Information" | translate }}
+            </p>
           </div>
         </div>
 
         <div class="hidden xl:flex xl:gap-8">
           <div class="xl:w-1/2">
             <mat-form-field class="w-full">
-              <mat-label>Preferred Language</mat-label>
-              <mat-select>
+              <mat-label>{{ "Preferred Language" | translate }}</mat-label>
+              <mat-select
+                (selectionChange)="changeLanguage($event)"
+                [(value)]="language"
+              >
                 <mat-option value="en">English</mat-option>
                 <mat-option value="xh">Xhosa</mat-option>
                 <mat-option value="zu">Zulu</mat-option>
@@ -36,19 +41,19 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>Name</mat-label>
+              <mat-label>{{ "Name" | translate }}</mat-label>
               <input type="text" matInput formControlName="name" />
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>Surname</mat-label>
+              <mat-label>{{ "Surname" | translate }}</mat-label>
               <input type="text" matInput formControlName="surname" />
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>ID Number</mat-label>
+              <mat-label>{{ "ID Number" | translate }}</mat-label>
               <input type="idno" matInput formControlName="idno" />
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>Date of Birth</mat-label>
+              <mat-label>{{ "Date of Birth" | translate }}</mat-label>
               <input
                 matInput
                 [matDatepicker]="dobPicker"
@@ -69,19 +74,19 @@
 
           <div class="xl:w-1/2">
             <mat-form-field class="w-full">
-              <mat-label>Email Address</mat-label>
+              <mat-label>{{ "Email Address" | translate }}</mat-label>
               <input type="email" matInput formControlName="email" />
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>Phone Number</mat-label>
+              <mat-label>{{ "Phone Number" | translate }}</mat-label>
               <input type="phone" matInput formControlName="phone" />
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>Telephone Number</mat-label>
+              <mat-label>{{ "Telephone Number" | translate }}</mat-label>
               <input type="telephone" matInput formControlName="telephone" />
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>Address</mat-label>
+              <mat-label>{{ "Address" | translate }}</mat-label>
               <textarea
                 type="address"
                 matInput
@@ -94,7 +99,7 @@
               class="primary-btn w-full rounded-full"
               (click)="nextPage()"
             >
-              <span>NEXT</span>
+              <span>{{ "NEXT" | translate }}</span>
             </button>
           </div>
         </div>
@@ -111,15 +116,15 @@
 
           <div class="w-full">
             <mat-form-field class="w-full">
-              <mat-label>Name</mat-label>
+              <mat-label>{{ "Name" | translate }}</mat-label>
               <input type="name" matInput formControlName="name" />
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>Surname</mat-label>
+              <mat-label>{{ "Surname" | translate }}</mat-label>
               <input type="surname" matInput formControlName="surname" />
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>ID Number</mat-label>
+              <mat-label>{{ "ID Number" | translate }}</mat-label>
               <input
                 type="idno"
                 matInput
@@ -128,7 +133,7 @@
               />
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>Date of Birth</mat-label>
+              <mat-label>{{ "Date of Birth" | translate }}</mat-label>
               <input
                 matInput
                 [matDatepicker]="dobPicker"
@@ -148,29 +153,31 @@
             class="primary-btn w-full rounded-full mt-4"
             (click)="nextMobilePage()"
           >
-            <span>NEXT</span>
+            <span>{{ "NEXT" | translate }}</span>
           </button>
         </div>
 
         <div class="xl:hidden" *ngIf="mobilePage === 2">
           <div class="flex mb-6 flex-col items-center">
-            <p class="text-black text-3xl mt-4">Contact Information</p>
+            <p class="text-black text-3xl mt-4">
+              {{ "Contact Information" | translate }}
+            </p>
           </div>
           <div class="w-full">
             <mat-form-field class="w-full">
-              <mat-label>Email Address</mat-label>
+              <mat-label>{{ "Email Address" | translate }}</mat-label>
               <input type="email" matInput formControlName="email" />
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>Phone Number</mat-label>
+              <mat-label>{{ "Phone Number" | translate }}</mat-label>
               <input type="phone" matInput formControlName="phone" />
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>Telephone Number</mat-label>
+              <mat-label>{{ "Telephone Number" | translate }}</mat-label>
               <input type="telephone" matInput formControlName="telephone" />
             </mat-form-field>
             <mat-form-field class="w-full">
-              <mat-label>Address</mat-label>
+              <mat-label>{{ "Address" | translate }}</mat-label>
               <textarea
                 type="address"
                 matInput
@@ -185,14 +192,14 @@
               class="w-1/2 rounded-full"
               (click)="prevMobilePage()"
             >
-              <span>BACK</span>
+              <span>{{ "BACK" | translate }}</span>
             </button>
             <button
               mat-flat-button
               class="primary-btn w-1/2 rounded-full"
               (click)="nextPage()"
             >
-              <span>NEXT</span>
+              <span>{{ "NEXT" | translate }}</span>
             </button>
           </div>
         </div>
@@ -201,10 +208,14 @@
       <div>
         <div class="hidden xl:flex xl:mb-6">
           <div class="xl:w-1/2 flex items-center justify-center">
-            <p class="text-black text-3xl">Address Information</p>
+            <p class="text-black text-3xl">
+              {{ "Address Information" | translate }}
+            </p>
           </div>
           <div class="xl:w-1/2 flex items-center justify-center">
-            <p class="text-black text-3xl">Municipal Information</p>
+            <p class="text-black text-3xl">
+              {{ "Municipal Information" | translate }}
+            </p>
           </div>
         </div>
 
@@ -216,7 +227,7 @@
                   #streetAddressInput
                   [formControl]="form.streetAddress"
                   type="text"
-                  placeholder="Search Address"
+                  [placeholder]="'Search Address' | translate"
                   class="w-full px-4 py-3 border rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-black"
                   [ngClass]="{
                     'border-gray-400':
@@ -228,22 +239,22 @@
               </div>
 
               <mat-form-field class="w-full">
-                <mat-label>Address 1</mat-label>
+                <mat-label>{{ "Address 1" | translate }}</mat-label>
                 <input type="text" matInput formControlName="address1" />
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Address 2</mat-label>
+                <mat-label>{{ "Address 2" | translate }}</mat-label>
                 <input type="text" matInput formControlName="address2" />
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Address 3</mat-label>
+                <mat-label>{{ "Address 3" | translate }}</mat-label>
                 <input type="text" matInput formControlName="address3" />
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Postal Address</mat-label>
+                <mat-label>{{ "Postal Address" | translate }}</mat-label>
                 <input type="text" matInput formControlName="postalAddress" />
               </mat-form-field>
             </form>
@@ -256,7 +267,9 @@
           <div class="xl:w-1/2 flex flex-col">
             <form [formGroup]="municipalForm">
               <mat-form-field class="w-full">
-                <mat-label>Municipal Account Number</mat-label>
+                <mat-label>{{
+                  "Municipal Account Number" | translate
+                }}</mat-label>
                 <input
                   type="text"
                   matInput
@@ -265,7 +278,9 @@
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Municipal Account Number 2</mat-label>
+                <mat-label>{{
+                  "Municipal Account Number 2" | translate
+                }}</mat-label>
                 <input
                   type="text"
                   matInput
@@ -274,17 +289,17 @@
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Village</mat-label>
+                <mat-label>{{ "Village" | translate }}</mat-label>
                 <input type="text" matInput formControlName="village" />
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Ward</mat-label>
+                <mat-label>{{ "Ward" | translate }}</mat-label>
                 <input type="text" matInput formControlName="ward" />
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Number of Dependents</mat-label>
+                <mat-label>{{ "Number of Dependents" | translate }}</mat-label>
                 <input type="number" matInput formControlName="dependents" />
               </mat-form-field>
             </form>
@@ -298,7 +313,7 @@
               class="w-full rounded-full"
               (click)="previousPage()"
             >
-              <span>BACK</span>
+              <span>{{ "BACK" | translate }}</span>
             </button>
           </div>
           <div class="xl:w-1/2">
@@ -307,7 +322,7 @@
               class="primary-btn w-full rounded-full"
               (click)="nextPage()"
             >
-              <span>NEXT</span>
+              <span>{{ "NEXT" | translate }}</span>
             </button>
           </div>
         </div>
