@@ -3,7 +3,7 @@
     <p class="text-5xl text-white">{{ "Digital Profile" | translate }}</p>
   </header>
 
-  <div class="flex justify-center xl:w-[84vw] xl:ml-[30vh] p-2">
+  <div class="flex justify-center xl:w-[80vw] xl:ml-[2vh] p-2">
     <div
       class="w-full p-8 rounded-xl bg-white xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
     >
@@ -115,6 +115,18 @@
           </div>
 
           <div class="w-full">
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Preferred Language" | translate }}</mat-label>
+              <mat-select
+                (selectionChange)="changeLanguage($event)"
+                [(value)]="language"
+              >
+                <mat-option value="en">English</mat-option>
+                <mat-option value="xh">Xhosa</mat-option>
+                <mat-option value="zu">Zulu</mat-option>
+                <mat-option value="st">South Sotho</mat-option>
+              </mat-select>
+            </mat-form-field>
             <mat-form-field class="w-full">
               <mat-label>{{ "Name" | translate }}</mat-label>
               <input type="name" matInput formControlName="name" />
@@ -329,13 +341,15 @@
 
         <div class="xl:hidden" *ngIf="mobilePage === 1">
           <div class="flex mb-6 flex-col items-center">
-            <p class="text-black text-3xl">Address Information</p>
+            <p class="text-black text-3xl">
+              {{ "Address Information" | translate }}
+            </p>
           </div>
 
           <div class="w-full">
             <form [formGroup]="addressForm">
               <mat-form-field class="w-full">
-                <mat-label>Search Address</mat-label>
+                <mat-label>{{ "Search Address" | translate }}</mat-label>
                 <input
                   type="text"
                   matInput
@@ -346,22 +360,22 @@
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Address 1</mat-label>
+                <mat-label>{{ "Address 1" | translate }}</mat-label>
                 <input type="text" matInput formControlName="address1" />
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Address 2</mat-label>
+                <mat-label>{{ "Address 2" | translate }}</mat-label>
                 <input type="text" matInput formControlName="address2" />
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Address 3</mat-label>
+                <mat-label>{{ "Address 3" | translate }}</mat-label>
                 <input type="text" matInput formControlName="address3" />
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Postal Address</mat-label>
+                <mat-label>{{ "Postal Address" | translate }}</mat-label>
                 <input type="text" matInput formControlName="postalAddress" />
               </mat-form-field>
             </form>
@@ -373,27 +387,31 @@
               class="w-1/2 rounded-full"
               (click)="previousPage()"
             >
-              <span>BACK</span>
+              <span>{{ "BACK" | translate }}</span>
             </button>
             <button
               mat-flat-button
               class="primary-btn w-1/2 rounded-full"
               (click)="nextMobilePage()"
             >
-              <span>NEXT</span>
+              <span>{{ "NEXT" | translate }}</span>
             </button>
           </div>
         </div>
 
         <div class="xl:hidden" *ngIf="mobilePage === 2">
           <div class="flex mb-6 flex-col items-center">
-            <p class="text-black text-3xl">Municipal Information</p>
+            <p class="text-black text-3xl">
+              {{ "Municipal Information" | translate }}
+            </p>
           </div>
 
           <div class="w-full">
             <form [formGroup]="municipalForm">
               <mat-form-field class="w-full">
-                <mat-label>Municipal Account Number</mat-label>
+                <mat-label>{{
+                  "Municipal Account Number" | translate
+                }}</mat-label>
                 <input
                   type="text"
                   matInput
@@ -402,7 +420,9 @@
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Municipal Account Number 2</mat-label>
+                <mat-label>{{
+                  "Municipal Account Number 2" | translate
+                }}</mat-label>
                 <input
                   type="text"
                   matInput
@@ -411,17 +431,17 @@
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Village</mat-label>
+                <mat-label>{{ "Village" | translate }}</mat-label>
                 <input type="text" matInput formControlName="village" />
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Ward</mat-label>
+                <mat-label>{{ "Ward" | translate }}</mat-label>
                 <input type="text" matInput formControlName="ward" />
               </mat-form-field>
 
               <mat-form-field class="w-full">
-                <mat-label>Number of Dependents</mat-label>
+                <mat-label>{{ "Number of Dependents" | translate }}</mat-label>
                 <input type="number" matInput formControlName="dependents" />
               </mat-form-field>
             </form>
@@ -433,21 +453,21 @@
               class="w-1/2 rounded-full"
               (click)="prevMobilePage()"
             >
-              <span>BACK</span>
+              <span>{{ "BACK" | translate }}</span>
             </button>
             <button
               mat-flat-button
               class="primary-btn w-1/2 rounded-full"
               (click)="nextPage()"
             >
-              <span>NEXT</span>
+              <span>{{ "NEXT" | translate }}</span>
             </button>
           </div>
         </div>
       </div>
       } @if (currentPage === 3) {
       <div class="flex items-center justify-center mb-10">
-        <p class="text-black text-3xl">Upload Documents</p>
+        <p class="text-black text-3xl">{{ "Upload Documents" | translate }}</p>
       </div>
 
       <div class="flex justify-center w-full px-4">
@@ -494,13 +514,15 @@
                       <mat-icon class="text-gray-400" style="font-size: 80px"
                         >description</mat-icon
                       >
-                      <span class="mt-2 text-gray-600">Document Preview</span>
+                      <span class="mt-2 text-gray-600">{{
+                        "Document Management" | translate
+                      }}</span>
                     </div>
                     }
 
                     <div class="mb-6">
                       <div class="text-sm font-medium text-gray-700 mb-1">
-                        File Name:
+                        {{ "File Name" | translate }}:
                       </div>
                       <div class="p-2 bg-gray-500 rounded text-sm break-all">
                         {{ uploadedFiles["sassa"].file.name }}
@@ -516,7 +538,7 @@
                           $event.stopPropagation()
                         "
                       >
-                        <span>REPLACE</span>
+                        <span>{{ "REPLACE" | translate }}</span>
                         <mat-icon class="text-base">file_upload</mat-icon>
                       </button>
                       <button
@@ -526,7 +548,7 @@
                           deleteDocument('sassa'); $event.stopPropagation()
                         "
                       >
-                        <span>DELETE</span>
+                        <span>{{ "DELETE" | translate }}</span>
                         <mat-icon class="text-base">delete</mat-icon>
                       </button>
                     </div>
@@ -573,9 +595,9 @@
                   />
                 </button>
 
-                <span class="text-black mt-2 text-center font-medium"
-                  >SASSA</span
-                >
+                <span class="text-black mt-2 text-center font-medium">{{
+                  "SASSA" | translate
+                }}</span>
 
                 @if (uploadedFiles['sassa']) {
                 <div
@@ -606,7 +628,9 @@
                     class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
                   >
                     <div class="flex justify-between items-center mb-4">
-                      <h3 class="text-lg font-semibold">Document Management</h3>
+                      <h3 class="text-lg font-semibold">
+                        {{ "Document Management" | translate }}
+                      </h3>
                       <button
                         (click)="closeDocCard('idDocument')"
                         class="text-gray-500 hover:text-gray-700 p-1"
@@ -629,13 +653,15 @@
                       <mat-icon class="text-gray-400" style="font-size: 80px"
                         >description</mat-icon
                       >
-                      <span class="mt-2 text-gray-600">Document Preview</span>
+                      <span class="mt-2 text-gray-600">{{
+                        "Document Preview" | translate
+                      }}</span>
                     </div>
                     }
 
                     <div class="mb-6">
                       <div class="text-sm font-medium text-gray-700 mb-1">
-                        File Name:
+                        {{ "File Name" | translate }}:
                       </div>
                       <div class="p-2 bg-gray-500 rounded text-sm break-all">
                         {{ uploadedFiles["idDocument"].file.name }}
@@ -650,7 +676,7 @@
                           triggerFileInput('idUpload'); $event.stopPropagation()
                         "
                       >
-                        <span>REPLACE</span>
+                        <span>{{ "REPLACE" | translate }}</span>
                         <mat-icon class="text-base">file_upload</mat-icon>
                       </button>
                       <button
@@ -660,7 +686,7 @@
                           deleteDocument('idDocument'); $event.stopPropagation()
                         "
                       >
-                        <span>DELETE</span>
+                        <span>{{ "DELETE" | translate }}</span>
                         <mat-icon class="text-base">delete</mat-icon>
                       </button>
                     </div>
@@ -707,9 +733,9 @@
                   />
                 </button>
 
-                <span class="text-black mt-2 text-center font-medium"
-                  >ID Document</span
-                >
+                <span class="text-black mt-2 text-center font-medium">{{
+                  "ID Document" | translate
+                }}</span>
 
                 @if (uploadedFiles['idDocument']) {
                 <div
@@ -739,7 +765,9 @@
                     class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
                   >
                     <div class="flex justify-between items-center mb-4">
-                      <h3 class="text-lg font-semibold">Document Management</h3>
+                      <h3 class="text-lg font-semibold">
+                        {{ "Document Management" | translate }}
+                      </h3>
                       <button
                         (click)="closeDocCard('payslip')"
                         class="text-gray-500 hover:text-gray-700 p-1"
@@ -762,13 +790,15 @@
                       <mat-icon class="text-gray-400" style="font-size: 80px"
                         >description</mat-icon
                       >
-                      <span class="mt-2 text-gray-600">Document Preview</span>
+                      <span class="mt-2 text-gray-600">{{
+                        "Document Preview" | translate
+                      }}</span>
                     </div>
                     }
 
                     <div class="mb-6">
                       <div class="text-sm font-medium text-gray-700 mb-1">
-                        File Name:
+                        {{ "File Name" | translate }}:
                       </div>
                       <div class="p-2 bg-gray-500 rounded text-sm break-all">
                         {{ uploadedFiles["payslip"].file.name }}
@@ -784,7 +814,7 @@
                           $event.stopPropagation()
                         "
                       >
-                        <span>REPLACE</span>
+                        <span>{{ "REPLACE" | translate }}</span>
                         <mat-icon class="text-base">file_upload</mat-icon>
                       </button>
                       <button
@@ -794,7 +824,7 @@
                           deleteDocument('payslip'); $event.stopPropagation()
                         "
                       >
-                        <span>DELETE</span>
+                        <span>{{ "DELETE" | translate }}</span>
                         <mat-icon class="text-base">delete</mat-icon>
                       </button>
                     </div>
@@ -841,9 +871,9 @@
                   />
                 </button>
 
-                <span class="text-black mt-2 text-center font-medium"
-                  >Payslip</span
-                >
+                <span class="text-black mt-2 text-center font-medium">{{
+                  "Payslip" | translate
+                }}</span>
 
                 @if (uploadedFiles['payslip']) {
                 <div
@@ -873,7 +903,9 @@
                     class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
                   >
                     <div class="flex justify-between items-center mb-4">
-                      <h3 class="text-lg font-semibold">Document Management</h3>
+                      <h3 class="text-lg font-semibold">
+                        {{ "Document Management" | translate }}
+                      </h3>
                       <button
                         (click)="closeDocCard('municipal')"
                         class="text-gray-500 hover:text-gray-700 p-1"
@@ -896,13 +928,15 @@
                       <mat-icon class="text-gray-400" style="font-size: 80px"
                         >description</mat-icon
                       >
-                      <span class="mt-2 text-gray-600">Document Preview</span>
+                      <span class="mt-2 text-gray-600">{{
+                        "Document Preview" | translate
+                      }}</span>
                     </div>
                     }
 
                     <div class="mb-6">
                       <div class="text-sm font-medium text-gray-700 mb-1">
-                        File Name:
+                        {{ "File Name" | translate }}:
                       </div>
                       <div class="p-2 bg-gray-500 rounded text-sm break-all">
                         {{ uploadedFiles["municipal"].file.name }}
@@ -918,7 +952,7 @@
                           $event.stopPropagation()
                         "
                       >
-                        <span>REPLACE</span>
+                        <span>{{ "REPLACE" | translate }}</span>
                         <mat-icon class="text-base">file_upload</mat-icon>
                       </button>
                       <button
@@ -928,7 +962,7 @@
                           deleteDocument('municipal'); $event.stopPropagation()
                         "
                       >
-                        <span>DELETE</span>
+                        <span>{{ "DELETE" | translate }}</span>
                         <mat-icon class="text-base">delete</mat-icon>
                       </button>
                     </div>
@@ -975,9 +1009,9 @@
                   />
                 </button>
 
-                <span class="text-black mt-2 text-center font-medium"
-                  >Municipal Account</span
-                >
+                <span class="text-black mt-2 text-center font-medium">{{
+                  "Municipal Account" | translate
+                }}</span>
 
                 @if (uploadedFiles['municipal']) {
                 <div
@@ -1007,7 +1041,9 @@
                     class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 w-96 max-w-full mx-4"
                   >
                     <div class="flex justify-between items-center mb-4">
-                      <h3 class="text-lg font-semibold">Document Management</h3>
+                      <h3 class="text-lg font-semibold">
+                        {{ "Document Management" | translate }}
+                      </h3>
                       <button
                         (click)="closeDocCard('selfie')"
                         class="text-gray-500 hover:text-gray-700 p-1"
@@ -1030,13 +1066,15 @@
                       <mat-icon class="text-gray-400" style="font-size: 80px"
                         >description</mat-icon
                       >
-                      <span class="mt-2 text-gray-600">Document Preview</span>
+                      <span class="mt-2 text-gray-600">{{
+                        "Document Preview" | translate
+                      }}</span>
                     </div>
                     }
 
                     <div class="mb-6">
                       <div class="text-sm font-medium text-gray-700 mb-1">
-                        File Name:
+                        {{ "File Name" | translate }}:
                       </div>
                       <div class="p-2 bg-gray-500 rounded text-sm break-all">
                         {{ uploadedFiles["selfie"].file.name }}
@@ -1052,7 +1090,7 @@
                           $event.stopPropagation()
                         "
                       >
-                        <span>REPLACE</span>
+                        <span>{{ "REPLACE" | translate }}</span>
                         <mat-icon class="text-base">file_upload</mat-icon>
                       </button>
                       <button
@@ -1062,7 +1100,7 @@
                           deleteDocument('selfie'); $event.stopPropagation()
                         "
                       >
-                        <span>DELETE</span>
+                        <span>{{ "DELETE" | translate }}</span>
                         <mat-icon class="text-base">delete</mat-icon>
                       </button>
                     </div>
@@ -1109,9 +1147,9 @@
                   />
                 </button>
 
-                <span class="text-black mt-2 text-center font-medium"
-                  >Selfie</span
-                >
+                <span class="text-black mt-2 text-center font-medium">{{
+                  "Selfie" | translate
+                }}</span>
 
                 @if (uploadedFiles['selfie']) {
                 <div
@@ -1134,14 +1172,14 @@
             class="flex-1 rounded-full py-2"
             (click)="previousPage()"
           >
-            <span>BACK</span>
+            <span>{{ "BACK" | translate }}</span>
           </button>
           <button
             mat-flat-button
             class="flex-1 primary-btn rounded-full py-2"
             (click)="submitForm()"
           >
-            <span>COMPLETE</span>
+            <span>{{ "COMPLETE" | translate }}</span>
           </button>
         </div>
       </div>

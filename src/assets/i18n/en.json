@@ -35,6 +35,7 @@
   "Telephone Number": "Telephone Number",
   "Enter your telephone number": "Enter your telephone number",
   "Next": "Next",
+
   "Digital Profile": "Digital Profile",
   "Preferred Language": "Preferred Language",
   "English": "English",
@@ -61,5 +62,17 @@
   "Village": "Village",
   "Ward": "Ward",
   "Number of Dependents": "Number of Dependents",
-  "BACK": "BACK"
+  "BACK": "BACK",
+  "Upload Documents": "Upload Documents",
+  "SASSA": "SASSA",
+  "ID Document": "ID Document",
+  "Payslip": "Payslip",
+  "Municipal Account": "Municipal Account",
+  "Selfie": "Selfie",
+  "Document Management": "Document Management",
+  "File Name": "File Name",
+  "Document Preview": "Document Preview",
+  "REPLACE": "REPLACE",
+  "DELETE": "DELETE",
+  "COMPLETE": "COMPLETE"
 }

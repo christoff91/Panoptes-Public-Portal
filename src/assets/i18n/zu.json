@@ -35,6 +35,7 @@
   "Telephone Number": "Inombolo yocingo",
   "Enter your telephone number": "Faka inombolo yakho yocingo",
   "Next": "Olandelayo",
+
   "Digital Profile": "Iphrofayili yedijithali",
   "Preferred Language": "Ulimi oluthandekayo",
   "English": "IsiNgisi",
@@ -64,5 +65,16 @@
   "Municipal Account Number": "Inombolo ye-akhawunti yomasipala",
   "Municipal Account Number 2": "Inombolo ye-akhawunti yomasipala 2",
   "Number of Dependents": "Inombolo yabathembekile",
-  "BACK": "EMUVA"
+  "BACK": "EMUVA",
+  "Upload Documents": "Layisha Amadokhumenti",
+  "SASSA": "I-SASSA",
+  "ID Document": "Idokhumenti ye-ID",
+  "Payslip": "I-Payslip",
+  "Selfie": "Isithombe",
+  "Document Management": "Ukuphathwa kwamadokhumenti",
+  "File Name": "Igama lefayela",
+  "Document Preview": "Ukubuka kwedokhumenti",
+  "REPLACE": "SHINTSHA",
+  "DELETE": "SUSA",
+  "COMPLETE": "QEDELA"
 }

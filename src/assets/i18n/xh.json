@@ -35,6 +35,7 @@
   "Telephone Number": "Inombolo yomnxeba",
   "Enter your telephone number": "Faka inombolo yakho yomnxeba",
   "Next": "Okulandelayo",
+
   "Digital Profile": "Iprofayile yedijithali",
   "Preferred Language": "Ulwimi oluncanyelwayo",
   "English": "IsiNgesi",
@@ -61,5 +62,17 @@
   "Village": "Ilali",
   "Ward": "Iwardi",
   "Number of Dependents": "Inani labaxhomekekayo",
-  "BACK": "EMVA"
+  "BACK": "EMVA",
+  "Upload Documents": "Layisha Amaxwebhu",
+  "SASSA": "ISASSA",
+  "ID Document": "IXwebhu le-ID",
+  "Payslip": "Ipheyisilep",
+  "Municipal Account": "Iakhawunti yeMasipala",
+  "Selfie": "Isifanekiso",
+  "Document Management": "Ulawulo lweXwebhu",
+  "File Name": "Igama leFayile",
+  "Document Preview": "Umboniso weXwebhu",
+  "REPLACE": "TSHINTSHA",
+  "DELETE": "CIMA",
+  "COMPLETE": "QEDELA"
 }
