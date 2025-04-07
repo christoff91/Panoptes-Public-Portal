@@ -71,9 +71,8 @@
                 <button
                   mat-flat-button
                   class="primary-btn w-full rounded-full mt-3"
-                  (click)="nextPage()"
                 >
-                  <span>NEXT</span>
+                  <span>Edit this Arrangement</span>
                 </button>
               </div>
             </div>
@@ -83,11 +82,6 @@
               <!-- First Card -->
               <div class="w-1/2 pr-4">
                 <mat-card appearance="outlined" class="p-3 h-full">
-                  <div class="text-center text-black">
-                    <p class="text-3xl">
-                      Additional Account Holder Information
-                    </p>
-                  </div>
                   <h3 class="text-lg text-black">Salary Number:</h3>
                   <h3 class="text-lg text-black">Cell Number:</h3>
                   <h3 class="text-lg text-black">Address:</h3>
@@ -107,9 +101,6 @@
               <!-- Second Card -->
               <div class="w-1/2 pl-4">
                 <mat-card appearance="outlined" class="p-3">
-                  <div class="text-center text-black">
-                    <p class="text-3xl">Arrangement Account Details</p>
-                  </div>
                   <h3 class="text-lg text-black">Account Number:</h3>
                   <h3 class="text-lg text-black">Arrangement Amount:</h3>
                   <h3 class="text-lg text-black">Arrangement Count:</h3>
@@ -121,18 +112,60 @@
                   <h3 class="text-lg text-black">Account Status:</h3>
                   <h3 class="text-lg text-black">PTP Date:</h3>
                 </mat-card>
-
-                <button
-                  mat-flat-button
-                  class="primary-btn w-full rounded-full mt-3"
-                  (click)="nextPage()"
-                >
-                  <span>Edit this Arrangement</span>
-                </button>
               </div>
             </div>
           </mat-tab>
-          <mat-tab label="Beneficiary Account"> Content 3 </mat-tab>
+          <mat-tab label="Beneficiary Account">
+            <div class="flex flex-row w-full p-2">
+              <!-- First Card -->
+              <div class="w-1/2 pr-4">
+                <mat-card appearance="outlined" class="p-3 h-full">
+                  <h3 class="text-lg text-black">Debtor Status:</h3>
+                  <h3 class="text-lg text-black">Account Number:</h3>
+                  <h3 class="text-lg text-black">Unit Reference:</h3>
+                  <h3 class="text-lg text-black">Record ID:</h3>
+                  <h3 class="text-lg text-black">Account Number:</h3>
+                  <h3 class="text-lg text-black">Unit Reference:</h3>
+                  <h3 class="text-lg text-black">Application Date:</h3>
+                  <h3 class="text-lg text-black">Owner Tenant:</h3>
+                  <h3 class="text-lg text-black">Debtor Type:</h3>
+                  <h3 class="text-lg text-black">Group Account Number:</h3>
+                  <h3 class="text-lg text-black">Postal Address 1:</h3>
+                  <h3 class="text-lg text-black">Postal Address 2:</h3>
+                  <h3 class="text-lg text-black">Postal Address 3:</h3>
+                  <h3 class="text-lg text-black">Postal Code:</h3>
+                  <h3 class="text-lg text-black">Surname:</h3>
+                  <h3 class="text-lg text-black">First Name:</h3>
+                  <h3 class="text-lg text-black">ID Number:</h3>
+                </mat-card>
+              </div>
+
+              <!-- Divider -->
+              <div class="border-l border-gray-200 h-auto"></div>
+
+              <!-- Second Card -->
+              <div class="w-1/2 pl-4">
+                <mat-card appearance="outlined" class="p-3">
+                  <h3 class="text-lg text-black">Last Due Date:</h3>
+                  <h3 class="text-lg text-black">Parent Account:</h3>
+                  <h3 class="text-lg text-black">Balance:</h3>
+                  <h3 class="text-lg text-black">Current Balance:</h3>
+                  <h3 class="text-lg text-black">Days 30:</h3>
+                  <h3 class="text-lg text-black">Days 60:</h3>
+                  <h3 class="text-lg text-black">Days 90:</h3>
+                  <h3 class="text-lg text-black">Days 30+:</h3>
+                  <h3 class="text-lg text-black">VAT:</h3>
+                  <h3 class="text-lg text-black">Account Type:</h3>
+                  <h3 class="text-lg text-black">Consumer Number:</h3>
+                  <h3 class="text-lg text-black">Consumer Details:</h3>
+                  <h3 class="text-lg text-black">Employee Number:</h3>
+                  <h3 class="text-lg text-black">Valid ID:</h3>
+                  <h3 class="text-lg text-black">Deceased:</h3>
+                  <h3 class="text-lg text-black">Deceased Date:</h3>
+                </mat-card>
+              </div>
+            </div>
+          </mat-tab>
         </mat-tab-group>
 
         <div class="xl:hidden" *ngIf="mobilePage === 1"></div>
