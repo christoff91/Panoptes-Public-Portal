@@ -8,8 +8,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { MatListModule } from '@angular/material/list';
 import { ResponsiveService } from '../../../core/services/responsive.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -33,6 +34,7 @@ export class NavigationComponent implements OnInit {
 
   menuItems = [
     { label: 'Dashboard', path: '/dashboard', icon: 'dashboard' },
+    { label: 'Municipal', path: '/municipal', icon: 'account_balance' },
     {
       label: 'My Digital Profile',
       path: '/digital-profile',
@@ -45,19 +47,55 @@ export class NavigationComponent implements OnInit {
 
   constructor(
     private responsiveService: ResponsiveService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.activeRoute = event.urlAfterRedirects;
-      }
-    });
+    // this.router.events.subscribe((event) => {
+    //   if (event instanceof NavigationEnd) {
+    //     this.activeRoute = event.urlAfterRedirects;
+    //   }
+    // });
   }
 
   ngOnInit(): void {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.activeRoute = event.urlAfterRedirects;
+        // Get label from route data
+        const label = this.getActiveRouteLabel();
+        if (label) {
+          this.updateActiveLabel.emit(label);
+        } else {
+          // Fall back to path matching if no route data is available
+          this.emitActiveLabel();
+        }
+      });
     this.responsiveService.isMobile().subscribe((mobile) => {
       this.isMobile.set(mobile);
     });
+  }
+
+  private getActiveRouteLabel(): string | null {
+    // Navigate to the deepest activated route
+    let route: ActivatedRoute | null = this.activatedRoute.root;
+    let label: string | null = null;
+
+    // We'll collect labels as we traverse the route tree
+    while (route) {
+      // Get the last child if there are children
+      const childrenRoutes: ActivatedRoute[] = route.children;
+      route = childrenRoutes.length
+        ? childrenRoutes[childrenRoutes.length - 1]
+        : null;
+
+      // If the current route has a label in its data, update our label
+      if (route && route.snapshot.data && route.snapshot.data['label']) {
+        label = route.snapshot.data['label'];
+      }
+    }
+
+    return label;
   }
 
   navigate(path: string) {
