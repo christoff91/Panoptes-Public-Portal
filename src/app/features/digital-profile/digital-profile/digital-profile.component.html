@@ -1,11 +1,14 @@
 <div class="grid place-items-center relative">
-  <header class="text-center mt-5 p-10">
+  <!-- <header class="text-center mt-5 p-10">
     <p class="text-5xl text-white">{{ "Digital Profile" | translate }}</p>
+  </header> -->
+  <header class="text-center p-5">
+    <img src="assets/logos/white_logo.png" class="w-24 md:w-full xl:w-[10vw]" />
   </header>
 
   <div class="flex justify-center xl:w-[80vw] xl:ml-[2vh] p-2">
     <div
-      class="w-full p-8 rounded-xl bg-white xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
+      class="w-full p-8 rounded-xl bg-opacity-50 bg-white xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
     >
       @if (currentPage === 1) {
       <div [formGroup]="personalForm">

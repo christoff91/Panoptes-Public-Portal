@@ -1,15 +1,11 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './layout/main-layout/main-layout/main-layout.component';
-import { LoginComponent } from './features/auth/login/login/login.component';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { NavigationComponent } from './layout/navigation/navigation/navigation.component';
-import { AuthGuard } from './features/auth/services/auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    component: MainLayoutComponent, // Wraps routed components
-    // canActivate: [AuthGuard],
+    component: MainLayoutComponent,
     children: [
       {
         path: '',

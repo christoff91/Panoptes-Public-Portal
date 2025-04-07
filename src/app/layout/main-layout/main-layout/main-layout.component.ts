@@ -63,15 +63,14 @@ export class MainLayoutComponent implements OnInit {
   }
 
   updateActiveLabel(path: string) {
-    // ✅ Lookup menu label based on path (data-driven)
     const menuMap: { [key: string]: string } = {
       '/dashboard': 'Dashboard',
+      '/municipal': 'Municipal',
       '/digital-profile': 'My Digital Profile',
       '/accounts': 'Accounts',
       '/arrangements': 'Arrangements',
       '/indigents': 'Indigent',
     };
-    console.log(`Active Label ${path}`);
 
     this.activeLabel.set(menuMap[path] || '');
   }
