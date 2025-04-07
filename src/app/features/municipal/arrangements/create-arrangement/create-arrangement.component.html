@@ -1,0 +1,238 @@
+<div class="grid place-items-center relative">
+  <header class="text-center mt-5 p-10">
+    <p class="text-5xl">Arrangements</p>
+  </header>
+
+  <div class="flex justify-center xl:w-[80vw] xl:ml-[2vh] p-2">
+    <div
+      class="w-full p-8 rounded-xl bg-white bg-opacity-50 xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
+    >
+      @if (currentPage === 1) {
+      <div [formGroup]="personalForm">
+        <div class="text-center text-black">
+          <p class="text-3xl">Create and Edit Arrangements</p>
+        </div>
+
+        <div class="hidden xl:w-1/2 xl:flex xl:mb-6">
+          <h3 class="text-xl text-black">Account Number: 0009085259084</h3>
+        </div>
+
+        <div class="hidden xl:flex xl:gap-8">
+          <div class="xl:w-1/2">
+            <mat-card appearance="outlined" class="p-3">
+              <div class="text-center text-black">
+                <p class="text-3xl">Additional Account Holder Information</p>
+              </div>
+              <h3 class="text-lg text-black">Salary Number:</h3>
+              <h3 class="text-lg text-black">Cell Number:</h3>
+              <h3 class="text-lg text-black">Address:</h3>
+              <h3 class="text-lg text-black">Work Address:</h3>
+              <h3 class="text-lg text-black">Net Salary:</h3>
+              <h3 class="text-lg text-black">Work Number:</h3>
+              <h3 class="text-lg text-black">Spouse ID Number:</h3>
+              <h3 class="text-lg text-black">Spouse Full Name:</h3>
+              <h3 class="text-lg text-black">Spouse Cell Number:</h3>
+              <h3 class="text-lg text-black">Spouse Surname:</h3>
+            </mat-card>
+          </div>
+
+          <div
+            class="hidden xl:block border-r border-gray-200 h-auto my-2"
+          ></div>
+
+          <div class="xl:w-1/2">
+            <mat-card appearance="outlined" class="p-3">
+              <div class="text-center text-black">
+                <p class="text-3xl">Arrangement Account Details</p>
+              </div>
+              <h3 class="text-lg text-black">Account Number:</h3>
+              <h3 class="text-lg text-black">Arrangement Amount:</h3>
+              <h3 class="text-lg text-black">Arrangement Count:</h3>
+              <h3 class="text-lg text-black">Arrangement Number:</h3>
+              <h3 class="text-lg text-black">Installment:</h3>
+              <h3 class="text-lg text-black">Created By:</h3>
+              <h3 class="text-lg text-black">Arrangement Account:</h3>
+              <h3 class="text-lg text-black">Arrangement Term:</h3>
+              <h3 class="text-lg text-black">Account Status:</h3>
+              <h3 class="text-lg text-black">PTP Date:</h3>
+            </mat-card>
+
+            <button
+              mat-flat-button
+              class="primary-btn w-full rounded-full mt-3"
+              (click)="nextPage()"
+            >
+              <span>NEXT</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="xl:hidden" *ngIf="mobilePage === 1">
+          <div class="xl:w-1/2 xl:flex mb-6">
+            <h3 class="text-xl text-black">ID Number: 0009085259084</h3>
+          </div>
+          <!-- <img src="assets/icons/account_circle.png" class="w-30" /> -->
+
+          <div class="w-full">
+            <mat-form-field class="w-full">
+              <mat-label>Full Name</mat-label>
+              <input type="text" matInput formControlName="name" />
+            </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>Surname</mat-label>
+              <input type="text" matInput formControlName="surname" />
+            </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>Date of Birth</mat-label>
+              <input
+                matInput
+                [matDatepicker]="dobPicker"
+                formControlName="dob"
+                placeholder="Choose a date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="dobPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #dobPicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>ID Issue Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="idPicker"
+                formControlName="iddate"
+                placeholder="Choose a date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="idPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #idPicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>Email Address</mat-label>
+              <input type="text" matInput formControlName="email" />
+            </mat-form-field>
+          </div>
+
+          <button
+            mat-flat-button
+            class="primary-btn w-full rounded-full mt-4"
+            (click)="nextMobilePage()"
+          >
+            <span>NEXT</span>
+          </button>
+        </div>
+
+        <!-- Page 2: Contact Information -->
+        <div *ngIf="mobilePage === 2">
+          <div class="flex mb-6 flex-col items-center">
+            <p class="text-black text-2xl mt-4">Address Information</p>
+          </div>
+          <div class="w-full">
+            <div [formGroup]="addressForm">
+              <mat-form-field class="w-full">
+                <mat-label>Street Address</mat-label>
+                <input type="text" matInput formControlName="streetAddress" />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Address 1</mat-label>
+                <input type="text" matInput formControlName="address1" />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Address 2</mat-label>
+                <input type="text" matInput formControlName="address2" />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Address 3</mat-label>
+                <input type="text" matInput formControlName="address3" />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Postal Address</mat-label>
+                <input type="text" matInput formControlName="postalAddress" />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="flex gap-4 mt-4">
+            <button
+              mat-stroked-button
+              class="w-1/2 rounded-full"
+              (click)="prevMobilePage()"
+            >
+              <span>BACK</span>
+            </button>
+            <button
+              mat-flat-button
+              class="primary-btn w-1/2 rounded-full"
+              (click)="nextMobilePage()"
+            >
+              <span>NEXT</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Page 3: Municipal Information -->
+        <div *ngIf="mobilePage === 3">
+          <div class="flex mb-6 flex-col items-center">
+            <p class="text-black text-2xl mt-4">Municipal Information</p>
+          </div>
+
+          <div class="w-full" [formGroup]="municipalForm">
+            <mat-form-field class="w-full">
+              <mat-label>Municipal Account Number</mat-label>
+              <input type="text" matInput formControlName="munAccNo" />
+            </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>Village</mat-label>
+              <input type="text" matInput formControlName="village" />
+            </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>Ward</mat-label>
+              <input type="text" matInput formControlName="ward" />
+            </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>Salary</mat-label>
+              <input type="text" matInput formControlName="salary" />
+            </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>Employed</mat-label>
+              <input type="text" matInput formControlName="employed" />
+            </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>Employer / EPWP Skill</mat-label>
+              <input type="text" matInput formControlName="epwpEmploy" />
+            </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>Remarks</mat-label>
+              <textarea
+                type="text"
+                matInput
+                formControlName="remarks"
+              ></textarea>
+            </mat-form-field>
+          </div>
+
+          <div class="flex gap-4 mt-4">
+            <button
+              mat-stroked-button
+              class="w-1/2 rounded-full"
+              (click)="prevMobilePage()"
+            >
+              <span>BACK</span>
+            </button>
+            <button
+              mat-flat-button
+              class="primary-btn w-1/2 rounded-full"
+              (click)="nextPage()"
+            >
+              <span>NEXT</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

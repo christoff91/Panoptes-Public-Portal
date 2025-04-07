@@ -66,11 +66,39 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'arrangements',
+        loadChildren: () =>
+          import('./features/dashboard/arrangements/arrangements.module').then(
+            (m) => m.ArrangementsModule
+          ),
+      },
+      {
         path: 'indigents',
         loadChildren: () =>
           import(
             './features/municipal/indigent/indigents/indigents.module'
           ).then((m) => m.IndigentsModule),
+      },
+      {
+        path: 'create-arrangement',
+        loadChildren: () =>
+          import(
+            './features/municipal/arrangements/create-arrangement/create-arrangement.module'
+          ).then((m) => m.CreateArrangementModule),
+      },
+      {
+        path: 'manage-arrangement',
+        loadChildren: () =>
+          import(
+            './features/municipal/arrangements/manage-arrangement/manage-arrangement.module'
+          ).then((m) => m.ManageArrangementModule),
+      },
+      {
+        path: 'history-arrangement',
+        loadChildren: () =>
+          import(
+            './features/municipal/arrangements/history-arrangement/history-arrangement.module'
+          ).then((m) => m.HistoryArrangementModule),
       },
       {
         path: 'navigation',
