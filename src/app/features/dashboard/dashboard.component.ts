@@ -48,6 +48,31 @@ export class DashboardComponent {
   constructor(private fb: FormBuilder, private router: Router) {
     this.generateRandomSlides();
   }
+  @Output() updateActiveLabel = new EventEmitter<string>();
+
+  activeRoute: string = '';
+
+  menuItems = [
+    { label: 'Municipal', path: '/municipal', icon: 'account_balance' },
+    {
+      label: 'My Digital Profile',
+      path: '/digital-profile',
+      icon: 'contact_mail',
+    },
+  ];
+
+  navigate(path: string) {
+    this.router.navigate([path]);
+    this.emitActiveLabel(path);
+  }
+
+  emitActiveLabel(path?: string) {
+    const currentPath = path || this.activeRoute;
+    const activeItem = this.menuItems.find((item) =>
+      currentPath.startsWith(item.path)
+    );
+    this.updateActiveLabel.emit(activeItem ? activeItem.label : '');
+  }
 
   get progressRotation(): number {
     return this.progress * 3.6;
