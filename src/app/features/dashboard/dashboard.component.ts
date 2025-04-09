@@ -3,10 +3,6 @@ import {
   ChangeDetectionStrategy,
   Output,
   EventEmitter,
-} from '@angular/core';
-import {
-  Component,
-  ChangeDetectionStrategy,
   HostListener,
 } from '@angular/core';
 import { Router } from '@angular/router';
