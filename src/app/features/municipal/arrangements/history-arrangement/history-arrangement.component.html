@@ -1,1 +1,52 @@
-<p>history-arrangement works!</p>
+<div class="grid place-items-center relative">
+  <header class="text-center mt-5 p-10">
+    <p class="text-5xl">Arrangements</p>
+  </header>
+
+  <div class="flex justify-center xl:w-[80vw] xl:ml-[2vh] p-2">
+    <div
+      class="w-full p-8 rounded-xl bg-white bg-opacity-50 xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
+    >
+      <div class="text-center text-black">
+        <p class="text-3xl mb-2">Arrangement History</p>
+      </div>
+      <div class="mat-elevation-z8">
+        <table mat-table>
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef>Arrangement</th>
+            <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Arrangement</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef>Arrangement</th>
+            <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef>Arrangement</th>
+            <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[10, 50, 100]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

@@ -98,20 +98,12 @@ export class IndigentsComponent {
   });
 
   householdForm = new FormGroup({
-    idno: new FormControl({ value: '', disabled: true }, [Validators.required]),
-    names: new FormControl({ value: '', disabled: true }, [
-      Validators.required,
-    ]),
-    surname: new FormControl({ value: '', disabled: true }, [
-      Validators.required,
-    ]),
-    dob: new FormControl({ value: '', disabled: true }, [Validators.required]),
-    employed: new FormControl({ value: '', disabled: true }, [
-      Validators.required,
-    ]),
-    contactNo: new FormControl({ value: '', disabled: true }, [
-      Validators.required,
-    ]),
+    idno: new FormControl({ value: '', disabled: true }),
+    names: new FormControl({ value: '', disabled: true }),
+    surname: new FormControl({ value: '', disabled: true }),
+    dob: new FormControl({ value: '', disabled: true }),
+    employed: new FormControl({ value: '', disabled: true }),
+    contactNo: new FormControl({ value: '', disabled: true }),
   });
 
   uploadedFiles: { [key: string]: { file: File; previewUrl: string } | null } =
@@ -241,10 +233,14 @@ export class IndigentsComponent {
   previousPage() {
     if (this.currentPage === 2) {
       this.currentPage = 1;
-      this.mobilePage = 1;
+      this.mobilePage = 1; // Reset mobile page when going back
+      this.isFormActive = false; // Reset form state
+      this.householdForm.disable();
     } else if (this.currentPage === 3) {
       this.currentPage = 2;
-      this.mobilePage = 1;
+      this.mobilePage = 1; // Reset mobile page when going back
+      this.isFormActive = false; // Reset form state
+      this.householdForm.disable();
     }
   }
 
@@ -257,6 +253,9 @@ export class IndigentsComponent {
   prevMobilePage() {
     if (this.mobilePage > 1) {
       this.mobilePage--;
+    } else {
+      // If we're on the first mobile page, go back to previous main page
+      this.previousPage();
     }
   }
 

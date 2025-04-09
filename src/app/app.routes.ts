@@ -62,6 +62,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'accounts',
+        loadChildren: () =>
+          import('./features/municipal/accounts/accounts.module').then(
+            (m) => m.AccountsModule
+          ),
+      },
+      {
         path: 'arrangements',
         loadChildren: () =>
           import('./features/dashboard/arrangements/arrangements.module').then(
