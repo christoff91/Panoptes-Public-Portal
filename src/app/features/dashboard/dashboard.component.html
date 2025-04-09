@@ -106,8 +106,8 @@
     class="mt-10 md:mt-20 w-full grid grid-cols-2 gap-4 md:flex md:flex-row justify-center md:gap-36"
   >
     <a
-      href="/digital-profile"
-      class="flex flex-col justify-center items-center relative"
+      (click)="navigate('digital-profile')"
+      class="flex flex-col justify-center items-center"
     >
       <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">
         <div class="flex flex-col items-center justify-center">
@@ -125,7 +125,7 @@
     </a>
 
     <a
-      href="/municipal"
+    (click)="navigate('municipal')"
       class="flex flex-col justify-center items-center relative"
     >
       <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationLabelService } from '../../../core/services/navigation.service';
+// import { NavigationLabelService } from '../../../core/services/navigation.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -14,17 +14,17 @@ export class MunicipalComponent implements OnInit, OnDestroy {
   private labelSubscription: Subscription | null = null;
 
   constructor(
-    private navigationLabelService: NavigationLabelService,
+    // private navigationLabelService: NavigationLabelService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.labelSubscription = this.navigationLabelService.activeLabel$.subscribe(
-      (label: string) => {
-        this.activeLabel = label;
-        console.log('Current active label:', this.activeLabel);
-      }
-    );
+    // this.labelSubscription = this.navigationLabelService.activeLabel$.subscribe(
+    //   (label: string) => {
+    //     this.activeLabel = label;
+    //     console.log('Current active label:', this.activeLabel);
+    //   }
+    // );
   }
 
   ngOnDestroy(): void {

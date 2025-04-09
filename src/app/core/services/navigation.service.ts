@@ -1,42 +1,54 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject, filter } from 'rxjs';
+import { BehaviorSubject, filter, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class NavigationLabelService {
-  private labelSubject = new BehaviorSubject<string>('');
-  activeLabel$ = this.labelSubject.asObservable();
+export class NavigationService {
+  private mobileNavVisibleSource = new BehaviorSubject<boolean>(false);
+  mobileNavVisible$ = this.mobileNavVisibleSource.asObservable();
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  private activeRouteSource = new BehaviorSubject<string>('');
+  activeRoute$ = this.activeRouteSource.asObservable();
+
+  constructor(private router: Router) {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
-        const label = this.getActiveRouteLabel();
-        this.labelSubject.next(label || '');
+      .subscribe((event: NavigationEnd) => {
+        this.activeRouteSource.next(event.urlAfterRedirects);
+        // Automatically close mobile nav when route changes
+        this.closeMobileNav();
       });
   }
 
-  private getActiveRouteLabel(): string | null {
-    let route: ActivatedRoute | null = this.activatedRoute.root;
-    let label: string | null = null;
-
-    while (route) {
-      const childrenRoutes: ActivatedRoute[] = route.children;
-      route = childrenRoutes.length
-        ? childrenRoutes[childrenRoutes.length - 1]
-        : null;
-
-      if (route && route.snapshot.data && route.snapshot.data['label']) {
-        label = route.snapshot.data['label'];
-      }
+  toggleMobileNav(isVisible?: boolean) {
+    if (isVisible !== undefined) {
+      this.mobileNavVisibleSource.next(isVisible);
+    } else {
+      this.mobileNavVisibleSource.next(!this.mobileNavVisibleSource.value);
     }
-
-    return label;
   }
 
-  navigate(path: string) {
-    this.router.navigate([path]);
+  closeMobileNav() {
+    this.mobileNavVisibleSource.next(false);
+  }
+
+  isRouteActive(route: string): Observable<boolean> {
+    return this.activeRoute$.pipe(
+      map((activeRoute) => {
+        if (route === activeRoute) return true;
+
+        // Check if the current route starts with the given route path
+        if (route !== '/' && activeRoute.startsWith(route)) return true;
+
+        return false;
+      })
+    );
+  }
+
+  navigateTo(route: string) {
+    this.closeMobileNav();
+    this.router.navigate([route]);
   }
 }
