@@ -19,19 +19,21 @@
 
   <mat-nav-list class="mt-4">
     @for (item of menuItems; track item.path) {
-      <a
-        mat-list-item
-        [routerLink]="item.path"
-        [class.active]="isActive(item.path)"
-        (click)="navigate(item.path)"
-      >
-        <div class="flex items-center w-full">
-          <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined">
-            {{ item.icon }}
-          </mat-icon>
-          <span class="text-white">{{ item.label }}</span>
-        </div>
-      </a>
+    <a
+      mat-list-item
+      [routerLink]="item.path"
+      [class.active]="isActive(item.path)"
+      (click)="navigate(item.path)"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <div class="flex items-center w-full">
+        <mat-icon class="mr-3 text-white" fontSet="material-icons-outlined">
+          {{ item.icon }}
+        </mat-icon>
+        <span class="text-white">{{ item.label }}</span>
+      </div>
+    </a>
     }
   </mat-nav-list>
 
@@ -48,8 +50,6 @@
     </a>
   </div>
 </nav>
-
-
 
 <!-- <a mat-list-item routerLink="/dashboard">
       <div class="flex items-center w-full">

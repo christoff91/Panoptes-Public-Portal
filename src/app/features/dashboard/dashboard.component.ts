@@ -1,5 +1,11 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -16,6 +22,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-dashboard',
+  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
@@ -24,11 +31,37 @@ import { MatDividerModule } from '@angular/material/divider';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    RouterModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  constructor(private fb: FormBuilder, private router: Router) {}
+  @Output() updateActiveLabel = new EventEmitter<string>();
+  constructor(private router: Router) {}
+
+  menuItems = [
+    { label: 'Municipal', path: '/municipal', icon: 'account_balance' },
+    {
+      label: 'My Digital Profile',
+      path: '/digital-profile',
+      icon: 'contact_mail',
+    },
+  ];
+
+  activeRoute: string = '';
+
+  navigate(path: string) {
+    this.router.navigate([path]);
+    this.emitActiveLabel(path);
+  }
+
+  emitActiveLabel(path?: string) {
+    const currentPath = path || this.activeRoute;
+    const activeItem = this.menuItems.find((item) =>
+      currentPath.startsWith(item.path)
+    );
+    this.updateActiveLabel.emit(activeItem ? activeItem.label : '');
+  }
 }

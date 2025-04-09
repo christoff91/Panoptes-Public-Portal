@@ -1,4 +1,12 @@
-import { Component, signal, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  signal,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 // Material Imports
 import { MatDivider } from '@angular/material/divider';
@@ -10,11 +18,13 @@ import { MatListModule } from '@angular/material/list';
 import { ResponsiveService } from '../../../core/services/responsive.service';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { filter } from 'rxjs';
+import { filter, Observable } from 'rxjs';
+import { NavigationService } from '../../../core/services/navigation.service';
 
 @Component({
   selector: 'app-navigation',
   imports: [
+    CommonModule,
     RouterModule,
     MatDivider,
     MatToolbarModule,
@@ -28,6 +38,12 @@ import { filter } from 'rxjs';
 export class NavigationComponent implements OnInit {
   @Output() closeNavBar = new EventEmitter<void>();
   @Output() updateActiveLabel = new EventEmitter<string>();
+
+  @Input() route: string = '';
+  @Input() label: string = '';
+
+  isActive$!: Observable<boolean>;
+
   isMobile = signal<boolean>(false);
 
   activeRoute: string = '';
@@ -46,16 +62,11 @@ export class NavigationComponent implements OnInit {
   ];
 
   constructor(
+    public navService: NavigationService,
     private responsiveService: ResponsiveService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {
-    // this.router.events.subscribe((event) => {
-    //   if (event instanceof NavigationEnd) {
-    //     this.activeRoute = event.urlAfterRedirects;
-    //   }
-    // });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.router.events
@@ -111,7 +122,7 @@ export class NavigationComponent implements OnInit {
     const activeItem = this.menuItems.find((item) =>
       currentPath.startsWith(item.path)
     );
-    this.updateActiveLabel.emit(activeItem ? activeItem.label : ''); // ✅ Emit label
+    this.updateActiveLabel.emit(activeItem ? activeItem.label : '');
   }
 
   isActive(path: string): boolean {
