@@ -225,6 +225,7 @@ export class ManageArrangementComponent {
   }
 
   mobilePage = 1;
+  maxMobilePages = 7;
   nextPage() {
     this.router.navigate(['/manage-arrangement']);
   }
@@ -240,7 +241,7 @@ export class ManageArrangementComponent {
   }
 
   nextMobilePage() {
-    if (this.mobilePage < 3) {
+    if (this.mobilePage < this.maxMobilePages) {
       this.mobilePage++;
     }
   }

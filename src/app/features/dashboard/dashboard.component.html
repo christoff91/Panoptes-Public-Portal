@@ -1,10 +1,105 @@
-<div class="grid place-items-center relative">
+<div class="grid place-items-center relative sm:px-4 md:px-6 lg:px-8 xl:px-10">
   <header class="text-center p-10 flex items-center justify-center">
     <img src="assets/logos/white_logo.png" class="w-24 md:w-full xl:w-[10vw]" />
     <span class="text-6xl md:text-8xl text-white">Panoptes</span>
   </header>
-  <div class="carousel-container w-full h-56 mx-2 md:h-80 bg-gray-800 flex items-center justify-center">
-     <h1>Carousel Stuff</h1>
+  <div
+    class="carousel-container w-full h-56 mx-2 md:h-80 bg-gray-800 flex items-center justify-center relative overflow-hidden"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    <!-- Navigation arrows -->
+    <button class="absolute left-2 text-white z-10" (click)="prevSlide()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"
+        />
+      </svg>
+    </button>
+
+    <button class="absolute right-2 text-white z-10" (click)="nextSlide()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"
+        />
+      </svg>
+    </button>
+
+    <!-- Slide content -->
+    <div
+      *ngFor="let slide of slides; let i = index"
+      class="absolute w-full h-full flex items-center justify-center p-4 transition-transform duration-300"
+      [class.translate-x-full]="currentSlide < i"
+      [class.-translate-x-full]="currentSlide > i"
+      [class.translate-x-0]="currentSlide === i"
+      [class.pointer-events-none]="currentSlide !== i"
+    >
+      <!-- Progress circle (only shown on first slide) -->
+      <div *ngIf="slide.showProgress" class="circular-progress-container">
+        <div class="circular-progress">
+          <div class="inner"></div>
+          <div class="circle">
+            <div class="bar left">
+              <div class="progress"></div>
+            </div>
+            <div class="bar right">
+              <div class="progress"></div>
+            </div>
+          </div>
+          <div
+            class="progress"
+            [style.transform]="'rotate(' + progressRotation + 'deg)'"
+          ></div>
+          <div class="progress-text">{{ progress }}%</div>
+        </div>
+      </div>
+
+      <!-- Random content for other slides -->
+      <div *ngIf="!slide.showProgress" class="text-white text-center">
+        <div [ngSwitch]="slide.type">
+          <div *ngSwitchCase="'quote'" class="quote-container">
+            <p class="text-xl italic">"{{ slide.content }}"</p>
+          </div>
+          <div *ngSwitchCase="'fact'" class="fact-container">
+            <h3 class="text-lg font-bold mb-2">Did you know?</h3>
+            <p>{{ slide.content }}</p>
+          </div>
+          <div *ngSwitchCase="'tip'" class="tip-container">
+            <h3 class="text-lg font-bold mb-2">Pro Tip</h3>
+            <p>{{ slide.content }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide indicators -->
+    <div class="absolute bottom-4 flex space-x-2">
+      <div
+        *ngFor="let slide of slides; let i = index"
+        class="w-2 h-2 rounded-full bg-white transition-all duration-300"
+        [class.bg-opacity-50]="currentSlide !== i"
+        [class.bg-opacity-100]="currentSlide === i"
+        [class.w-4]="currentSlide === i"
+      ></div>
+    </div>
   </div>
 
   <div
@@ -12,7 +107,7 @@
   >
     <a
       href="/digital-profile"
-      class="flex flex-col justify-center items-center"
+      class="flex flex-col justify-center items-center relative"
     >
       <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">
         <div class="flex flex-col items-center justify-center">
@@ -29,23 +124,10 @@
       </div>
     </a>
 
-    <a href="/municipal" class="flex flex-col justify-center items-center">
-      <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">
-        <div class="flex flex-col items-center justify-center">
-          <img
-            src="../../../assets/icons/notification_important.png"
-            class="w-16 md:w-24"
-          />
-          <p
-            class="mt-3 md:mt-5 text-lg md:text-2xl text-center text-white font-medium no-underline"
-          >
-            TBN
-          </p>
-        </div>
-      </div>
-    </a>
-
-    <a href="/municipal" class="flex flex-col justify-center items-center">
+    <a
+      href="/municipal"
+      class="flex flex-col justify-center items-center relative"
+    >
       <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">
         <div class="flex flex-col items-center justify-center">
           <img
@@ -61,7 +143,36 @@
       </div>
     </a>
 
-    <a href="/municipal" class="flex flex-col justify-center items-center">
+    <a
+      class="flex flex-col justify-center items-center relative overflow-hidden"
+    >
+      <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">
+        <div class="flex flex-col items-center justify-center">
+          <img
+            src="../../../assets/icons/notification_important.png"
+            class="w-16 md:w-24"
+          />
+          <p
+            class="mt-3 md:mt-5 text-lg md:text-2xl text-center text-white font-medium no-underline"
+          >
+            TBN
+          </p>
+        </div>
+      </div>
+      <div class="absolute w-full h-full flex items-center justify-center">
+        <div
+          class="absolute w-[117%] h-10 bg-black bg-opacity-80 transform rotate-[-30deg] flex items-center justify-center"
+        >
+          <span class="text-white text-xl font-bold transform"
+            >COMING SOON</span
+          >
+        </div>
+      </div>
+    </a>
+
+    <a
+      class="flex flex-col justify-center items-center relative overflow-hidden"
+    >
       <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">
         <div class="flex flex-col items-center justify-center">
           <img
@@ -73,6 +184,15 @@
           >
             Marketplace
           </p>
+        </div>
+      </div>
+      <div class="absolute w-full h-full flex items-center justify-center">
+        <div
+          class="absolute w-[117%] h-10 bg-black bg-opacity-80 transform rotate-[-30deg] flex items-center justify-center"
+        >
+          <span class="text-white text-xl font-bold transform"
+            >COMING SOON</span
+          >
         </div>
       </div>
     </a>
