@@ -3,11 +3,10 @@
     <p class="text-5xl">Accounts</p>
   </header>
 
-  <div class="flex justify-center xl:w-[80vw] xl:ml-[2vh] p-2">
+  <div class="flex justify-center w-full xl:w-[80vw] xl:ml-[2vh] p-2">
     <div
-      class="w-full p-8 rounded-xl bg-white bg-opacity-50 xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
+      class="w-full p-4 md:p-8 rounded-xl bg-white md:bg-opacity-50 md:xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
     >
-      @if (currentPage === 1) {
       <div [formGroup]="personalForm">
         <div class="hidden md:block">
           <mat-tab-group class="w-full">
@@ -117,20 +116,24 @@
         <div class="block md:hidden">
           @if (mobilePage === 1) {
           <div class="w-full p-2">
-            <mat-card appearance="outlined" class="p-3 mb-4">
-              <h3 class="text-lg text-black">Salary Number:</h3>
-              <h3 class="text-lg text-black">Cell Number:</h3>
-              <h3 class="text-lg text-black">Address:</h3>
-              <h3 class="text-lg text-black">Work Address:</h3>
-              <h3 class="text-lg text-black">Net Salary:</h3>
-              <h3 class="text-lg text-black">Work Number:</h3>
-              <h3 class="text-lg text-black">Spouse ID Number:</h3>
-              <h3 class="text-lg text-black">Spouse Full Name:</h3>
-              <h3 class="text-lg text-black">Spouse Cell Number:</h3>
-              <h3 class="text-lg text-black">Spouse Surname:</h3>
-            </mat-card>
+            <h4 class="text-sm text-black">Debtor Status:</h4>
+            <h3 class="text-sm text-black">Account Number:</h3>
+            <h3 class="text-sm text-black">Unit Reference:</h3>
+            <h3 class="text-sm text-black">Record ID:</h3>
+            <h3 class="text-sm text-black">Application Date:</h3>
+            <h3 class="text-sm text-black">Owner Tenant:</h3>
+            <h3 class="text-sm text-black">Debtor Type:</h3>
+            <h3 class="text-sm text-black">Group Account Number:</h3>
+            <h3 class="text-sm text-black">Postal Address 1:</h3>
+            <h3 class="text-sm text-black">Postal Address 2:</h3>
+            <h3 class="text-sm text-black">Postal Address 3:</h3>
+            <h3 class="text-sm text-black">Postal Code:</h3>
+            <h3 class="text-sm text-black">Surname:</h3>
+            <h3 class="text-sm text-black">First Names</h3>
+            <h3 class="text-sm text-black">ID Number:</h3>
+            <h3 class="text-sm text-black">Company Registration:</h3>
 
-            <div class="flex justify-between mt-4">
+            <div class="flex justify-end mt-4">
               <button
                 mat-flat-button
                 class="primary-btn rounded-full"
@@ -142,113 +145,118 @@
           </div>
           } @if (mobilePage === 2) {
           <div class="w-full p-2">
-            <mat-card appearance="outlined" class="p-3 mb-4">
-              <h3 class="text-lg text-black">Account Number:</h3>
-              <h3 class="text-lg text-black">Arrangement Amount:</h3>
-              <h3 class="text-lg text-black">Arrangement Count:</h3>
-              <h3 class="text-lg text-black">Arrangement Number:</h3>
-              <h3 class="text-lg text-black">Installment:</h3>
-              <h3 class="text-lg text-black">Created By:</h3>
-              <h3 class="text-lg text-black">Arrangement Account:</h3>
-              <h3 class="text-lg text-black">Arrangement Term:</h3>
-              <h3 class="text-lg text-black">Account Status:</h3>
-              <h3 class="text-lg text-black">PTP Date:</h3>
-            </mat-card>
+            <h3 class="text-sm text-black">Last Due Date:</h3>
+            <h3 class="text-sm text-black">Parent Account:</h3>
+            <h3 class="text-sm text-black">Balance:</h3>
+            <h3 class="text-sm text-black">Current Balance:</h3>
+            <h3 class="text-sm text-black">Days 30:</h3>
+            <h3 class="text-sm text-black">Days 60:</h3>
+            <h3 class="text-sm text-black">Days 90:</h3>
+            <h3 class="text-sm text-black">Days 30+:</h3>
+            <h3 class="text-sm text-black">VAT:</h3>
+            <h3 class="text-sm text-black">Account Type:</h3>
+            <h3 class="text-sm text-black">Consumer Number:</h3>
+            <h3 class="text-sm text-black">Consumer Details:</h3>
+            <h3 class="text-sm text-black">Employee Number:</h3>
+            <h3 class="text-sm text-black">Valid ID:</h3>
+            <h3 class="text-sm text-black">Deceased:</h3>
+            <h3 class="text-sm text-black">Deceased Date:</h3>
 
             <div class="flex justify-between mt-4">
-              <button
-                mat-flat-button
-                class="primary-btn rounded-full"
-                (click)="prevMobilePage()"
-              >
-                Previous
-              </button>
-              <button
-                mat-flat-button
-                class="primary-btn rounded-full"
-                (click)="nextMobilePage()"
-              >
-                Next
-              </button>
+              <div class="xl:w-1/2">
+                <button
+                  mat-stroked-button
+                  class="w-full rounded-full"
+                  (click)="prevMobilePage()"
+                >
+                  <span>BACK</span>
+                </button>
+              </div>
+              <div class="xl:w-1/2">
+                <button
+                  mat-flat-button
+                  class="primary-btn rounded-full"
+                  (click)="nextMobilePage()"
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
           } @if (mobilePage === 3) {
           <div class="w-full p-2">
-            <mat-card appearance="outlined" class="p-3 mb-4">
-              <h3 class="text-lg text-black">Debtor Status:</h3>
-              <h3 class="text-lg text-black">Account Number:</h3>
-              <h3 class="text-lg text-black">Unit Reference:</h3>
-              <h3 class="text-lg text-black">Record ID:</h3>
-              <h3 class="text-lg text-black">Account Number:</h3>
-              <h3 class="text-lg text-black">Unit Reference:</h3>
-              <h3 class="text-lg text-black">Application Date:</h3>
-              <h3 class="text-lg text-black">Owner Tenant:</h3>
-              <h3 class="text-lg text-black">Debtor Type:</h3>
-              <h3 class="text-lg text-black">Group Account Number:</h3>
-              <h3 class="text-lg text-black">Postal Address 1:</h3>
-              <h3 class="text-lg text-black">Postal Address 2:</h3>
-              <h3 class="text-lg text-black">Postal Address 3:</h3>
-              <h3 class="text-lg text-black">Postal Code:</h3>
-              <h3 class="text-lg text-black">Surname:</h3>
-              <h3 class="text-lg text-black">First Name:</h3>
-              <h3 class="text-lg text-black">ID Number:</h3>
-            </mat-card>
+            <h3 class="text-sm text-black">Debtor Status:</h3>
+            <h3 class="text-sm text-black">Account Number:</h3>
+            <h3 class="text-sm text-black">Unit Reference:</h3>
+            <h3 class="text-sm text-black">Record ID:</h3>
+            <h3 class="text-sm text-black">Application Date:</h3>
+            <h3 class="text-sm text-black">Owner Tenant:</h3>
+            <h3 class="text-sm text-black">Debtor Type:</h3>
+            <h3 class="text-sm text-black">Group Account Number:</h3>
+            <h3 class="text-sm text-black">Postal Address 1:</h3>
+            <h3 class="text-sm text-black">Postal Address 2:</h3>
+            <h3 class="text-sm text-black">Postal Address 3:</h3>
+            <h3 class="text-sm text-black">Postal Code:</h3>
+            <h3 class="text-sm text-black">Surname:</h3>
+            <h3 class="text-sm text-black">First Names</h3>
+            <h3 class="text-sm text-black">ID Number:</h3>
+            <h3 class="text-sm text-black">Company Registration:</h3>
 
             <div class="flex justify-between mt-4">
-              <button
-                mat-flat-button
-                class="primary-btn rounded-full"
-                (click)="prevMobilePage()"
-              >
-                Previous
-              </button>
-              <button
-                mat-flat-button
-                class="primary-btn rounded-full"
-                (click)="nextMobilePage()"
-              >
-                Next
-              </button>
+              <div class="xl:w-1/2">
+                <button
+                  mat-stroked-button
+                  class="w-full rounded-full"
+                  (click)="prevMobilePage()"
+                >
+                  <span>BACK</span>
+                </button>
+              </div>
+              <div class="xl:w-1/2">
+                <button
+                  mat-flat-button
+                  class="primary-btn rounded-full"
+                  (click)="nextMobilePage()"
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
           } @if (mobilePage === 4) {
           <div class="w-full p-2">
-            <mat-card appearance="outlined" class="p-3 mb-4">
-              <h3 class="text-lg text-black">Last Due Date:</h3>
-              <h3 class="text-lg text-black">Parent Account:</h3>
-              <h3 class="text-lg text-black">Balance:</h3>
-              <h3 class="text-lg text-black">Current Balance:</h3>
-              <h3 class="text-lg text-black">Days 30:</h3>
-              <h3 class="text-lg text-black">Days 60:</h3>
-              <h3 class="text-lg text-black">Days 90:</h3>
-              <h3 class="text-lg text-black">Days 30+:</h3>
-              <h3 class="text-lg text-black">VAT:</h3>
-              <h3 class="text-lg text-black">Account Type:</h3>
-              <h3 class="text-lg text-black">Consumer Number:</h3>
-              <h3 class="text-lg text-black">Consumer Details:</h3>
-              <h3 class="text-lg text-black">Employee Number:</h3>
-              <h3 class="text-lg text-black">Valid ID:</h3>
-              <h3 class="text-lg text-black">Deceased:</h3>
-              <h3 class="text-lg text-black">Deceased Date:</h3>
-            </mat-card>
+            <h3 class="text-sm text-black">Last Due Date:</h3>
+            <h3 class="text-sm text-black">Parent Account:</h3>
+            <h3 class="text-sm text-black">Balance:</h3>
+            <h3 class="text-sm text-black">Current Balance:</h3>
+            <h3 class="text-sm text-black">Days 30:</h3>
+            <h3 class="text-sm text-black">Days 60:</h3>
+            <h3 class="text-sm text-black">Days 90:</h3>
+            <h3 class="text-sm text-black">Days 30+:</h3>
+            <h3 class="text-sm text-black">VAT:</h3>
+            <h3 class="text-sm text-black">Account Type:</h3>
+            <h3 class="text-sm text-black">Consumer Number:</h3>
+            <h3 class="text-sm text-black">Consumer Details:</h3>
+            <h3 class="text-sm text-black">Employee Number:</h3>
+            <h3 class="text-sm text-black">Valid ID:</h3>
+            <h3 class="text-sm text-black">Deceased:</h3>
+            <h3 class="text-sm text-black">Deceased Date:</h3>
 
             <div class="flex justify-between mt-4">
-              <button
-                mat-flat-button
-                class="primary-btn rounded-full"
-                (click)="prevMobilePage()"
-              >
-                Previous
-              </button>
-              <button mat-flat-button class="primary-btn rounded-full" disabled>
-                Next
-              </button>
+              <div class="xl:w-1/2">
+                <button
+                  mat-stroked-button
+                  class="w-full rounded-full"
+                  (click)="prevMobilePage()"
+                >
+                  <span>BACK</span>
+                </button>
+              </div>
             </div>
           </div>
           }
         </div>
       </div>
-      }
     </div>
   </div>
 </div>
