@@ -88,6 +88,7 @@ export class DashboardComponent {
     ];
     const facts = [
       'The human brain has enough memory to hold 2.5 million gigabytes.',
+      `You only have to blink to prove you're human.`,
       'Honey never spoils - archaeologists have found pots of honey in ancient Egyptian tombs.',
       'The shortest war in history was between Britain and Zanzibar in 1896 (38 minutes).',
     ];
