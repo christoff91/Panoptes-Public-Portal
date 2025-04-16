@@ -1,7 +1,6 @@
-// navigation.model.ts
 export interface MenuItem {
-    label: string;
-    path: string;
-    icon: string;
-    children?: MenuItem[];
-  }
+  label: string;
+  path: string;
+  icon?: string;
+  children?: MenuItem[];
+}

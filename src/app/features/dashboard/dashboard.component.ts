@@ -1,10 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  Output,
-  EventEmitter,
-  HostListener,
-} from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import {
@@ -20,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
+import { NavigationService } from '../../core/services/navigation.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -45,33 +40,15 @@ export class DashboardComponent {
   touchStartX = 0;
   touchEndX = 0;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private navigationService: NavigationService
+  ) {
     this.generateRandomSlides();
   }
-  @Output() updateActiveLabel = new EventEmitter<string>();
-
-  activeRoute: string = '';
-
-  menuItems = [
-    { label: 'Municipal', path: '/municipal', icon: 'account_balance' },
-    {
-      label: 'My Digital Profile',
-      path: '/digital-profile',
-      icon: 'contact_mail',
-    },
-  ];
 
   navigate(path: string) {
-    this.router.navigate([path]);
-    this.emitActiveLabel(path);
-  }
-
-  emitActiveLabel(path?: string) {
-    const currentPath = path || this.activeRoute;
-    const activeItem = this.menuItems.find((item) =>
-      currentPath.startsWith(item.path)
-    );
-    this.updateActiveLabel.emit(activeItem ? activeItem.label : '');
+    this.navigationService.navigateTo(path);
   }
 
   get progressRotation(): number {

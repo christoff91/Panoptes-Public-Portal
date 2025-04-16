@@ -9,7 +9,7 @@
     class="mt-10 md:mt-20 w-full flex flex-col md:flex-row justify-center gap-16 md:gap-36"
   >
     <div class="flex flex-row justify-center gap-16 md:contents">
-      <a href="/accounts" class="flex flex-col justify-center items-center">
+      <a (click)="navigate('accounts')" class="flex flex-col justify-center items-center">
         <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">
           <div class="flex flex-col items-center justify-center">
             <img
@@ -25,7 +25,7 @@
         </div>
       </a>
 
-      <a href="/arrangements" class="flex flex-col justify-center items-center">
+      <a (click)="navigate('arrangements')" class="flex flex-col justify-center items-center">
         <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">
           <div class="flex flex-col items-center justify-center">
             <img
@@ -43,7 +43,7 @@
     </div>
 
     <a
-      href="/indigents"
+    (click)="navigate('indigents')"
       class="flex flex-col justify-center items-center md:mt-0"
     >
       <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">

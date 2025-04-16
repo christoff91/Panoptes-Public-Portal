@@ -10,7 +10,7 @@
   >
     <div class="flex flex-row justify-center gap-10 md:contents">
       <a
-        href="/create-arrangement"
+        (click)="navigate('create-arrangement')"
         class="flex flex-col justify-center items-center"
       >
         <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">
@@ -29,7 +29,7 @@
       </a>
 
       <a
-        href="/manage-arrangement"
+        (click)="navigate('manage-arrangement')"
         class="flex flex-col justify-center items-center"
       >
         <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">
@@ -49,7 +49,7 @@
     </div>
 
     <a
-      href="/history-arrangement"
+      (click)="navigate('history-arrangement')"
       class="flex flex-col justify-center items-center md:mt-0"
     >
       <div class="p-4 rounded-3xl w-40 md:w-60 bg-gray-300 bg-opacity-70">

@@ -27,15 +27,6 @@ export class NavigationService {
   activeRoute$ = this.activeRouteSource.asObservable();
 
   constructor(private router: Router) {}
-  // constructor(private router: Router) {
-  //   this.router.events
-  //     .pipe(filter((event) => event instanceof NavigationEnd))
-  //     .subscribe((event: NavigationEnd) => {
-  //       this.activeRouteSource.next(event.urlAfterRedirects);
-  //       // Automatically close mobile nav when route changes
-  //       this.closeMobileNav();
-  //     });
-  // }
 
   get menuItems(): MenuItem[] {
     return this._menuItems;
@@ -46,7 +37,12 @@ export class NavigationService {
   }
 
   isActive(path: string): boolean {
-    return this.router.isActive(path, true);
+    return this.router.isActive(path, {
+      paths: 'exact',
+      queryParams: 'ignored',
+      fragment: 'ignored',
+      matrixParams: 'ignored',
+    });
   }
 
   findMenuItem(label: string): MenuItem | undefined {
