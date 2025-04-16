@@ -1,112 +1,234 @@
-<div class="grid place-items-center relative">
-  <header class="text-center mt-5 p-10">
-    <p class="text-5xl">Accounts</p>
+<div class="grid place-items-center relative min-h-screen">
+  <header class="text-center p-6 w-full max-w-7xl">
+    <h1 class="text-5xl text-white-800">Account Management</h1>
   </header>
 
-  <div class="flex justify-center w-full xl:w-[80vw] xl:ml-[2vh] p-2">
-    <div
-      class="w-full p-4 md:p-8 rounded-xl bg-white md:bg-opacity-50 md:xl:w-full xl:min-h-[40vh] xl:max-h-[80vh]"
-    >
+  <div class="flex justify-center w-full max-w-7xl px-4">
+    <div class="w-full bg-white rounded-lg shadow-md overflow-hidden">
       <div [formGroup]="personalForm">
         <div class="hidden md:block">
-          <mat-tab-group class="w-full">
-            <mat-tab label="Main Account">
-              <div class="flex flex-row w-full p-2">
-                <!-- First Card -->
-                <div class="w-1/2 pr-4">
-                  <mat-card appearance="outlined" class="p-3 h-full">
-                    <h3 class="text-lg text-black">Debtor Status:</h3>
-                    <h3 class="text-lg text-black">Account Number:</h3>
-                    <h3 class="text-lg text-black">Unit Reference:</h3>
-                    <h3 class="text-lg text-black">Record ID:</h3>
-                    <h3 class="text-lg text-black">Application Date:</h3>
-                    <h3 class="text-lg text-black">Owner Tenant:</h3>
-                    <h3 class="text-lg text-black">Debtor Type:</h3>
-                    <h3 class="text-lg text-black">Group Account Number:</h3>
-                    <h3 class="text-lg text-black">Postal Address 1:</h3>
-                    <h3 class="text-lg text-black">Postal Address 2:</h3>
-                    <h3 class="text-lg text-black">Postal Address 3:</h3>
-                    <h3 class="text-lg text-black">Postal Code:</h3>
-                    <h3 class="text-lg text-black">Surname:</h3>
-                    <h3 class="text-lg text-black">First Names</h3>
-                    <h3 class="text-lg text-black">ID Number:</h3>
-                    <h3 class="text-lg text-black">Company Registration:</h3>
-                  </mat-card>
+          <mat-tab-group class="w-full" animationDuration="200ms">
+            <mat-tab label="Primary Account">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+                <div class="space-y-6">
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2
+                      class="text-lg font-medium text-gray-700 border-b pb-2 mb-4"
+                    >
+                      Account Details
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4">
+                      <div>
+                        <p class="text-sm text-gray-500">Debtor Status</p>
+                        <p class="text-gray-800 font-medium">Active</p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Account Number</p>
+                        <p class="text-gray-800 font-medium"></p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Unit Reference</p>
+                        <p class="text-gray-800 font-medium"></p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Record ID</p>
+                        <p class="text-gray-800 font-medium"></p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Application Date</p>
+                        <p class="text-gray-800 font-medium"></p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Owner Tenant</p>
+                        <p class="text-gray-800 font-medium">Kiril Bester</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2
+                      class="text-lg font-medium text-gray-700 border-b pb-2 mb-4"
+                    >
+                      Personal Information
+                    </h2>
+                    <div class="space-y-4">
+                      <div>
+                        <p class="text-sm text-gray-500">Full Name</p>
+                        <p class="text-gray-800 font-medium">
+                          John Michael Smith
+                        </p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">ID Number</p>
+                        <p class="text-gray-800 font-medium">8501015045087</p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Deceased</p>
+                        <p class="text-gray-800 font-medium">No</p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Deceased Date</p>
+                        <p class="text-gray-800 font-medium"></p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <!-- Divider -->
-                <div class="border-l border-gray-200 h-auto"></div>
+                <div class="space-y-6">
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2
+                      class="text-lg font-medium text-gray-700 border-b pb-2 mb-4"
+                    >
+                      Financial Details
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4">
+                      <div>
+                        <p class="text-sm text-gray-500">Parent Account</p>
+                        <p class="text-red-600 font-medium"></p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Account Type</p>
+                        <p class="text-gray-800 font-medium">Individual</p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Balance</p>
+                        <p class="text-gray-800 font-medium"></p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Current Balance</p>
+                        <p class="text-amber-600 font-medium"></p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">VAT</p>
+                        <p class="text-amber-600 font-medium"></p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Days 30</p>
+                        <p class="text-gray-800 font-medium"></p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Days 60</p>
+                        <p class="text-gray-800 font-medium"></p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Days 90</p>
+                        <p class="text-gray-800 font-medium"></p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Days 30+</p>
+                        <p class="text-gray-800 font-medium"></p>
+                      </div>
+                    </div>
+                  </div>
 
-                <!-- Second Card -->
-                <div class="w-1/2 pl-4">
-                  <mat-card appearance="outlined" class="p-3">
-                    <h3 class="text-lg text-black">Last Due Date:</h3>
-                    <h3 class="text-lg text-black">Parent Account:</h3>
-                    <h3 class="text-lg text-black">Balance:</h3>
-                    <h3 class="text-lg text-black">Current Balance:</h3>
-                    <h3 class="text-lg text-black">Days 30:</h3>
-                    <h3 class="text-lg text-black">Days 60:</h3>
-                    <h3 class="text-lg text-black">Days 90:</h3>
-                    <h3 class="text-lg text-black">Days 30+:</h3>
-                    <h3 class="text-lg text-black">VAT:</h3>
-                    <h3 class="text-lg text-black">Account Type:</h3>
-                    <h3 class="text-lg text-black">Consumer Number:</h3>
-                    <h3 class="text-lg text-black">Consumer Details:</h3>
-                    <h3 class="text-lg text-black">Employee Number:</h3>
-                    <h3 class="text-lg text-black">Valid ID:</h3>
-                    <h3 class="text-lg text-black">Deceased:</h3>
-                    <h3 class="text-lg text-black">Deceased Date:</h3>
-                  </mat-card>
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2
+                      class="text-lg font-medium text-gray-700 border-b pb-2 mb-4"
+                    >
+                      Contact Information
+                    </h2>
+                    <div class="space-y-4">
+                      <div>
+                        <p class="text-sm text-gray-500">Postal Address</p>
+                        <p class="text-gray-800">
+                          123 Main Street<br />Johannesburg<br />2000
+                        </p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Email</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </mat-tab>
+
             <mat-tab label="Beneficiary Account">
-              <div class="flex flex-row w-full p-2">
-                <!-- First Card -->
-                <div class="w-1/2 pr-4">
-                  <mat-card appearance="outlined" class="p-3 h-full">
-                    <h3 class="text-lg text-black">Debtor Status:</h3>
-                    <h3 class="text-lg text-black">Account Number:</h3>
-                    <h3 class="text-lg text-black">Unit Reference:</h3>
-                    <h3 class="text-lg text-black">Record ID:</h3>
-                    <h3 class="text-lg text-black">Application Date:</h3>
-                    <h3 class="text-lg text-black">Owner Tenant:</h3>
-                    <h3 class="text-lg text-black">Debtor Type:</h3>
-                    <h3 class="text-lg text-black">Group Account Number:</h3>
-                    <h3 class="text-lg text-black">Postal Address 1:</h3>
-                    <h3 class="text-lg text-black">Postal Address 2:</h3>
-                    <h3 class="text-lg text-black">Postal Address 3:</h3>
-                    <h3 class="text-lg text-black">Postal Code:</h3>
-                    <h3 class="text-lg text-black">Surname:</h3>
-                    <h3 class="text-lg text-black">First Names</h3>
-                    <h3 class="text-lg text-black">ID Number:</h3>
-                    <h3 class="text-lg text-black">Company Registration:</h3>
-                  </mat-card>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+                <div class="space-y-6">
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2
+                      class="text-lg font-medium text-gray-700 border-b pb-2 mb-4"
+                    >
+                      Beneficiary Details
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4">
+                      <div>
+                        <p class="text-sm text-gray-500">Account Status</p>
+                        <p class="text-green-600 font-medium">Active</p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Account Number</p>
+                        <p class="text-gray-800 font-medium">BN-2023-78901</p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Linked to Primary</p>
+                        <p class="text-gray-800 font-medium">AC-2023-45678</p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Relationship</p>
+                        <p class="text-gray-800 font-medium">Spouse</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2
+                      class="text-lg font-medium text-gray-700 border-b pb-2 mb-4"
+                    >
+                      Personal Information
+                    </h2>
+                    <div class="space-y-4">
+                      <div>
+                        <p class="text-sm text-gray-500">Full Name</p>
+                        <p class="text-gray-800 font-medium">
+                          Sarah Jane Smith
+                        </p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">ID Number</p>
+                        <p class="text-gray-800 font-medium">8803055045087</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <!-- Divider -->
-                <div class="border-l border-gray-200 h-auto"></div>
+                <div class="space-y-6">
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2
+                      class="text-lg font-medium text-gray-700 border-b pb-2 mb-4"
+                    >
+                      Financial Status
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4">
+                      <div>
+                        <p class="text-sm text-gray-500">Current Balance</p>
+                        <p class="text-gray-800 font-medium">R 3,245.67</p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Last Payment</p>
+                        <p class="text-gray-800 font-medium">22 May 2023</p>
+                      </div>
+                      <div>
+                        <p class="text-sm text-gray-500">Days Overdue</p>
+                        <p class="text-gray-800 font-medium">0 days</p>
+                      </div>
+                    </div>
+                  </div>
 
-                <!-- Second Card -->
-                <div class="w-1/2 pl-4">
-                  <mat-card appearance="outlined" class="p-3">
-                    <h3 class="text-lg text-black">Last Due Date:</h3>
-                    <h3 class="text-lg text-black">Parent Account:</h3>
-                    <h3 class="text-lg text-black">Balance:</h3>
-                    <h3 class="text-lg text-black">Current Balance:</h3>
-                    <h3 class="text-lg text-black">Days 30:</h3>
-                    <h3 class="text-lg text-black">Days 60:</h3>
-                    <h3 class="text-lg text-black">Days 90:</h3>
-                    <h3 class="text-lg text-black">Days 30+:</h3>
-                    <h3 class="text-lg text-black">VAT:</h3>
-                    <h3 class="text-lg text-black">Account Type:</h3>
-                    <h3 class="text-lg text-black">Consumer Number:</h3>
-                    <h3 class="text-lg text-black">Consumer Details:</h3>
-                    <h3 class="text-lg text-black">Employee Number:</h3>
-                    <h3 class="text-lg text-black">Valid ID:</h3>
-                    <h3 class="text-lg text-black">Deceased:</h3>
-                    <h3 class="text-lg text-black">Deceased Date:</h3>
-                  </mat-card>
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2
+                      class="text-lg font-medium text-gray-700 border-b pb-2 mb-4"
+                    >
+                      Contact Information
+                    </h2>
+                    <div class="space-y-4">
+                      <div>
+                        <p class="text-sm text-gray-500">Postal Address</p>
+                        <p class="text-gray-800">Same as primary account</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </mat-tab>
@@ -114,147 +236,125 @@
         </div>
 
         <div class="block md:hidden">
-          @if (mobilePage === 1) {
-          <div class="w-full p-2">
-            <h4 class="text-sm text-black">Debtor Status:</h4>
-            <h3 class="text-sm text-black">Account Number:</h3>
-            <h3 class="text-sm text-black">Unit Reference:</h3>
-            <h3 class="text-sm text-black">Record ID:</h3>
-            <h3 class="text-sm text-black">Application Date:</h3>
-            <h3 class="text-sm text-black">Owner Tenant:</h3>
-            <h3 class="text-sm text-black">Debtor Type:</h3>
-            <h3 class="text-sm text-black">Group Account Number:</h3>
-            <h3 class="text-sm text-black">Postal Address 1:</h3>
-            <h3 class="text-sm text-black">Postal Address 2:</h3>
-            <h3 class="text-sm text-black">Postal Address 3:</h3>
-            <h3 class="text-sm text-black">Postal Code:</h3>
-            <h3 class="text-sm text-black">Surname:</h3>
-            <h3 class="text-sm text-black">First Names</h3>
-            <h3 class="text-sm text-black">ID Number:</h3>
-            <h3 class="text-sm text-black">Company Registration:</h3>
+          <div class="p-4">
+            <mat-tab-group class="w-full" animationDuration="200ms">
+              <mat-tab label="Primary">
+                <div class="space-y-4 pt-4">
+                  <mat-card class="shadow-sm">
+                    <mat-card-header>
+                      <mat-card-title class="text-lg"
+                        >Account Overview</mat-card-title
+                      >
+                    </mat-card-header>
+                    <mat-card-content class="pt-2">
+                      <div class="space-y-3">
+                        <div class="flex justify-between">
+                          <span class="text-gray-500">Account Number</span>
+                          <span class="font-medium">AC-2023-45678</span>
+                        </div>
+                        <div class="flex justify-between">
+                          <span class="text-gray-500">Status</span>
+                          <span class="text-green-600 font-medium">Active</span>
+                        </div>
+                        <div class="flex justify-between">
+                          <span class="text-gray-500">Balance</span>
+                          <span class="text-red-600 font-medium"
+                            >R 12,456.78</span
+                          >
+                        </div>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
 
-            <div class="flex justify-end mt-4">
-              <button
-                mat-flat-button
-                class="primary-btn rounded-full"
-                (click)="nextMobilePage()"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-          } @if (mobilePage === 2) {
-          <div class="w-full p-2">
-            <h3 class="text-sm text-black">Last Due Date:</h3>
-            <h3 class="text-sm text-black">Parent Account:</h3>
-            <h3 class="text-sm text-black">Balance:</h3>
-            <h3 class="text-sm text-black">Current Balance:</h3>
-            <h3 class="text-sm text-black">Days 30:</h3>
-            <h3 class="text-sm text-black">Days 60:</h3>
-            <h3 class="text-sm text-black">Days 90:</h3>
-            <h3 class="text-sm text-black">Days 30+:</h3>
-            <h3 class="text-sm text-black">VAT:</h3>
-            <h3 class="text-sm text-black">Account Type:</h3>
-            <h3 class="text-sm text-black">Consumer Number:</h3>
-            <h3 class="text-sm text-black">Consumer Details:</h3>
-            <h3 class="text-sm text-black">Employee Number:</h3>
-            <h3 class="text-sm text-black">Valid ID:</h3>
-            <h3 class="text-sm text-black">Deceased:</h3>
-            <h3 class="text-sm text-black">Deceased Date:</h3>
+                  <mat-card class="shadow-sm">
+                    <mat-card-header>
+                      <mat-card-title class="text-lg"
+                        >Personal Details</mat-card-title
+                      >
+                    </mat-card-header>
+                    <mat-card-content class="pt-2">
+                      <div class="space-y-3">
+                        <div class="flex justify-between">
+                          <span class="text-gray-500">Full Name</span>
+                          <span class="font-medium">John Michael Smith</span>
+                        </div>
+                        <div class="flex justify-between">
+                          <span class="text-gray-500">ID Number</span>
+                          <span class="font-medium">8501015045087</span>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
 
-            <div class="flex justify-between mt-4">
-              <div class="xl:w-1/2">
-                <button
-                  mat-stroked-button
-                  class="w-full rounded-full"
-                  (click)="prevMobilePage()"
-                >
-                  <span>BACK</span>
-                </button>
-              </div>
-              <div class="xl:w-1/2">
-                <button
-                  mat-flat-button
-                  class="primary-btn rounded-full"
-                  (click)="nextMobilePage()"
-                >
-                  Next
-                </button>
-              </div>
-            </div>
-          </div>
-          } @if (mobilePage === 3) {
-          <div class="w-full p-2">
-            <h3 class="text-sm text-black">Debtor Status:</h3>
-            <h3 class="text-sm text-black">Account Number:</h3>
-            <h3 class="text-sm text-black">Unit Reference:</h3>
-            <h3 class="text-sm text-black">Record ID:</h3>
-            <h3 class="text-sm text-black">Application Date:</h3>
-            <h3 class="text-sm text-black">Owner Tenant:</h3>
-            <h3 class="text-sm text-black">Debtor Type:</h3>
-            <h3 class="text-sm text-black">Group Account Number:</h3>
-            <h3 class="text-sm text-black">Postal Address 1:</h3>
-            <h3 class="text-sm text-black">Postal Address 2:</h3>
-            <h3 class="text-sm text-black">Postal Address 3:</h3>
-            <h3 class="text-sm text-black">Postal Code:</h3>
-            <h3 class="text-sm text-black">Surname:</h3>
-            <h3 class="text-sm text-black">First Names</h3>
-            <h3 class="text-sm text-black">ID Number:</h3>
-            <h3 class="text-sm text-black">Company Registration:</h3>
+                  <mat-card class="shadow-sm">
+                    <mat-card-header>
+                      <mat-card-title class="text-lg"
+                        >Contact Information</mat-card-title
+                      >
+                    </mat-card-header>
+                    <mat-card-content class="pt-2">
+                      <div class="space-y-3">
+                        <div>
+                          <p class="text-gray-500">Address</p>
+                          <p class="font-medium">
+                            123 Main Street<br />Johannesburg, 2000
+                          </p>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </mat-tab>
 
-            <div class="flex justify-between mt-4">
-              <div class="xl:w-1/2">
-                <button
-                  mat-stroked-button
-                  class="w-full rounded-full"
-                  (click)="prevMobilePage()"
-                >
-                  <span>BACK</span>
-                </button>
-              </div>
-              <div class="xl:w-1/2">
-                <button
-                  mat-flat-button
-                  class="primary-btn rounded-full"
-                  (click)="nextMobilePage()"
-                >
-                  Next
-                </button>
-              </div>
-            </div>
-          </div>
-          } @if (mobilePage === 4) {
-          <div class="w-full p-2">
-            <h3 class="text-sm text-black">Last Due Date:</h3>
-            <h3 class="text-sm text-black">Parent Account:</h3>
-            <h3 class="text-sm text-black">Balance:</h3>
-            <h3 class="text-sm text-black">Current Balance:</h3>
-            <h3 class="text-sm text-black">Days 30:</h3>
-            <h3 class="text-sm text-black">Days 60:</h3>
-            <h3 class="text-sm text-black">Days 90:</h3>
-            <h3 class="text-sm text-black">Days 30+:</h3>
-            <h3 class="text-sm text-black">VAT:</h3>
-            <h3 class="text-sm text-black">Account Type:</h3>
-            <h3 class="text-sm text-black">Consumer Number:</h3>
-            <h3 class="text-sm text-black">Consumer Details:</h3>
-            <h3 class="text-sm text-black">Employee Number:</h3>
-            <h3 class="text-sm text-black">Valid ID:</h3>
-            <h3 class="text-sm text-black">Deceased:</h3>
-            <h3 class="text-sm text-black">Deceased Date:</h3>
+              <mat-tab label="Beneficiary">
+                <div class="space-y-4 pt-4">
+                  <mat-card class="shadow-sm">
+                    <mat-card-header>
+                      <mat-card-title class="text-lg"
+                        >Beneficiary Account</mat-card-title
+                      >
+                    </mat-card-header>
+                    <mat-card-content class="pt-2">
+                      <div class="space-y-3">
+                        <div class="flex justify-between">
+                          <span class="text-gray-500">Account Number</span>
+                          <span class="font-medium">BN-2023-78901</span>
+                        </div>
+                        <div class="flex justify-between">
+                          <span class="text-gray-500">Linked Account</span>
+                          <span class="font-medium">AC-2023-45678</span>
+                        </div>
+                        <div class="flex justify-between">
+                          <span class="text-gray-500">Balance</span>
+                          <span class="font-medium">R 3,245.67</span>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
 
-            <div class="flex justify-between mt-4">
-              <div class="xl:w-1/2">
-                <button
-                  mat-stroked-button
-                  class="w-full rounded-full"
-                  (click)="prevMobilePage()"
-                >
-                  <span>BACK</span>
-                </button>
-              </div>
-            </div>
+                  <mat-card class="shadow-sm">
+                    <mat-card-header>
+                      <mat-card-title class="text-lg"
+                        >Beneficiary Details</mat-card-title
+                      >
+                    </mat-card-header>
+                    <mat-card-content class="pt-2">
+                      <div class="space-y-3">
+                        <div class="flex justify-between">
+                          <span class="text-gray-500">Full Name</span>
+                          <span class="font-medium">Sarah Jane Smith</span>
+                        </div>
+                        <div class="flex justify-between">
+                          <span class="text-gray-500">Relationship</span>
+                          <span class="font-medium">Spouse</span>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
           </div>
-          }
         </div>
       </div>
     </div>
