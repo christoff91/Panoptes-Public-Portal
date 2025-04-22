@@ -1,13 +1,6 @@
 import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  ReactiveFormsModule,
-  FormsModule,
-} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -56,7 +49,6 @@ export class DashboardComponent {
   }
 
   generateRandomSlides(): void {
-    // Generate random content for 3 slides
     const contentTypes = ['quote', 'fact', 'tip'];
     const quotes = [
       'The only way to do great work is to love what you do.',
@@ -95,7 +87,7 @@ export class DashboardComponent {
       this.slides.push({
         type,
         content,
-        showProgress: i === 0, // Only show progress on first slide
+        showProgress: i === 0,
       });
     }
   }
@@ -109,7 +101,6 @@ export class DashboardComponent {
       (this.currentSlide - 1 + this.slides.length) % this.slides.length;
   }
 
-  // Touch event handlers for swipe detection
   @HostListener('touchstart', ['$event'])
   onTouchStart(event: TouchEvent) {
     this.touchStartX = event.changedTouches[0].screenX;
@@ -122,16 +113,14 @@ export class DashboardComponent {
   }
 
   handleSwipe() {
-    const minSwipeDistance = 50; // Minimum distance to consider it a swipe
+    const minSwipeDistance = 50;
     const difference = this.touchStartX - this.touchEndX;
 
     if (Math.abs(difference) < minSwipeDistance) return;
 
     if (difference > 0) {
-      // Swipe left - next slide
       this.nextSlide();
     } else {
-      // Swipe right - previous slide
       this.prevSlide();
     }
   }

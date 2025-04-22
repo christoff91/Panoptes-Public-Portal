@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  ViewChild,
-  AfterViewInit,
-  NgZone,
-} from '@angular/core';
+import { Component, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -143,14 +137,10 @@ export class DigitalProfileComponent {
   fillAddressFields(place: any) {
     if (!place) return;
 
-    // Use the formatted address from the place object instead of nativeElement
-    const streetAddress = place.formatted_address || '';
-
-    this.addressForm.reset();
-
+    // Clear the streetAddress field
     this.addressForm.patchValue({
-      streetAddress: streetAddress, // Use the formatted address
-      address1: '', // Will be filled below
+      streetAddress: '', // Clear this field instead of setting it
+      address1: '',
       address2: '',
       address3: '',
       postalAddress: '',

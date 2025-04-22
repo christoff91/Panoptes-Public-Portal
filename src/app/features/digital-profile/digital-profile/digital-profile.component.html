@@ -203,11 +203,11 @@
 
           <div class="flex gap-4 mt-4">
             <button
-              mat-stroked-button
-              class="w-1/2 rounded-full"
-              (click)="prevMobilePage()"
+              color="primary"
+              class="w-full rounded-full bg-white p-2"
+              (click)="previousPage()"
             >
-              <span>{{ "BACK" | translate }}</span>
+              <span class="text-blue-600">{{ "BACK" | translate }}</span>
             </button>
             <button
               mat-flat-button
@@ -220,252 +220,226 @@
         </div>
       </div>
       } @if (currentPage === 2) {
-      <div>
-        <div class="hidden xl:flex xl:mb-6">
-          <div class="xl:w-1/2 flex items-center justify-center">
-            <p class="text-black text-3xl">
-              {{ "Address Information" | translate }}
-            </p>
-          </div>
-          <div class="xl:w-1/2 flex items-center justify-center">
-            <p class="text-black text-3xl">
-              {{ "Municipal Information" | translate }}
-            </p>
-          </div>
+      <div class="hidden xl:flex xl:mb-6">
+        <div class="xl:w-1/2 flex items-center justify-center">
+          <p class="text-black text-3xl">
+            {{ "Address Information" | translate }}
+          </p>
+        </div>
+        <div class="xl:w-1/2 flex items-center justify-center">
+          <p class="text-black text-3xl">
+            {{ "Municipal Information" | translate }}
+          </p>
+        </div>
+      </div>
+
+      <div class="hidden xl:flex xl:gap-8">
+        <div class="xl:w-1/2 flex flex-col">
+          <form [formGroup]="addressForm">
+            <mat-form-field class="w-full">
+              <mat-label>Street Address</mat-label>
+              <input
+                type="text"
+                #streetAddressInput
+                matInput
+                formControlName="streetAddress"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Address 1" | translate }}</mat-label>
+              <input type="text" matInput formControlName="address1" />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Address 2" | translate }}</mat-label>
+              <input type="text" matInput formControlName="address2" />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Address 3" | translate }}</mat-label>
+              <input type="text" matInput formControlName="address3" />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Postal Address" | translate }}</mat-label>
+              <input type="text" matInput formControlName="postalAddress" />
+            </mat-form-field>
+          </form>
         </div>
 
-        <div class="hidden xl:flex xl:gap-8">
-          <div class="xl:w-1/2 flex flex-col">
-            <form [formGroup]="addressForm">
-              <div class="relative w-full mb-4">
-                <input
-                  #streetAddressInput
-                  [formControl]="form.streetAddress"
-                  type="text"
-                  [placeholder]="'Search Address' | translate"
-                  class="w-full px-4 py-3 border rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-black"
-                  [ngClass]="{
-                    'border-gray-400':
-                      form.streetAddress.valid || form.streetAddress.pristine,
-                    'border-red-500':
-                      form.streetAddress.invalid && form.streetAddress.touched
-                  }"
-                />
-              </div>
+        <div class="hidden xl:block border-r border-gray-200 h-auto my-2"></div>
 
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Address 1" | translate }}</mat-label>
-                <input type="text" matInput formControlName="address1" />
-              </mat-form-field>
+        <div class="xl:w-1/2 flex flex-col">
+          <form [formGroup]="municipalForm">
+            <mat-form-field class="w-full">
+              <mat-label>{{
+                "Municipal Account Number" | translate
+              }}</mat-label>
+              <input type="text" matInput formControlName="municipalAccount1" />
+            </mat-form-field>
 
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Address 2" | translate }}</mat-label>
-                <input type="text" matInput formControlName="address2" />
-              </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>{{
+                "Municipal Account Number 2" | translate
+              }}</mat-label>
+              <input type="text" matInput formControlName="municipalAccount2" />
+            </mat-form-field>
 
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Address 3" | translate }}</mat-label>
-                <input type="text" matInput formControlName="address3" />
-              </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Village" | translate }}</mat-label>
+              <input type="text" matInput formControlName="village" />
+            </mat-form-field>
 
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Postal Address" | translate }}</mat-label>
-                <input type="text" matInput formControlName="postalAddress" />
-              </mat-form-field>
-            </form>
-          </div>
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Ward" | translate }}</mat-label>
+              <input type="text" matInput formControlName="ward" />
+            </mat-form-field>
 
-          <div
-            class="hidden xl:block border-r border-gray-200 h-auto my-2"
-          ></div>
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Number of Dependents" | translate }}</mat-label>
+              <input type="number" matInput formControlName="dependents" />
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
 
-          <div class="xl:w-1/2 flex flex-col">
-            <form [formGroup]="municipalForm">
-              <mat-form-field class="w-full">
-                <mat-label>{{
-                  "Municipal Account Number" | translate
-                }}</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="municipalAccount1"
-                />
-              </mat-form-field>
+      <div class="hidden xl:flex xl:gap-8 xl:mt-4">
+        <div class="xl:w-1/2">
+          <button
+            color="primary"
+            class="w-full rounded-full bg-white p-2"
+            (click)="previousPage()"
+          >
+            <span class="text-blue-600">{{ "BACK" | translate }}</span>
+          </button>
+        </div>
+        <div class="xl:w-1/2">
+          <button
+            mat-flat-button
+            class="primary-btn w-full rounded-full"
+            (click)="nextPage()"
+          >
+            <span>{{ "NEXT" | translate }}</span>
+          </button>
+        </div>
+      </div>
 
-              <mat-form-field class="w-full">
-                <mat-label>{{
-                  "Municipal Account Number 2" | translate
-                }}</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="municipalAccount2"
-                />
-              </mat-form-field>
-
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Village" | translate }}</mat-label>
-                <input type="text" matInput formControlName="village" />
-              </mat-form-field>
-
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Ward" | translate }}</mat-label>
-                <input type="text" matInput formControlName="ward" />
-              </mat-form-field>
-
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Number of Dependents" | translate }}</mat-label>
-                <input type="number" matInput formControlName="dependents" />
-              </mat-form-field>
-            </form>
-          </div>
+      <div class="xl:hidden" *ngIf="mobilePage === 1">
+        <div class="flex mb-6 flex-col items-center">
+          <p class="text-black text-3xl">
+            {{ "Address Information" | translate }}
+          </p>
         </div>
 
-        <div class="hidden xl:flex xl:gap-8 xl:mt-4">
-          <div class="xl:w-1/2">
-            <button
-              mat-stroked-button
-              class="w-full rounded-full"
-              (click)="previousPage()"
-            >
-              <span>{{ "BACK" | translate }}</span>
-            </button>
-          </div>
-          <div class="xl:w-1/2">
-            <button
-              mat-flat-button
-              class="primary-btn w-full rounded-full"
-              (click)="nextPage()"
-            >
-              <span>{{ "NEXT" | translate }}</span>
-            </button>
-          </div>
+        <div class="w-full">
+          <form [formGroup]="addressForm">
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Search Address" | translate }}</mat-label>
+              <input
+                type="text"
+                matInput
+                #streetAddressInput
+                formControlName="streetAddress"
+                placeholder="Start typing your address..."
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Address 1" | translate }}</mat-label>
+              <input type="text" matInput formControlName="address1" />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Address 2" | translate }}</mat-label>
+              <input type="text" matInput formControlName="address2" />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Address 3" | translate }}</mat-label>
+              <input type="text" matInput formControlName="address3" />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Postal Address" | translate }}</mat-label>
+              <input type="text" matInput formControlName="postalAddress" />
+            </mat-form-field>
+          </form>
         </div>
 
-        <div class="xl:hidden" *ngIf="mobilePage === 1">
-          <div class="flex mb-6 flex-col items-center">
-            <p class="text-black text-3xl">
-              {{ "Address Information" | translate }}
-            </p>
-          </div>
+        <div class="flex gap-4 mt-4">
+          <button
+            mat-stroked-button
+            class="w-1/2 rounded-full"
+            (click)="previousPage()"
+          >
+            <span>{{ "BACK" | translate }}</span>
+          </button>
+          <button
+            mat-flat-button
+            class="primary-btn w-1/2 rounded-full"
+            (click)="nextMobilePage()"
+          >
+            <span>{{ "NEXT" | translate }}</span>
+          </button>
+        </div>
+      </div>
 
-          <div class="w-full">
-            <form [formGroup]="addressForm">
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Search Address" | translate }}</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  #streetAddressInput
-                  formControlName="streetAddress"
-                  placeholder="Start typing your address..."
-                />
-              </mat-form-field>
-
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Address 1" | translate }}</mat-label>
-                <input type="text" matInput formControlName="address1" />
-              </mat-form-field>
-
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Address 2" | translate }}</mat-label>
-                <input type="text" matInput formControlName="address2" />
-              </mat-form-field>
-
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Address 3" | translate }}</mat-label>
-                <input type="text" matInput formControlName="address3" />
-              </mat-form-field>
-
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Postal Address" | translate }}</mat-label>
-                <input type="text" matInput formControlName="postalAddress" />
-              </mat-form-field>
-            </form>
-          </div>
-
-          <div class="flex gap-4 mt-4">
-            <button
-              mat-stroked-button
-              class="w-1/2 rounded-full"
-              (click)="previousPage()"
-            >
-              <span>{{ "BACK" | translate }}</span>
-            </button>
-            <button
-              mat-flat-button
-              class="primary-btn w-1/2 rounded-full"
-              (click)="nextMobilePage()"
-            >
-              <span>{{ "NEXT" | translate }}</span>
-            </button>
-          </div>
+      <div class="xl:hidden" *ngIf="mobilePage === 2">
+        <div class="flex mb-6 flex-col items-center">
+          <p class="text-black text-3xl">
+            {{ "Municipal Information" | translate }}
+          </p>
         </div>
 
-        <div class="xl:hidden" *ngIf="mobilePage === 2">
-          <div class="flex mb-6 flex-col items-center">
-            <p class="text-black text-3xl">
-              {{ "Municipal Information" | translate }}
-            </p>
-          </div>
+        <div class="w-full">
+          <form [formGroup]="municipalForm">
+            <mat-form-field class="w-full">
+              <mat-label>{{
+                "Municipal Account Number" | translate
+              }}</mat-label>
+              <input type="text" matInput formControlName="municipalAccount1" />
+            </mat-form-field>
 
-          <div class="w-full">
-            <form [formGroup]="municipalForm">
-              <mat-form-field class="w-full">
-                <mat-label>{{
-                  "Municipal Account Number" | translate
-                }}</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="municipalAccount1"
-                />
-              </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>{{
+                "Municipal Account Number 2" | translate
+              }}</mat-label>
+              <input type="text" matInput formControlName="municipalAccount2" />
+            </mat-form-field>
 
-              <mat-form-field class="w-full">
-                <mat-label>{{
-                  "Municipal Account Number 2" | translate
-                }}</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="municipalAccount2"
-                />
-              </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Village" | translate }}</mat-label>
+              <input type="text" matInput formControlName="village" />
+            </mat-form-field>
 
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Village" | translate }}</mat-label>
-                <input type="text" matInput formControlName="village" />
-              </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Ward" | translate }}</mat-label>
+              <input type="text" matInput formControlName="ward" />
+            </mat-form-field>
 
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Ward" | translate }}</mat-label>
-                <input type="text" matInput formControlName="ward" />
-              </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>{{ "Number of Dependents" | translate }}</mat-label>
+              <input type="number" matInput formControlName="dependents" />
+            </mat-form-field>
+          </form>
+        </div>
 
-              <mat-form-field class="w-full">
-                <mat-label>{{ "Number of Dependents" | translate }}</mat-label>
-                <input type="number" matInput formControlName="dependents" />
-              </mat-form-field>
-            </form>
-          </div>
-
-          <div class="flex gap-4 mt-4">
-            <button
-              mat-stroked-button
-              class="w-1/2 rounded-full"
-              (click)="prevMobilePage()"
-            >
-              <span>{{ "BACK" | translate }}</span>
-            </button>
-            <button
-              mat-flat-button
-              class="primary-btn w-1/2 rounded-full"
-              (click)="nextPage()"
-            >
-              <span>{{ "NEXT" | translate }}</span>
-            </button>
-          </div>
+        <div class="flex gap-4 mt-4">
+          <button
+            color="primary"
+            class="w-full rounded-full bg-white"
+            (click)="previousPage()"
+          >
+            <span class="text-blue-600">{{ "BACK" | translate }}</span>
+          </button>
+          <button
+            mat-flat-button
+            class="primary-btn w-1/2 rounded-full"
+            (click)="nextPage()"
+          >
+            <span>{{ "NEXT" | translate }}</span>
+          </button>
         </div>
       </div>
       } @if (currentPage === 3) {
@@ -1171,18 +1145,19 @@
       <div class="flex justify-center w-full px-4 mt-8">
         <div class="flex justify-between w-full max-w-5xl gap-4">
           <button
-            mat-stroked-button
-            class="flex-1 rounded-full py-2"
+            class="flex-1 rounded-full py-2 border-blue-600 text-blue-600 bg-white hover:bg-gray-50"
             (click)="previousPage()"
           >
-            <span>{{ "BACK" | translate }}</span>
+            {{ "BACK" | translate }}
           </button>
+
           <button
             mat-flat-button
-            class="flex-1 primary-btn rounded-full py-2"
+            color="primary"
+            class="flex-1 rounded-full py-2"
             (click)="submitForm()"
           >
-            <span>{{ "COMPLETE" | translate }}</span>
+            {{ "COMPLETE" | translate }}
           </button>
         </div>
       </div>

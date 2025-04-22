@@ -10,30 +10,68 @@
       <div class="text-center text-black">
         <p class="text-3xl mb-2">Arrangement History</p>
       </div>
-      <div class="mat-elevation-z8">
-        <table mat-table>
-          <!-- Position Column -->
-          <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef>Arrangement</th>
-            <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+
+      <!-- Desktop Table View -->
+      <div class="mat-elevation-z8 hidden md:block">
+        <table mat-table [dataSource]="dataSource" class="w-full">
+          <!-- Reference Column -->
+          <ng-container matColumnDef="reference">
+            <th mat-header-cell *matHeaderCellDef>Reference</th>
+            <td mat-cell *matCellDef="let element">{{ element.reference }}</td>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Arrangement</th>
-            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+            <th mat-header-cell *matHeaderCellDef>Client</th>
+            <td mat-cell *matCellDef="let element">
+              {{ getFullName(element) }}
+            </td>
           </ng-container>
 
-          <!-- Weight Column -->
-          <ng-container matColumnDef="weight">
-            <th mat-header-cell *matHeaderCellDef>Arrangement</th>
-            <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+          <!-- ID Number Column -->
+          <ng-container matColumnDef="idNumber">
+            <th mat-header-cell *matHeaderCellDef>ID Number</th>
+            <td mat-cell *matCellDef="let element">{{ element.idNumber }}</td>
           </ng-container>
 
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="symbol">
-            <th mat-header-cell *matHeaderCellDef>Arrangement</th>
-            <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+          <!-- Account Number Column -->
+          <ng-container matColumnDef="accountNumber">
+            <th mat-header-cell *matHeaderCellDef>Account</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.accountNumber }}
+            </td>
+          </ng-container>
+
+          <!-- Type Column -->
+          <ng-container matColumnDef="arrangementType">
+            <th mat-header-cell *matHeaderCellDef>Type</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.arrangementType }}
+            </td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+              <span [class]="'status-badge ' + element.status.toLowerCase()">
+                {{ element.status }}
+              </span>
+            </td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="cancelArrangement(element)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -41,11 +79,84 @@
         </table>
 
         <mat-paginator
-          [pageSizeOptions]="[10, 50, 100]"
+          [pageSizeOptions]="[5, 10, 20]"
           showFirstLastButtons
-          aria-label="Select page of periodic elements"
-        >
-        </mat-paginator>
+          aria-label="Select page of arrangements"
+        ></mat-paginator>
+      </div>
+
+      <!-- Mobile Accordion View -->
+      <div class="md:hidden">
+        <mat-accordion>
+          <mat-expansion-panel
+            *ngFor="let element of dataSource.data"
+            class="mb-2"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ element.reference }}
+              </mat-panel-title>
+              <mat-panel-description>
+                <span [class]="'status-badge ' + element.status.toLowerCase()">
+                  {{ element.status }}
+                </span>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="grid grid-cols-2 gap-2 py-2">
+              <div class="font-medium">Client:</div>
+              <div>{{ getFullName(element) }}</div>
+
+              <div class="font-medium">ID Number:</div>
+              <div>{{ element.idNumber }}</div>
+
+              <div class="font-medium">Account:</div>
+              <div>{{ element.accountNumber }}</div>
+
+              <div class="font-medium">Type:</div>
+              <div>{{ element.arrangementType }}</div>
+
+              <div class="font-medium">Date Created:</div>
+              <div>{{ element.dateCreated | date : "mediumDate" }}</div>
+
+              <div class="font-medium">Amount:</div>
+              <div>
+                {{ element.amount | currency : "ZAR" : "symbol" : "1.2-2" }}
+              </div>
+
+              <div class="font-medium">Contact:</div>
+              <div>{{ element.contactNumber }}</div>
+
+              <div class="font-medium">Email:</div>
+              <div>{{ element.email }}</div>
+            </div>
+
+            <div class="mt-2 pt-2 border-t border-gray-200">
+              <button
+                mat-stroked-button
+                color="primary"
+                class="mr-2"
+                (click)="viewDetails(element)"
+              >
+                View Details
+              </button>
+              <button
+                mat-stroked-button
+                color="warn"
+                (click)="cancelArrangement(element)"
+              >
+                Cancel
+              </button>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of arrangements"
+          class="mt-4"
+        ></mat-paginator>
       </div>
     </div>
   </div>
