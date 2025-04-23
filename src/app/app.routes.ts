@@ -104,6 +104,18 @@ export const routes: Routes = [
           ).then((m) => m.HistoryArrangementModule),
       },
       {
+        path: 'tbn',
+        loadChildren: () =>
+          import('./features/tbn/tbn.module').then((m) => m.TbnModule),
+      },
+      {
+        path: 'marketplace',
+        loadChildren: () =>
+          import('./features/marketplace/marketplace.module').then(
+            (m) => m.MarketplaceModule
+          ),
+      },
+      {
         path: 'navigation',
         component: NavigationComponent,
       },
