@@ -26,7 +26,17 @@ export class NavigationService {
   private activeRouteSource = new BehaviorSubject<string>('');
   activeRoute$ = this.activeRouteSource.asObservable();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    // Subscribe to router events to track the active route
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map((event: NavigationEnd) => event.urlAfterRedirects || event.url)
+      )
+      .subscribe((url) => {
+        this.activeRouteSource.next(url);
+      });
+  }
 
   get menuItems(): MenuItem[] {
     return this._menuItems;
@@ -34,6 +44,19 @@ export class NavigationService {
 
   navigateTo(path: string): Promise<boolean> {
     return this.router.navigate([path]);
+  }
+
+  isRouteActive(route: string): Observable<boolean> {
+    return this.activeRoute$.pipe(
+      map((activeRoute) => {
+        if (route === activeRoute) return true;
+
+        // Check if the current route starts with the given route path
+        if (route !== '/' && activeRoute.startsWith(route)) return true;
+
+        return false;
+      })
+    );
   }
 
   isActive(path: string): boolean {
@@ -60,22 +83,4 @@ export class NavigationService {
   closeMobileNav() {
     this.mobileNavVisibleSource.next(false);
   }
-
-  isRouteActive(route: string): Observable<boolean> {
-    return this.activeRoute$.pipe(
-      map((activeRoute) => {
-        if (route === activeRoute) return true;
-
-        // Check if the current route starts with the given route path
-        if (route !== '/' && activeRoute.startsWith(route)) return true;
-
-        return false;
-      })
-    );
-  }
-
-  // navigateTo(route: string) {
-  //   this.closeMobileNav();
-  //   this.router.navigate([route]);
-  // }
 }

@@ -48,7 +48,7 @@ export class NavigationComponent implements OnInit {
   isMobile = signal<boolean>(false);
 
   constructor(
-    private navigationService: NavigationService,
+    public navigationService: NavigationService,
     private responsiveService: ResponsiveService
   ) {}
 

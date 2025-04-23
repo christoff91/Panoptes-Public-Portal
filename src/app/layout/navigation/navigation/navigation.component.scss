@@ -1,0 +1,15 @@
+mat-nav-list a:hover {
+  background-color: #1a202c; /* Change to your desired hover color */
+}
+
+mat-nav-list a:active {
+  background-color: #1a202c; /* Highlight the active menu item */
+  border-left: 4px solid #2196f3; /* Blue highlight */
+}
+
+.icon {
+  color: white;
+}
+.content-container {
+  padding: 20px;
+}

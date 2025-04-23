@@ -14,10 +14,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenav } from '@angular/material/sidenav';
+import { FooterComponent } from '../../footer/footer.component';
 
 @Component({
   selector: 'app-main-layout',
   imports: [
+    FooterComponent,
     RouterModule,
     MatSidenavModule,
     NavigationComponent,
@@ -70,6 +72,9 @@ export class MainLayoutComponent implements OnInit {
       '/accounts': 'Accounts',
       '/arrangements': 'Arrangements',
       '/indigents': 'Indigent',
+      '/create-arrangement': 'Create Arrangement',
+      '/manage-arrangement': 'Manage Arrangement',
+      '/history-arrangement': 'History',
     };
 
     this.activeLabel.set(menuMap[path] || '');
