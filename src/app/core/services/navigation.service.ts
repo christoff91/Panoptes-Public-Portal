@@ -26,17 +26,7 @@ export class NavigationService {
   private activeRouteSource = new BehaviorSubject<string>('');
   activeRoute$ = this.activeRouteSource.asObservable();
 
-  constructor(private router: Router) {
-    // Subscribe to router events to track the active route
-    this.router.events
-      .pipe(
-        filter((event) => event instanceof NavigationEnd),
-        map((event: NavigationEnd) => event.urlAfterRedirects || event.url)
-      )
-      .subscribe((url) => {
-        this.activeRouteSource.next(url);
-      });
-  }
+  constructor(private router: Router) {}
 
   get menuItems(): MenuItem[] {
     return this._menuItems;
@@ -44,28 +34,6 @@ export class NavigationService {
 
   navigateTo(path: string): Promise<boolean> {
     return this.router.navigate([path]);
-  }
-
-  isRouteActive(route: string): Observable<boolean> {
-    return this.activeRoute$.pipe(
-      map((activeRoute) => {
-        if (route === activeRoute) return true;
-
-        // Check if the current route starts with the given route path
-        if (route !== '/' && activeRoute.startsWith(route)) return true;
-
-        return false;
-      })
-    );
-  }
-
-  isActive(path: string): boolean {
-    return this.router.isActive(path, {
-      paths: 'exact',
-      queryParams: 'ignored',
-      fragment: 'ignored',
-      matrixParams: 'ignored',
-    });
   }
 
   findMenuItem(label: string): MenuItem | undefined {

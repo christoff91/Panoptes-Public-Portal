@@ -1,13 +1,13 @@
 mat-nav-list a:hover {
-  background-color: #1a202c; /* Change to your desired hover color */
+  background-color: #0a254b;
+  // background-color: gray;
 }
 
-mat-nav-list a:active {
-  background-color: #1a202c; /* Highlight the active menu item */
-  border-left: 4px solid #2196f3; /* Blue highlight */
+.active {
+  background-color: #1a202c;
+  border-left: 3px solid #2196f3
 }
 
 .logout-btn {
   background-color: #cc0000 !important;
-  // background-color: red !important;
 }

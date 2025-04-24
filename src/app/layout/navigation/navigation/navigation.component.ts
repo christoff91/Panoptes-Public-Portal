@@ -43,16 +43,25 @@ export class NavigationComponent implements OnInit {
   @Input() route: string = '';
   @Input() label: string = '';
 
-  isActive$!: Observable<boolean>;
+  currentPath: string = '';
 
   isMobile = signal<boolean>(false);
 
   constructor(
     public navigationService: NavigationService,
-    private responsiveService: ResponsiveService
+    private responsiveService: ResponsiveService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.currentPath = this.router.url;
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.currentPath = event.urlAfterRedirects;
+      });
+
     this.responsiveService.isMobile().subscribe((mobile) => {
       this.isMobile.set(mobile);
     });
@@ -67,11 +76,10 @@ export class NavigationComponent implements OnInit {
   }
 
   isActive(path: string): boolean {
-    return this.navigationService.isActive(path);
+    return this.currentPath === path;
   }
 
   onCloseClicked() {
     this.closeNavBar.emit();
-    console.log('Closing the navbar');
   }
 }
