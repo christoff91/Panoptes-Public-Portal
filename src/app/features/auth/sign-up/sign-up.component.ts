@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -36,16 +37,40 @@ export class SignUpComponent {
   loginForm: FormGroup;
   hidePassword = true;
   language: string = '';
+  loginError = false;
+  isLoading = false;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private authService: AuthService,
     private translate: TranslateService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+  }
+
+  ngOnInit() {
+    if (this.authService.getCurrentLoginStatus()) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
+
+  async signInWithGoogle() {
+    this.isLoading = true;
+
+    // Google sign-in now just redirects to Google's auth page
+    // The actual authentication will happen in the callback component
+    try {
+      this.authService.loginWithGoogle();
+      // No need to check for success or navigate here, as redirect will happen
+    } catch (error) {
+      console.error('Google sign-in error:', error);
+      this.loginError = true;
+      this.isLoading = false;
+    }
   }
 
   changeLanguage(event: Event): void {
@@ -59,10 +84,13 @@ export class SignUpComponent {
     this.router.navigate(['/dashboard']);
   }
 
-  onSubmit(): void {
+  onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Form submitted:', this.loginForm.value);
-      this.routeToDashboard();
+      const success = this.authService.login(
+        this.loginForm.value.email,
+        this.loginForm.value.password
+      );
+      if (success) this.router.navigate(['/dashboard']);
     }
   }
 

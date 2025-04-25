@@ -117,7 +117,13 @@
         </button>
         <mat-divider></mat-divider>
 
-        <button mat-flat-button class="custom-btn w-full rounded-full">
+        <button
+          mat-flat-button
+          type="button"
+          (click)="signInWithGoogle()"
+          [disabled]="isLoading"
+          class="custom-btn w-full rounded-full"
+        >
           <mat-icon class="google-icon">google</mat-icon>
           <span class="ml-3">{{ "SIGN UP WITH GOOGLE" | translate }}</span>
         </button>

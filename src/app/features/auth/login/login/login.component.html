@@ -1,6 +1,6 @@
 <div class="grid place-items-center">
   <div
-    class="absolute top-0 right-0 flex  space-y-2 p-3 md:flex-row md:items-center md:space-x-2 md:space-y-0 md:p-5"
+    class="absolute top-0 right-0 flex space-y-2 p-3 md:flex-row md:items-center md:space-x-2 md:space-y-0 md:p-5"
   >
     <img
       src="assets/icons/language.png"
@@ -98,7 +98,13 @@
         </button>
         <mat-divider></mat-divider>
 
-        <button mat-flat-button class="custom-btn w-full rounded-full">
+        <button
+          mat-flat-button
+          class="custom-btn w-full rounded-full"
+          type="button"
+          (click)="signInWithGoogle()"
+          [disabled]="isLoading"
+        >
           <mat-icon class="google-icon">google</mat-icon>
           <span class="ml-3">{{ "OR LOGIN WITH GOOGLE" | translate }}</span>
         </button>
