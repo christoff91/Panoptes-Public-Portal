@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import{r as c}from"./chunk-IXQAKVNQ.mjs";import{Jb as s,Kb as m,Y as i,bc as a,mb as r,nb as p}from"./chunk-4OLHNY3Y.mjs";import"./chunk-S6KH3LOX.mjs";var o=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=r({type:t,selectors:[["app-tbn"]],decls:2,vars:0,template:function(e,d){e&1&&(s(0,"p"),a(1,"tbn works!"),m())},encapsulation:2})};var u=[{path:"",component:o}],f=class t{static \u0275fac=function(e){return new(e||t)};static \u0275mod=p({type:t});static \u0275inj=i({imports:[c.forChild(u)]})};export{f as TbnModule};

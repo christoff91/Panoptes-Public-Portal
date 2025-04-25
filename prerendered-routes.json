@@ -1,0 +1,22 @@
+{
+  "routes": {
+    "/Panoptes-Public-Portal": {},
+    "/Panoptes-Public-Portal/accounts": {},
+    "/Panoptes-Public-Portal/arrangements": {},
+    "/Panoptes-Public-Portal/create-arrangement": {},
+    "/Panoptes-Public-Portal/dashboard": {},
+    "/Panoptes-Public-Portal/digital-profile": {},
+    "/Panoptes-Public-Portal/facial-biometrics": {},
+    "/Panoptes-Public-Portal/forgot-password": {},
+    "/Panoptes-Public-Portal/history-arrangement": {},
+    "/Panoptes-Public-Portal/indigents": {},
+    "/Panoptes-Public-Portal/login": {},
+    "/Panoptes-Public-Portal/manage-arrangement": {},
+    "/Panoptes-Public-Portal/marketplace": {},
+    "/Panoptes-Public-Portal/municipal": {},
+    "/Panoptes-Public-Portal/navigation": {},
+    "/Panoptes-Public-Portal/personal-info": {},
+    "/Panoptes-Public-Portal/sign-up": {},
+    "/Panoptes-Public-Portal/tbn": {}
+  }
+}
