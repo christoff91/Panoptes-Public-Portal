@@ -27,6 +27,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'forgot-password',
+        loadChildren: () =>
+          import('./features/auth/forgot-password/forgot-password.module').then(
+            (m) => m.ForgotPasswordModule
+          ),
+      },
+      {
         path: 'personal-info',
         loadChildren: () =>
           import(
