@@ -2,13 +2,15 @@
   <mat-sidenav
     #sidenav
     [mode]="isMobile() ? 'over' : 'side'"
-    [opened]="!isMobile()"
+    [opened]="!isMobile() && shouldShowSidenav()"
+    [disableClose]="false"
+    [style.display]="shouldShowSidenav() ? 'block' : 'none'"
   >
     <app-navigation (closeNavBar)="sidenav.close()"></app-navigation>
   </mat-sidenav>
   <!-- Main Content -->
   <mat-sidenav-content>
-    @if(isMobile()) {
+    @if(isMobile() && shouldShowSidenav()) {
     <mat-toolbar>
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>

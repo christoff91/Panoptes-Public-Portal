@@ -25,7 +25,6 @@ import { FooterComponent } from '../../footer/footer.component';
     NavigationComponent,
     MatToolbarModule,
     MatIconModule,
-    MatSidenav,
   ],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss',
@@ -34,6 +33,17 @@ export class MainLayoutComponent implements OnInit {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   isMobile = signal<boolean>(false);
   activeLabel = signal<string>('');
+  hideNavigation = signal<boolean>(false);
+
+  // Routes where the navigation should be hidden
+  private readonly hiddenNavRoutes = [
+    '/login',
+    '/auth/login',
+    '/sign-up',
+    '/auth/sign-up',
+    '/forgot-password',
+    '/auth/forgot-password',
+  ];
 
   constructor(
     private responsiveService: ResponsiveService,
@@ -49,16 +59,21 @@ export class MainLayoutComponent implements OnInit {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
+        this.hideNavigation.set(
+          this.shouldHideNavigation(event.urlAfterRedirects)
+        );
         this.updateActiveLabel(event.urlAfterRedirects);
       });
+
+    const currentUrl = this.router.url;
+    this.hideNavigation.set(this.shouldHideNavigation(currentUrl));
   }
 
   ngAfterViewInit() {
-    // Close sidenav on route change if in mobile mode
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        if (this.isMobile() && this.sidenav.opened) {
+        if (this.isMobile() && this.sidenav?.opened) {
           this.sidenav.close();
         }
       });
@@ -78,5 +93,15 @@ export class MainLayoutComponent implements OnInit {
     };
 
     this.activeLabel.set(menuMap[path] || '');
+  }
+
+  shouldHideNavigation(path: string): boolean {
+    return this.hiddenNavRoutes.some(
+      (route) => path === route || path.startsWith(`${route}/`)
+    );
+  }
+
+  shouldShowSidenav(): boolean {
+    return !this.hideNavigation();
   }
 }
